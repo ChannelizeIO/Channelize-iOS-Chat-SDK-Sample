@@ -1,0 +1,6 @@
+framework module ZVProgressHUD {
+  umbrella header "ZVProgressHUD-umbrella.h"
+
+  export *
+  module * { export * }
+}

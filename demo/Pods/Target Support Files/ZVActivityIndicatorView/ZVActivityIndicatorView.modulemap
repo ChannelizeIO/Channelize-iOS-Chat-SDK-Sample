@@ -1,0 +1,6 @@
+framework module ZVActivityIndicatorView {
+  umbrella header "ZVActivityIndicatorView-umbrella.h"
+
+  export *
+  module * { export * }
+}

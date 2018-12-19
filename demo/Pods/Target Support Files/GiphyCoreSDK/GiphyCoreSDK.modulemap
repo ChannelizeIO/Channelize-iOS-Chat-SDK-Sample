@@ -1,0 +1,6 @@
+framework module GiphyCoreSDK {
+  umbrella header "GiphyCoreSDK-umbrella.h"
+
+  export *
+  module * { export * }
+}
