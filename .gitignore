@@ -17,6 +17,12 @@ DerivedData/
 !default.perspectivev3
 xcuserdata/
 
+##Pods
+demo/Pods/AgoraRtcEngine_iOS
+demo/PrimeMessenger.framework/
+demo/.DS_Store
+.DS_Store
+
 ## Other
 *.moved-aside
 *.xccheckout
