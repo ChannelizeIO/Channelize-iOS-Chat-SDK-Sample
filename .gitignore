@@ -20,6 +20,7 @@ xcuserdata/
 ##Pods
 demo/Pods/AgoraRtcEngine_iOS
 demo/PrimeMessenger.framework/
+demo/demo/PrimeMessenger-Info.plist
 demo/.DS_Store
 .DS_Store
 
