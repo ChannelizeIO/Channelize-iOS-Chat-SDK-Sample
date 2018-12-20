@@ -57,6 +57,94 @@ Before we begin, please do make sure that
  
  ## Configuration
  
- **Step 1** - Create a file with name PrimeMessenger-Info.plist file as mentioned in the demo project -  [Config File](https://github.com/ChannelizeIO/Channelize-iOS/blob/master/demo/demo/PrimeMessenger-Info.plist)
+  **Step 1** - Create a file with name PrimeMessenger-Info.plist file as mentioned in the demo project (Or you can copy the file fro the demo app too)-  [Config File](https://github.com/ChannelizeIO/Channelize-iOS/blob/master/demo/demo/PrimeMessenger-Info.plist)
 
- **Step 2** - 
+  **Step 2** - Place all the required keys in the PrimeMessenger-info.plist file.
+  
+  **Step 3** - You also need to place the language string file with name PrimeLocalizable.strings. [Language File](https://github.com/ChannelizeIO/Channelize-iOS/blob/master/demo/demo/PrimeLocalizable.strings)
+  
+  **Step 4** - Make sure you have the follwoing permissions in your `Info.plist` file
+  
+  ```xml
+<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>You can take photos to document your job.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This app wants to access your location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app wants to access your location</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>You can select photos to attach to reports.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Microphone to start a call</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>voip</string>
+	</array>
+```
+ 
+ ## Voip notification setup
+ 
+ - You need to copy the [CallProvider](https://github.com/ChannelizeIO/Channelize-iOS/blob/master/demo/demo/CHCallProvider.swift) and paste it in your project directory 
+ - Add the following code in you ```swift AppDelegate.swift``` file
+ 
+ ```swift
+ extension AppDelegate: PKPushRegistryDelegate {
+    
+    func pushRegistry(_ registry: PKPushRegistry, didUpdate credentials: PKPushCredentials, for type: PKPushType) {
+        
+        let deviceToken = credentials.token.reduce("", {$0 + String(format: "%02X", $1) })
+        debugPrint("Voip Token - ",deviceToken)
+        PrimeMessenger.updateVoipToken(token: deviceToken)
+    }
+    
+    func pushRegistry(_ registry: PKPushRegistry, didReceiveIncomingPushWith payload: PKPushPayload, for type: PKPushType) {
+        
+        print("\(#function) incoming voip notfication: \(payload.dictionaryPayload)")
+        if let callId = payload.dictionaryPayload["callId"] as? String,let uid = payload.dictionaryPayload["userId"] as? String {
+            let uuid = UUID()
+            let call = PMActiveCall(uuid: uuid, callId: callId, uid: uid)
+            call.displayName = payload.dictionaryPayload["displayName"] as? String
+            call.profileImageUrl = payload.dictionaryPayload["profileImageUrl"] as? String
+            if let callType = payload.dictionaryPayload["type"] as? String,callType == "video" {
+                call.type = .video
+            }
+            
+            // display incoming call UI when receiving incoming voip notification
+            let backgroundTaskIdentifier = UIApplication.shared.beginBackgroundTask(expirationHandler: nil)
+            self.displayIncomingCall(call: call) { _ in
+                UIApplication.shared.endBackgroundTask(backgroundTaskIdentifier)
+            }
+            
+        }
+    }
+    
+    func pushRegistry(_ registry: PKPushRegistry, didInvalidatePushTokenFor type: PKPushType) {
+        print("\(#function) token invalidated")
+    }
+    
+    // Display the incoming call to the user
+    func displayIncomingCall(call: PMActiveCall, completion: ((NSError?) -> Void)? = nil) {
+        callProvider?.reportIncomingCall(of: call)
+    }
+    
+}
+ ```
+ - Create the following variables in your project's `AppDelegate.swift` file
+ ```swift
+    let pushRegistry = PKPushRegistry(queue: DispatchQueue.main)
+    var callProvider: CHCallProvider?
+ ```
+ - Place the following code in ` didFinishLaunchingWithOptions ` function of your project's `AppDelegate.swift` file 
+ ```swift
+ 
+        pushRegistry.delegate = self
+        pushRegistry.desiredPushTypes = [.voIP]
+    
+        callProvider = CHCallProvider()
+        
+ ```
