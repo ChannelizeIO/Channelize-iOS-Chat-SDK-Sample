@@ -148,3 +148,59 @@ Before we begin, please do make sure that
         callProvider = CHCallProvider()
         
  ```
+
+## Integration 
+
+Here the few steps that you need to follow for integrating Channelize with your application. It includes configuring & launching Channelize. 
+
+**Configuring Channelize**
+
+ - To configure Channelize you need to add the following code in `didFinishLaunchingWithOptions` function of your project's `AppDelegate.swift` file 
+ 
+ ```swift
+ PrimeMessenger.configure()
+ ```
+ - To add theme color in Channelize sdk you need to add the following code in `didFinishLaunchingWithOptions` function of your project's `AppDelegate.swift` file 
+ 
+ ```swift
+ appDefaultColor = "YOUR_APP'S_THEME_COLOR"
+ ```
+ 
+ **Launching Channelize**
+  - You need to **login** first before launching channelize by adding the following code on login button action
+  ```swift
+  PrimeMessenger.app.login(username: email, password: password){(status) in
+    	if(status){
+		if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController{
+	    	navigationController.setNavigationBarHidden(true, animated: false)
+	    	PrimeMessenger.app.openMessenger(navigationController: navigationController,
+					     data: nil)
+		}
+    	}
+   }
+		
+  ```
+ - For **launching** channelize from your app you need to to call the following code for the action you want to launch Channelize on
+ 
+ ```swift
+ if(PrimeMessenger.currentUserId() != nil){
+    if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController{
+	navigationController.setNavigationBarHidden(true, animated: false)
+	PrimeMessenger.app.openMessenger(navigationController: navigationController,
+					 data: nil)
+    }        
+  }
+ ```
+ 
+  - For performing **Logout** action you need to add the following code
+  ```swift
+  PrimeMessenger.logout()
+  ```
+ - For **launching Conversation Screen** for a **specific user** -
+  *User id should be integer
+ ```swift
+let data = [AnyHashable("userId"):"SPECIFIC_USER_ID"]
+if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController{
+    PrimeMessenger.app.openMessenger(navigationController: navigationController, data:data)
+}
+ ```
