@@ -204,3 +204,8 @@ if let navigationController = UIApplication.shared.keyWindow?.rootViewController
     PrimeMessenger.app.openMessenger(navigationController: navigationController, data:data)
 }
  ```
+
+ - For setting up user online and offline 
+ ```swift
+ PrimeMessenger.updateUserStatus(isOnline:true){(status) in}
+ ```
