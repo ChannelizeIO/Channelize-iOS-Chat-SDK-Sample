@@ -49,6 +49,7 @@ Before we begin, please do make sure that
   pod 'SDWebImage/GIF'
   pod 'ZVProgressHUD', '2.0.0'
   pod 'ZVActivityIndicatorView', '0.1.2'
+# this pod is required if you have video and voice call module enabled 
   pod 'AgoraRtcEngine_iOS', '2.3.1' 
   
 ```
@@ -57,13 +58,13 @@ Before we begin, please do make sure that
  
  ## Configuration
  
-  **Step 1** - Create a file with name PrimeMessenger-Info.plist file as mentioned in the demo project (Or you can copy the file fro the demo app too)-  [Config File](https://github.com/ChannelizeIO/Channelize-iOS/blob/master/demo/demo/PrimeMessenger-Info.plist)
+  **Step 1** - Create a file with name PrimeMessenger-Info.plist as mentioned in the demo project (Or you can copy the file from the demo app too)-  [Config File](https://github.com/ChannelizeIO/Channelize-iOS/blob/master/demo/demo/PrimeMessenger-Info.plist)
 
   **Step 2** - Place all the required keys in the PrimeMessenger-info.plist file.
   
-  **Step 3** - You also need to place the language string file with name PrimeLocalizable.strings. [Language File](https://github.com/ChannelizeIO/Channelize-iOS/blob/master/demo/demo/PrimeLocalizable.strings)
+  **Step 3** - You also need to create the language string file with name PrimeLocalizable.strings. [Language File](https://github.com/ChannelizeIO/Channelize-iOS/blob/master/demo/demo/PrimeLocalizable.strings)
   
-  **Step 4** - Make sure you have the follwoing permissions in your `Info.plist` file
+  **Step 4** - Make sure you have the following permissions in your `Info.plist` file
   
   ```xml
 <key>NSAppTransportSecurity</key>
@@ -90,7 +91,7 @@ Before we begin, please do make sure that
  ## Voip notification setup
  
  - You need to copy the [CallProvider](https://github.com/ChannelizeIO/Channelize-iOS/blob/master/demo/demo/CHCallProvider.swift) and paste it in your project directory 
- - Add the following code in you ```swift AppDelegate.swift``` file
+ - Add the following code in your ` AppDelegate.swift ` file
  
  ```swift
  extension AppDelegate: PKPushRegistryDelegate {
@@ -151,7 +152,7 @@ Before we begin, please do make sure that
 
 ## Integration 
 
-Here the few steps that you need to follow for integrating Channelize with your application. It includes configuring & launching Channelize. 
+Here are the few steps that you need to follow for integrating Channelize with your application. It includes configuring & launching Channelize. 
 
 **Configuring Channelize**
 
