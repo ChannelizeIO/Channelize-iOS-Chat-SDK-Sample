@@ -210,3 +210,10 @@ if let navigationController = UIApplication.shared.keyWindow?.rootViewController
  ```swift
  PrimeMessenger.updateUserStatus(isOnline:true){(status) in}
  ```
+
+
+## Note:-
+
+ - Voip integration required if in case client has Video and voice calls integrated.
+ - Voip permission in info.plist file required if in case client has Video and voice calls integrated.
+ - pod 'AgoraRtcEngine_iOS', '2.3.1' required if in case client has Video and voice calls integrated.
