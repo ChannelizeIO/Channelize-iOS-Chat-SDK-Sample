@@ -60,7 +60,7 @@ Before we begin, please do make sure that
  
   **Step 1** - Create a file with name PrimeMessenger-Info.plist as mentioned in the demo project (Or you can copy the file from the demo app too)-  [Config File](https://github.com/ChannelizeIO/Channelize-iOS/blob/master/demo/demo/PrimeMessenger-Info.plist)
 
-  **Step 2** - Place all the required keys in the PrimeMessenger-info.plist file.
+  **Step 2** - Place all the required keys in the PrimeMessenger-Info.plist file.
   
   **Step 3** - You also need to create the language string file with name PrimeLocalizable.strings. [Language File](https://github.com/ChannelizeIO/Channelize-iOS/blob/master/demo/demo/PrimeLocalizable.strings)
   
