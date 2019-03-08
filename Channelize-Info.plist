@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>MAP_API_KEY</key>
+	<string>AIzaSyArBM9KKsj7UIrqlf0VVF1ajZwrKwX7SN0</string>
+	<key>AWS_API_URL</key>
+	<string>https://api.primemessenger.com/v1/modules</string>
+	<key>PUBLIC_KEY</key>
+	<string>qHvonVEyIxDLa6zh</string>
+	<key>API_URL</key>
+	<string>http://socialengineaddonsstaging.primemessenger.com/api/v1</string>
+	<key>MQTT_URL</key>
+	<string>socialengineaddonsstaging.primemessenger.com</string>
+	<key>GIPHY_API_KEY</key>
+	<string>Hbj9gr7HtEv0QyE2REtUVa24WjvCsGdu</string>
+</dict>
+</plist>
