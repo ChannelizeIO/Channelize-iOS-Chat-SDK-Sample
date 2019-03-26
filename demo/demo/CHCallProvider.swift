@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CallKit
 import AVFoundation
-import PrimeMessenger
+
 
 
 @available(iOS 10.0, *)

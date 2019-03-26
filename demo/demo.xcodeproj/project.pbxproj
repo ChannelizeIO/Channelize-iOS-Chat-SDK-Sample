@@ -15,8 +15,6 @@
 		1866A41121C92DA600966620 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1866A40F21C92DA600966620 /* LaunchScreen.storyboard */; };
 		1866A41C21C92DA600966620 /* demoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1866A41B21C92DA600966620 /* demoTests.swift */; };
 		1866A42721C92DA600966620 /* demoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1866A42621C92DA600966620 /* demoUITests.swift */; };
-		1866A43521C930FB00966620 /* PrimeMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1866A43421C930FB00966620 /* PrimeMessenger.framework */; };
-		1866A43621C930FB00966620 /* PrimeMessenger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1866A43421C930FB00966620 /* PrimeMessenger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1866A43C21CA19DC00966620 /* AMInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1866A43B21CA19DC00966620 /* AMInputView.swift */; };
 		1866A43E21CA19E500966620 /* AMInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1866A43D21CA19E500966620 /* AMInputView.xib */; };
 		1866A44021CA1A0400966620 /* CHCallProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1866A43F21CA1A0400966620 /* CHCallProvider.swift */; };
@@ -44,20 +42,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		1866A43721C930FB00966620 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				1866A43621C930FB00966620 /* PrimeMessenger.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		083FBB1E285FB2090F3D45A4 /* Pods_demoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_demoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1866A40321C92DA500966620 /* demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,7 +57,6 @@
 		1866A42221C92DA600966620 /* demoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = demoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1866A42621C92DA600966620 /* demoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = demoUITests.swift; sourceTree = "<group>"; };
 		1866A42821C92DA600966620 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1866A43421C930FB00966620 /* PrimeMessenger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PrimeMessenger.framework; sourceTree = "<group>"; };
 		1866A43B21CA19DC00966620 /* AMInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMInputView.swift; sourceTree = "<group>"; };
 		1866A43D21CA19E500966620 /* AMInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMInputView.xib; sourceTree = "<group>"; };
 		1866A43F21CA1A0400966620 /* CHCallProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHCallProvider.swift; sourceTree = "<group>"; };
@@ -96,7 +79,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1866A43521C930FB00966620 /* PrimeMessenger.framework in Frameworks */,
 				AE92217236F8267D8BA6A27C /* Pods_demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -123,7 +105,6 @@
 		1866A3FA21C92DA400966620 = {
 			isa = PBXGroup;
 			children = (
-				1866A43421C930FB00966620 /* PrimeMessenger.framework */,
 				1866A40521C92DA500966620 /* demo */,
 				1866A41A21C92DA600966620 /* demoTests */,
 				1866A42521C92DA600966620 /* demoUITests */,
@@ -224,7 +205,6 @@
 				1866A40021C92DA500966620 /* Frameworks */,
 				1866A40121C92DA500966620 /* Resources */,
 				3414FA2B48E589C0C900746F /* [CP] Embed Pods Frameworks */,
-				1866A43721C930FB00966620 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
