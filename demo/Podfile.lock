@@ -1,10 +1,29 @@
 PODS:
-  - AgoraRtcEngine_iOS (2.3.1)
   - Alamofire (4.7.3)
   - AlamofireObjectMapper (5.1.0):
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 3.3)
   - Cache (4.2.0)
+  - ChannelizeAPI (1.0.0):
+    - Alamofire (= 4.7.3)
+    - AlamofireObjectMapper (= 5.1.0)
+    - MQTTClient (= 0.14.0)
+    - MQTTClient/Websocket
+  - ChannelizeUI (1.0.0):
+    - Alamofire (= 4.7.3)
+    - AlamofireObjectMapper (= 5.1.0)
+    - Crashlytics (= 3.10.7)
+    - CWStatusBarNotification (= 2.3.5)
+    - Gallery (= 2.0.6)
+    - GiphyCoreSDK (= 1.2.0)
+    - InputBarAccessoryView (= 2.2.2)
+    - Lightbox (= 2.1.2)
+    - MQTTClient (= 0.14.0)
+    - MQTTClient/Websocket
+    - SDWebImage/GIF
+    - SwiftIconFont (= 2.8.0)
+    - ZVActivityIndicatorView (= 0.1.2)
+    - ZVProgressHUD (= 2.0.0)
   - Chatto (3.3.1)
   - ChattoAdditions (3.3.1):
     - Chatto
@@ -34,9 +53,9 @@ PODS:
   - MQTTClient/Websocket (0.14.0):
     - MQTTClient/Min
     - SocketRocket
-  - ObjectMapper (3.4.1)
-  - SDWebImage/Core (4.4.3)
-  - SDWebImage/GIF (4.4.3):
+  - ObjectMapper (3.4.2)
+  - SDWebImage/Core (4.4.6)
+  - SDWebImage/GIF (4.4.6):
     - FLAnimatedImage (~> 1.0)
     - SDWebImage/Core
   - SocketRocket (0.5.1)
@@ -46,30 +65,18 @@ PODS:
     - ZVActivityIndicatorView
 
 DEPENDENCIES:
-  - AgoraRtcEngine_iOS (= 2.3.1)
-  - Alamofire (= 4.7.3)
-  - AlamofireObjectMapper (= 5.1.0)
+  - ChannelizeAPI
+  - ChannelizeUI
   - Chatto (from `https://github.com/BigStepTechnologies/Chatto`, branch `bigstep/v1.0`)
   - ChattoAdditions (from `https://github.com/BigStepTechnologies/Chatto`, branch `bigstep/v1.0`)
-  - Crashlytics (= 3.10.7)
-  - CWStatusBarNotification (= 2.3.5)
-  - Gallery (= 2.0.6)
-  - GiphyCoreSDK (= 1.2.0)
-  - InputBarAccessoryView (= 2.2.2)
-  - Lightbox (= 2.1.2)
-  - MQTTClient (= 0.14.0)
-  - MQTTClient/Websocket
-  - SDWebImage/GIF
-  - SwiftIconFont (= 2.8.0)
-  - ZVActivityIndicatorView (= 0.1.2)
-  - ZVProgressHUD (= 2.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - AgoraRtcEngine_iOS
     - Alamofire
     - AlamofireObjectMapper
     - Cache
+    - ChannelizeAPI
+    - ChannelizeUI
     - Crashlytics
     - CWStatusBarNotification
     - Fabric
@@ -105,10 +112,11 @@ CHECKOUT OPTIONS:
     :git: https://github.com/BigStepTechnologies/Chatto
 
 SPEC CHECKSUMS:
-  AgoraRtcEngine_iOS: b0304fee470e0b88bd3abedf9ce1c4309f4fd722
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
   Cache: f28f8dd64b632155aabf9b3906b036a659048251
+  ChannelizeAPI: b523b884d7c9ef2e0d77ae34fe79585f6445ecc3
+  ChannelizeUI: 9603df370afdcaf8acf27ab759575bb207509c2e
   Chatto: dcbfa8a59d5554740c792a91b2edd230b5f17e8d
   ChattoAdditions: 14c6bbac16e9524515010d045351bb9313703ed6
   Crashlytics: ccaac42660eb9351b9960c0d66106b0bcf99f4fa
@@ -122,13 +130,13 @@ SPEC CHECKSUMS:
   InputBarAccessoryView: 1f7bd07d111815afabaa2c11085a741378bfb247
   Lightbox: 2dc267df8be2285bc7724cb11cbbf4aaaf59dced
   MQTTClient: eea2eaaa6ddef852a1019a4dda091e22ad928b58
-  ObjectMapper: 5311bd50ca732930959e7ca1a2de43ab823a5ced
-  SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
+  ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
+  SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   SwiftIconFont: ddaccaa3bb90fc21ebc528cfdf793342618a5cc2
   ZVActivityIndicatorView: 14668601b0616d2b749004d8fa42913fc813e151
   ZVProgressHUD: b90892e51d56fb6dd03f8147f158594450ce354c
 
-PODFILE CHECKSUM: b1492f6133a20d742ca9ba2bc60c0ffb0bb4ab0b
+PODFILE CHECKSUM: 5b0cfad329b6b18e7b03f84c226af0e105b37344
 
 COCOAPODS: 1.5.3

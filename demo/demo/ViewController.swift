@@ -8,7 +8,8 @@
 
 import UIKit
 import ZVProgressHUD
-import PrimeMessenger
+import Channelize_API
+import Channelize
 import SDWebImage
 
 enum AMLoginSignupViewMode {
@@ -82,15 +83,12 @@ class ViewController: UIViewController {
         //add keyboard notification
         NotificationCenter.default.addObserver(self, selector: #selector(keyboarFrameChange(notification:)), name: .UIKeyboardWillChangeFrame, object: nil)
         
-        if(PrimeMessenger.currentUserId() != nil){
+        if(Channelize.main.currentUserId() != nil){
             if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController{
                 navigationController.setNavigationBarHidden(true, animated: false)
-                PrimeMessenger.app.openMessenger(navigationController: navigationController,
-                                                 data: nil)
+                CHMain.instance.launchApp(navigationController: navigationController, data: nil)
             }
-            
         }
-        
     }
     
     @objc func applicationDidBecomeActive(){
@@ -110,30 +108,28 @@ class ViewController: UIViewController {
         
         if mode == .signup {
             toggleViewMode(animated: true)
-            PrimeMessenger.logout()
-            
+            Channelize.main.logout()
         }else{
             ZVProgressHUD.show(with: "Signing in")
             guard let email = loginEmailInputView.textFieldView.text, let password = loginPasswordInputView.textFieldView.text,!email.isEmpty,!password.isEmpty else {
                 print("Form is not valid")
                 return
             }
-            if(PrimeMessenger.currentUserId() != nil){
+            if(Channelize.main.currentUserId() != nil){
                 ZVProgressHUD.showError()
-                PrimeMessenger.logout()
+                Channelize.main.logout()
             }else{
-                PrimeMessenger.app.login(username: email, password: password){(status) in
-                    if(status){
+                Channelize.main.login(username: email, password: password, completion: {(user,error) in
+                    if error != nil {
+                        ZVProgressHUD.showError()
+                    } else {
                         ZVProgressHUD.showSuccess()
                         if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController{
                             navigationController.setNavigationBarHidden(true, animated: false)
-                            PrimeMessenger.app.openMessenger(navigationController: navigationController,
-                                                             data: nil)
+                            CHMain.instance.launchApp(navigationController: navigationController, data: nil)
                         }
-                    }else{
-                        ZVProgressHUD.showError()
                     }
-                }
+                })
             }
         }
     }

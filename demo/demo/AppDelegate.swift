@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Channelize_API
+import Channelize
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,8 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationController = UINavigationController(rootViewController: viewController)
         window =  UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController
-        
-        PrimeMessenger.configure()
+        Channelize.configure()
         appDefaultColor = defaultColor
         ThemeManager.applyTheme(theme: .normal)
         self.window?.makeKeyAndVisible()
