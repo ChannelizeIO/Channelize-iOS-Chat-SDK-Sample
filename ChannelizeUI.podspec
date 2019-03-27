@@ -1,14 +1,14 @@
 Pod::Spec.new do |s|
 
   s.name         = "ChannelizeUI"
-  s.version      = "1.0.0"
+  s.version      = "4.1.0"
   s.summary      = "Channelize UI SDK"
   s.description  = "A Messaging UI SDK built for Channelize API SDK"
   s.homepage     = "https://channelize.io/"
-  s.license      = { :type => "GNU", :file => "LICENSE" }
+  s.license      = { :type => "GPL", :file => "LICENSE" }
   s.author       = { "Channelize" => "support@channelize.io" }
   s.platform     = :ios, "9.0"
-  s.source       = { :git => "https://github.com/ChannelizeIO/Channelize-iOS.git", :tag => "#{s.version}" }
+s.source       = { :git => "https://github.com/ChannelizeIO/Channelize-iOS.git", :tag => "#{s.version}", :branch => "Swift_4.1" }
   s.vendored_frameworks = "Channelize.framework"
   s.dependency "MQTTClient", "0.14.0"
   s.dependency "MQTTClient/Websocket"
