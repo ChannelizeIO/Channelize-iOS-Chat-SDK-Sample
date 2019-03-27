@@ -10,8 +10,8 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "9.0"
 s.source       = { :git => "https://github.com/ChannelizeIO/Channelize-iOS.git", :tag => "#{s.version}", :branch => "Swift_4.1" }
   s.vendored_frameworks = "Channelize_API.framework"
-  s.dependency "MQTTClient", "0.14.0"
-  s.dependency "MQTTClient/Websocket"
-  s.dependency "Alamofire", "4.7.3"
-  s.dependency "AlamofireObjectMapper", "5.1.0"
+  s.dependency "AWSMobileClient", "2.9.3"
+  s.dependency "AWSIoT", "2.9.3"
+  s.dependency "Alamofire", "4.8.0"
+  s.dependency "AlamofireObjectMapper", "5.2.0"
 end
