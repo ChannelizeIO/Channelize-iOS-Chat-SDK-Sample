@@ -36,13 +36,13 @@ open class AutocompleteCell: UITableViewCell {
     }
     
     /// A boarder line anchored to the top of the view
-    open let separatorLine = SeparatorLine()
+    public let separatorLine = SeparatorLine()
     
-    open var imageViewEdgeInsets: UIEdgeInsets = .zero { didSet { layoutSubviews() } }
+    open var imageViewEdgeInsets: UIEdgeInsets = .zero { didSet { setNeedsLayout() } }
     
     // MARK: - Initialization
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         setup()
     }

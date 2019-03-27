@@ -1,142 +1,134 @@
 PODS:
-  - Alamofire (4.7.3)
-  - AlamofireObjectMapper (5.1.0):
-    - Alamofire (~> 4.1)
-    - ObjectMapper (~> 3.3)
-  - Cache (4.2.0)
-  - ChannelizeAPI (1.0.0):
-    - Alamofire (= 4.7.3)
-    - AlamofireObjectMapper (= 5.1.0)
-    - MQTTClient (= 0.14.0)
-    - MQTTClient/Websocket
-  - ChannelizeUI (1.0.0):
-    - Alamofire (= 4.7.3)
-    - AlamofireObjectMapper (= 5.1.0)
-    - Crashlytics (= 3.10.7)
-    - CWStatusBarNotification (= 2.3.5)
-    - Gallery (= 2.0.6)
-    - GiphyCoreSDK (= 1.2.0)
-    - InputBarAccessoryView (= 2.2.2)
-    - Lightbox (= 2.1.2)
-    - MQTTClient (= 0.14.0)
-    - MQTTClient/Websocket
-    - SDWebImage/GIF
-    - SwiftIconFont (= 2.8.0)
-    - ZVActivityIndicatorView (= 0.1.2)
-    - ZVProgressHUD (= 2.0.0)
+  - Alamofire (4.8.0)
+  - AlamofireObjectMapper (5.2.0):
+    - Alamofire (~> 4.7)
+    - ObjectMapper (~> 3.4)
+  - AWSAuthCore (2.9.3):
+    - AWSCore (= 2.9.3)
+  - AWSCognitoIdentityProvider (2.9.3):
+    - AWSCognitoIdentityProviderASF (= 1.0.1)
+    - AWSCore (= 2.9.3)
+  - AWSCognitoIdentityProviderASF (1.0.1)
+  - AWSCore (2.9.3)
+  - AWSIoT (2.9.3):
+    - AWSCore (= 2.9.3)
+  - AWSMobileClient (2.9.3):
+    - AWSAuthCore (= 2.9.3)
+    - AWSCognitoIdentityProvider (= 2.9.3)
+  - Cache (5.2.0)
   - Chatto (3.3.1)
   - ChattoAdditions (3.3.1):
     - Chatto
     - SDWebImage/GIF
-  - Crashlytics (3.10.7):
-    - Fabric (~> 1.7.11)
+  - Crashlytics (3.12.0):
+    - Fabric (~> 1.9.0)
   - CWStatusBarNotification (2.3.5)
-  - Fabric (1.7.13)
+  - Fabric (1.9.0)
   - FLAnimatedImage (1.0.12)
-  - Gallery (2.0.6)
-  - GiphyCoreSDK (1.2.0)
-  - Hue (3.0.1)
-  - Imaginary (3.0.3):
-    - Cache (~> 4.0)
-  - InputBarAccessoryView (2.2.2)
-  - Lightbox (2.1.2):
-    - Hue (~> 3.0)
-    - Imaginary (~> 3.0)
-  - MQTTClient (0.14.0):
-    - MQTTClient/Core (= 0.14.0)
-  - MQTTClient/Core (0.14.0):
-    - MQTTClient/Manager
-    - MQTTClient/Min
-  - MQTTClient/Manager (0.14.0):
-    - MQTTClient/Min
-  - MQTTClient/Min (0.14.0)
-  - MQTTClient/Websocket (0.14.0):
-    - MQTTClient/Min
-    - SocketRocket
+  - Gallery (2.2.0)
+  - GiphyCoreSDK (1.4.0)
+  - Imaginary (4.2.0):
+    - Cache (~> 5.0)
+  - InputBarAccessoryView (4.2.1)
+  - Lightbox (2.3.0):
+    - Imaginary (~> 4.0)
   - ObjectMapper (3.4.2)
-  - SDWebImage/Core (4.4.6)
-  - SDWebImage/GIF (4.4.6):
+  - SDWebImage/Core (4.4.3)
+  - SDWebImage/GIF (4.4.3):
     - FLAnimatedImage (~> 1.0)
     - SDWebImage/Core
-  - SocketRocket (0.5.1)
-  - SwiftIconFont (2.8.0)
-  - ZVActivityIndicatorView (0.1.2)
-  - ZVProgressHUD (2.0.0):
+  - SwiftIconFont (3.0.0)
+  - ZVActivityIndicatorView (0.1.3)
+  - ZVProgressHUD (2.0.3):
     - ZVActivityIndicatorView
 
 DEPENDENCIES:
-  - ChannelizeAPI
-  - ChannelizeUI
-  - Chatto (from `https://github.com/BigStepTechnologies/Chatto`, branch `bigstep/v1.0`)
-  - ChattoAdditions (from `https://github.com/BigStepTechnologies/Chatto`, branch `bigstep/v1.0`)
+  - Alamofire (= 4.8.0)
+  - AlamofireObjectMapper (= 5.2.0)
+  - AWSIoT (= 2.9.3)
+  - AWSMobileClient (= 2.9.3)
+  - Chatto (from `https://github.com/BigStepTechnologies/Chatto`, branch `update/v1.0`)
+  - ChattoAdditions (from `https://github.com/BigStepTechnologies/Chatto`, branch `update/v1.0`)
+  - Crashlytics (= 3.12.0)
+  - CWStatusBarNotification (= 2.3.5)
+  - Gallery (= 2.2.0)
+  - GiphyCoreSDK (= 1.4.0)
+  - InputBarAccessoryView (= 4.2.1)
+  - Lightbox (= 2.3.0)
+  - SDWebImage/GIF (= 4.4.3)
+  - SwiftIconFont (= 3.0.0)
+  - ZVActivityIndicatorView (= 0.1.3)
+  - ZVProgressHUD (= 2.0.3)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireObjectMapper
+    - AWSAuthCore
+    - AWSCognitoIdentityProvider
+    - AWSCognitoIdentityProviderASF
+    - AWSCore
+    - AWSIoT
+    - AWSMobileClient
     - Cache
-    - ChannelizeAPI
-    - ChannelizeUI
     - Crashlytics
     - CWStatusBarNotification
     - Fabric
     - FLAnimatedImage
     - Gallery
     - GiphyCoreSDK
-    - Hue
     - Imaginary
     - InputBarAccessoryView
     - Lightbox
-    - MQTTClient
     - ObjectMapper
     - SDWebImage
-    - SocketRocket
     - SwiftIconFont
     - ZVActivityIndicatorView
     - ZVProgressHUD
 
 EXTERNAL SOURCES:
   Chatto:
-    :branch: bigstep/v1.0
+    :branch: update/v1.0
     :git: https://github.com/BigStepTechnologies/Chatto
   ChattoAdditions:
-    :branch: bigstep/v1.0
+    :branch: update/v1.0
     :git: https://github.com/BigStepTechnologies/Chatto
 
 CHECKOUT OPTIONS:
   Chatto:
-    :commit: ae20175a98813e33bebe8975d144ce1d2d8d8f80
+    :commit: f1e0e9a87242f98b95dbc3e8ed86910670dcc529
     :git: https://github.com/BigStepTechnologies/Chatto
   ChattoAdditions:
-    :commit: ae20175a98813e33bebe8975d144ce1d2d8d8f80
+    :commit: f1e0e9a87242f98b95dbc3e8ed86910670dcc529
     :git: https://github.com/BigStepTechnologies/Chatto
 
 SPEC CHECKSUMS:
-  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
-  AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
-  Cache: f28f8dd64b632155aabf9b3906b036a659048251
-  ChannelizeAPI: b523b884d7c9ef2e0d77ae34fe79585f6445ecc3
-  ChannelizeUI: 9603df370afdcaf8acf27ab759575bb207509c2e
-  Chatto: dcbfa8a59d5554740c792a91b2edd230b5f17e8d
-  ChattoAdditions: 14c6bbac16e9524515010d045351bb9313703ed6
-  Crashlytics: ccaac42660eb9351b9960c0d66106b0bcf99f4fa
+  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
+  AWSAuthCore: 616e8c65607d7d4b29a1320e62fe2c6586f2f396
+  AWSCognitoIdentityProvider: 827e8d7ec506dd09ed4f72afe7be587a6dd85af5
+  AWSCognitoIdentityProviderASF: f94f1a502e72ef3d0a1de93e10bf7a79c8698118
+  AWSCore: 5cbb6c6ccfad4b55e494c2e8df87781512f7881e
+  AWSIoT: d7debf750a8f485a9e93177fda7a345a9121053b
+  AWSMobileClient: 57b907ae11832376a2d7cf07eba5fbe2c6b8cfa4
+  Cache: 807c5d86d01a177f06ede9865add3aea269bbfd4
+  Chatto: 45f1df6af89c0b1b526e7d6368a9dca4a4728def
+  ChattoAdditions: 8b1f6f57ad45576e56b5e92f3d41e307e025a440
+  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   CWStatusBarNotification: 3d2738b25c3207f60cc50201388d3c96182545ff
-  Fabric: 25d0963b691fc97be566392243ff0ecef5a68338
+  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
-  Gallery: 5489ae11d8010a3cc163030f6e92d618afbdf4df
-  GiphyCoreSDK: 1278bfc2dbdc9f1b2b1703ee70224f515b9530a6
-  Hue: 93e852fa6211ab35922ad8c293f51c43d6c79eb2
-  Imaginary: 9b45836a5af881f452a86e0a1215772ae4712d00
-  InputBarAccessoryView: 1f7bd07d111815afabaa2c11085a741378bfb247
-  Lightbox: 2dc267df8be2285bc7724cb11cbbf4aaaf59dced
-  MQTTClient: eea2eaaa6ddef852a1019a4dda091e22ad928b58
+  Gallery: 3f4c780c4b22906d6b0a5e55d12167cdc4b4fc5b
+  GiphyCoreSDK: 1fe401c5fc65f182e7aa8b7fb2c9005f2a523374
+  Imaginary: dae33d06dbc2ada22f98afef5eb45cc061311a2c
+  InputBarAccessoryView: 37175becdced159cd9ea335f47ae001b1e112909
+  Lightbox: d317750e4132bfb871a5307cfe0a2c7d6a583c65
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
-  SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
-  SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
-  SwiftIconFont: ddaccaa3bb90fc21ebc528cfdf793342618a5cc2
-  ZVActivityIndicatorView: 14668601b0616d2b749004d8fa42913fc813e151
-  ZVProgressHUD: b90892e51d56fb6dd03f8147f158594450ce354c
+  SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
+  SwiftIconFont: 2ba18554a77c44948dc35b561b344e3c23834a84
+  ZVActivityIndicatorView: f652f592d048e1b189d5e90a01107ca2de9742a1
+  ZVProgressHUD: eae3c3f358d36b3bacc2f7d1dcc6b3b59d101c47
 
-PODFILE CHECKSUM: 5b0cfad329b6b18e7b03f84c226af0e105b37344
+PODFILE CHECKSUM: 9647c2f74e8a476d9fa45f9cbd93fbe640411508
 
 COCOAPODS: 1.5.3

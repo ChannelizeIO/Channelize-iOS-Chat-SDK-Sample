@@ -148,7 +148,7 @@ private extension ZVActivityIndicatorView {
         
         self.backgroundColor = .clear
 
-        self.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         
         if !isObserved { addObserver() }
         
@@ -184,7 +184,7 @@ private extension ZVActivityIndicatorView {
         isObserved = true
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(resetAnimating),
-                                               name: NSNotification.Name.UIApplicationDidBecomeActive,
+                                               name: UIApplication.didBecomeActiveNotification,
                                                object: nil)
     }
     

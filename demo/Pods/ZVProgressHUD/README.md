@@ -3,7 +3,6 @@
 ![CocoaPods Compatible](https://img.shields.io/badge/pod-1.0.0-4BC51D.svg?style=flat)[](https://cocoapods.org)
 ![Platform](https://img.shields.io/badge/platform-ios-9F9F9F.svg)[](http://cocoadocs.org/docsets/Alamofire)
 
-<br/>
 
 ZVProgressHUD is a pure-swift and wieldy HUD.
 
@@ -12,12 +11,15 @@ ZVProgressHUD is a pure-swift and wieldy HUD.
 ## Requirements
 
 - iOS 8.0+ 
-- Swift 3.0
+- Swift 4.0
+
+## Appetize
+You can run this demo at [Appetize](https://appetize.io/embed/39txw9h5d7mrkckm6f9vp9mn2r?device=iphone5s&scale=100&autoplay=false&orientation=portrait&deviceColor=white)
+
 
 ## Installation
 ### Cocoapod
 [CocoaPods](https://cocoapods.org) is a dependency manager for Swift and Objective-C Cocoa projects.
-<br/>
 
 You can install Cocoapod with the following command
 
@@ -64,102 +66,143 @@ using `carthage update` and drag `ZVProgressHUD.framework` into your project.
 #### Note:
 The framework is under the Carthage/Build, and you should drag it into  `Target` -> `Genral` -> `Embedded Binaries`
 
-### Manual
-Download this project, And drag `ZVProgressHUD.xcodeproj` into your own project.
-
-In your target’s General tab, click the ’+’ button under `Embedded Binaries`
-
-Select the `ZVProgressHUD.framework` to Add to your platform.
-
 ## Usage
-You can use `import ZVProgressHUD` when you needed to use `ZVProgressHUD`
+You can use `import ZVProgressHUD` when you needed to use `ZVProgressHUD`.
 
+### Showing a HUD
 When you start a task, You can using following code:
 
 ```
 ZVProgressHUD.show()
-DispatchQueue.global().async {
-    ZVProgressHUD.dismiss()
+```
+
+you can custom animation type, use following code:
+
+```
+/// the animation type, default is flat
+public enum AnimationType {
+	case flat		
+	case native	
 }
+
+/// this code will modify global animation type.
+ZVProgressHUD.animationType = .flat
 ```
 
-### Showing the HUD
-When you start a task, You can using following code to show `ZVProgressHUD`
+when you want modify the superview of `ZVProgressHUD`, use the following code:
 
 ```
-ZVProgressHUD.show()
-ZVProgressHUD.show(with: .state(title: "Loading...", state: .indicator))
+// the HUD will show delay 0.0
+ZVProgressHUD.show(with: "Loading", in: superview, delay: 0.0)
 ```
 
-### Dismiss the HUD
+### Dismiss a HUD
+you can use a simple code to close HUD.
 
 ```
 ZVProgressHUD.dismiss()
 ```
 
-### Showing the confirmation
+### Showing a confirm
+when you want show a comfirm infomation, use the following code:
 
 ```
-ZVProgressHUD.show(with: .state(title: "Error", state: .error))
-ZVProgressHUD.show(with: .state(title: "Success", state: .success))
-ZVProgressHUD.show(with: .state(title: "Warning", state: .warning))
-```
-### Showing the custom image
-
-```
-let image = UIImage(named: "cost")
-ZVProgressHUD.show(image: image!)
-
-let image = UIImage(named: "cost")
-ZVProgressHUD.show(with: .state(title: "Cost", state: .custom(image: image!)))
+ZVProgressHUD.showError(with: "error")
+ZVProgressHUD.showSuccess(with: "success")
+ZVProgressHUD.showWarning(with: "warning")
 ```
 
-### Showing the progress
+### Showing a custom image 
+you also can show a custom image, use the following code:
 
 ```
-ZVProgressHUD.show(title: title, progress: progress)
+let image = UIImage(named: "smile")
+ZVProgressHUD.showImage(image!)
+// or
+ZVProgressHUD.showImage(image!, title: "smile everyday!")
 ```
 
-### Showing the custom view
+### Showing a custom animation
+you can use the following code to custom a animation indicator.
 
 ```
-let customView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-customView.backgroundColor = UIColor.white
-let label = UILabel(frame: CGRect(x: 0, y: 30, width: 100, height: 40 ))
-label.textAlignment = .center
-label.font = UIFont.systemFont(ofSize: 14.0)
-label.textColor = UIColor(red: 215.0 / 255.0, green: 22.0 / 255.0, blue: 59.0 / 255.0, alpha: 1.0)
-label.text = "custom view"
-customView.addSubview(label)
-ZVProgressHUD.customInsets = .init(top: 10, left: 10, bottom: 10, right: 10)
-ZVProgressHUD.show(with: .custom(view: customView))
+var images = [UIImage]()
+for index in 1 ... 3 {
+    let image = UIImage(named: "loading_0\(index)")
+    images.append(image!)
+}
+
+ZVProgressHUD.showAnimation(images)
 ```
 
-### Custom HUD Properties
+### Showing a progress
 
 ```
-public static var displayStyle: ZVProgressHUD.DisplayStyle     
+ZVProgressHUD.showProgress(0.0, title: "Progress")
+```
 
-public static var maskType: ZVProgressHUD.MaskType
-    
-public static var titleInsets: UIEdgeInsets 
+### Custom properties
 
-public static var stateInsets: UIEdgeInsets
+```
+// set displayStyle type of HUD, default is dark.
+class var displayStyle: DisplayStyle 
 
-public static var customInsets: UIEdgeInsets
+// set mask type of HUD
+class var maskType: MaskType 
 
-public static var offset: CGPoint 
-    
-public static var font: UIFont 
+// the cornerRadius of basic view   
+class var cornerRadius: CGFloat 
 
-public static var delay: TimeInterval 
+// the offset of basic view
+class var offset: UIOffset 
 
-/// The cornerRadius if half of the value when you show a pure-label
-public static var cornerRadius: CGFloat
+// the font of title label
+class var font: UIFont 
+
+// you can change the line width of indicator when animation type is `flat`
+class var strokeWith: CGFloat 
+
+// the size of indicator
+class var indicatorSize: CGSize 
+
+// the animation type, default is `flat`
+class var animationType: IndicatorView.AnimationType 
+
+```
+
+### Custom Insets of content
+
+```
+class var contentInsets: UIEdgeInsets 
+
+class var titleEdgeInsets: UIEdgeInsets 
+
+class var indicatorEdgeInsets: UIEdgeInsets 
 ```
 
 ### Notifications
-When ZVProgressHUD.maskType is not equal to `.none`, There will post a Notification named `.ZVProgressHUDDidReceiveTouchEvent`, you can do something with it.
+
+you can add an observer to do something from hud's notifications.
+
+```
+extension NSNotification.Name {
+	
+	 // this hud did disappear
+    public static let ZVProgressHUDReceivedTouchUpInsideEvent: Notification.Name
+
+	 // this hud will appear
+    public static let ZVProgressHUDWillAppear: Notification.Name
+
+	 // this hud did appear
+    public static let ZVProgressHUDDidAppear: Notification.Name
+
+	 // this hud will disappear
+    public static let ZVProgressHUDWillDisappear: Notification.Name
+
+	 // this hud did disappear
+    public static let ZVProgressHUDDidDisappear: Notification.Name
+}
+```
 
 ## License
 `ZVProgressHUD` distributed under the terms and conditions of the [MIT License](https://github.com/zevwings/ZVProgressHUD/blob/master/LICENSE)

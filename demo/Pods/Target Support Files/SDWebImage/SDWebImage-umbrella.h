@@ -32,7 +32,6 @@
 #import "UIButton+WebCache.h"
 #import "UIImage+ForceDecode.h"
 #import "UIImage+GIF.h"
-#import "UIImage+MemoryCacheCost.h"
 #import "UIImage+MultiFormat.h"
 #import "UIImageView+HighlightedWebCache.h"
 #import "UIImageView+WebCache.h"

@@ -8,7 +8,7 @@ The **Giphy Core SDK** is a wrapper around [Giphy API](https://github.com/Giphy/
 [![CocoaPods](https://img.shields.io/cocoapods/v/GiphyCoreSDK.svg)]()
 [![](https://img.shields.io/badge/OS%20X-10.12%2B-lightgrey.svg)]()
 [![](https://img.shields.io/badge/iOS-8.0%2B-lightgrey.svg)]()
-[![Swift Version](https://img.shields.io/badge/Swift-4-orange.svg)]()
+[![Swift Version](https://img.shields.io/badge/Swift-4.2-orange.svg)]()
 
 
 

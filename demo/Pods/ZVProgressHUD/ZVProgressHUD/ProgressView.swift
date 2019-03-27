@@ -39,7 +39,7 @@ class ProgressView: UIView {
     private lazy var foregroundLayer: CAShapeLayer = { [unowned self] in
         
         let foregroundLayer = CAShapeLayer()
-        foregroundLayer.lineCap = kCALineCapRound
+        foregroundLayer.lineCap = CAShapeLayerLineCap.round
         foregroundLayer.lineWidth = self.strokeWidth
         foregroundLayer.frame = self.bounds
         foregroundLayer.fillColor = UIColor.clear.cgColor
@@ -52,7 +52,7 @@ class ProgressView: UIView {
     private lazy var backgroundLayer: CAShapeLayer = { [unowned self] in
         
         let backgroundLayer = CAShapeLayer()
-        backgroundLayer.lineCap = kCALineCapRound
+        backgroundLayer.lineCap = CAShapeLayerLineCap.round
         backgroundLayer.lineWidth = self.strokeWidth
         backgroundLayer.frame = self.bounds
         backgroundLayer.fillColor = UIColor.clear.cgColor
@@ -101,7 +101,7 @@ class ProgressView: UIView {
     func updateProgress(_ progress: Float) {
         
         CATransaction.begin()
-        CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut))
+        CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut))
         CATransaction.setAnimationDuration(0.15)
         foregroundLayer.strokeEnd = CGFloat(progress)
         CATransaction.commit()

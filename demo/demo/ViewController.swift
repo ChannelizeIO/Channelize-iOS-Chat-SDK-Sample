@@ -73,7 +73,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         
-        ZVProgressHUD.maskType = .custom(color: UIColor.lightGray.alpha(0.20))
+        ZVProgressHUD.maskType = .custom(color: UIColor.lightGray.withAlphaComponent(0.20))
         ZVProgressHUD.minimumDismissTimeInterval = 0.4
         ZVProgressHUD.displayStyle = .custom(backgroundColor: .white, foregroundColor: appDefaultColor)
         
@@ -81,8 +81,7 @@ class ViewController: UIViewController {
         toggleViewMode(animated: false)
         signupContentView.layer.cornerRadius = 10
         //add keyboard notification
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboarFrameChange(notification:)), name: .UIKeyboardWillChangeFrame, object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboarFrameChange(notification:)), name: UIApplication.keyboardWillChangeFrameNotification, object: nil)
         if(Channelize.main.currentUserId() != nil){
             if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController{
                 navigationController.setNavigationBarHidden(true, animated: false)
@@ -203,18 +202,18 @@ class ViewController: UIViewController {
         let userInfo = notification.userInfo as! [String:AnyObject]
         
         // get top of keyboard in view
-        let topOfKetboard = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue .origin.y
+        let topOfKetboard = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue .origin.y
         
         
         // get animation curve for animate view like keyboard animation
         var animationDuration:TimeInterval = 0.25
-        var animationCurve:UIViewAnimationCurve = .easeOut
-        if let animDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber {
+        var animationCurve:UIView.AnimationCurve = .easeOut
+        if let animDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber {
             animationDuration = animDuration.doubleValue
         }
         
-        if let animCurve = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber {
-            animationCurve =  UIViewAnimationCurve.init(rawValue: animCurve.intValue)!
+        if let animCurve = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber {
+            animationCurve =  UIView.AnimationCurve.init(rawValue: animCurve.intValue)!
         }
         
         

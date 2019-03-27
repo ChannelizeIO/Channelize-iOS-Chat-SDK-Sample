@@ -9,13 +9,20 @@
 #import "SDImageCache.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "NSImage+WebCache.h"
-#import "UIImage+MemoryCacheCost.h"
 #import "SDWebImageCodersManager.h"
 
 #define SD_MAX_FILE_EXTENSION_LENGTH (NAME_MAX - CC_MD5_DIGEST_LENGTH * 2 - 1)
 
 #define LOCK(lock) dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
 #define UNLOCK(lock) dispatch_semaphore_signal(lock);
+
+FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
+#if SD_MAC
+    return image.size.height * image.size.width;
+#elif SD_UIKIT || SD_WATCH
+    return image.size.height * image.size.width * image.scale * image.scale;
+#endif
+}
 
 // A memory cache which auto purge the cache on memory warning and support weak cache.
 @interface SDMemoryCache <KeyType, ObjectType> : NSCache <KeyType, ObjectType>
@@ -75,9 +82,7 @@
     if (key && obj) {
         // Store weak cache
         LOCK(self.weakCacheLock);
-        // Do the real copy of the key and only let NSMapTable manage the key's lifetime
-        // Fixes issue #2507 https://github.com/SDWebImage/SDWebImage/issues/2507
-        [self.weakCache setObject:obj forKey:[[key mutableCopy] copy]];
+        [self.weakCache setObject:obj forKey:key];
         UNLOCK(self.weakCacheLock);
     }
 }
@@ -96,7 +101,7 @@
             // Sync cache
             NSUInteger cost = 0;
             if ([obj isKindOfClass:[UIImage class]]) {
-                cost = [(UIImage *)obj sd_memoryCost];
+                cost = SDCacheCostForImage(obj);
             }
             [super setObject:obj forKey:key cost:cost];
         }
@@ -293,7 +298,7 @@
     }
     // if memory cache is enabled
     if (self.config.shouldCacheImagesInMemory) {
-        NSUInteger cost = image.sd_memoryCost;
+        NSUInteger cost = SDCacheCostForImage(image);
         [self.memCache setObject:image forKey:key cost:cost];
     }
     
@@ -419,7 +424,7 @@
 - (nullable UIImage *)imageFromDiskCacheForKey:(nullable NSString *)key {
     UIImage *diskImage = [self diskImageForKey:key];
     if (diskImage && self.config.shouldCacheImagesInMemory) {
-        NSUInteger cost = diskImage.sd_memoryCost;
+        NSUInteger cost = SDCacheCostForImage(diskImage);
         [self.memCache setObject:diskImage forKey:key cost:cost];
     }
 
@@ -540,7 +545,7 @@
                 // decode image data only if in-memory cache missed
                 diskImage = [self diskImageForKey:key data:diskData options:options];
                 if (diskImage && self.config.shouldCacheImagesInMemory) {
-                    NSUInteger cost = diskImage.sd_memoryCost;
+                    NSUInteger cost = SDCacheCostForImage(diskImage);
                     [self.memCache setObject:diskImage forKey:key cost:cost];
                 }
             }

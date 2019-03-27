@@ -3,10 +3,23 @@
 
 def primemessenger_pods
 
-    pod 'ChannelizeAPI'
-    pod 'ChannelizeUI'
-    pod 'Chatto',  :git => 'https://github.com/BigStepTechnologies/Chatto', :branch => 'bigstep/v1.0'
-    pod 'ChattoAdditions',  :git => 'https://github.com/BigStepTechnologies/Chatto', :branch => 'bigstep/v1.0'
+    $awsVersion = '2.9.3'
+    pod 'AWSMobileClient', $awsVersion
+    pod 'AWSIoT', $awsVersion
+    pod 'Alamofire', '4.8.0'
+    pod 'AlamofireObjectMapper', '5.2.0'
+    pod 'Gallery', '2.2.0'
+    pod 'Lightbox', '2.3.0'
+    pod 'SwiftIconFont', '3.0.0'
+    pod 'CWStatusBarNotification', '2.3.5'
+    pod 'GiphyCoreSDK', '1.4.0'
+    pod 'Chatto',  :git => 'https://github.com/BigStepTechnologies/Chatto', :branch => 'update/v1.0'
+    pod 'ChattoAdditions',  :git => 'https://github.com/BigStepTechnologies/Chatto', :branch => 'update/v1.0'
+    pod 'Crashlytics', '3.12.0'
+    pod 'InputBarAccessoryView', '4.2.1'
+    pod 'SDWebImage/GIF', '4.4.3'
+    pod 'ZVProgressHUD', '2.0.3'
+    pod 'ZVActivityIndicatorView', '0.1.3'
 
 end
 

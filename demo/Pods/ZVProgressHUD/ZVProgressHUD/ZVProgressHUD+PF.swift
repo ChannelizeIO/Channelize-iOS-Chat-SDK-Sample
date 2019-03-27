@@ -28,7 +28,7 @@ public extension ZVProgressHUD {
         }
     }
     
-    class var maxSupportedWindowLevel: UIWindowLevel {
+    class var maxSupportedWindowLevel: UIWindow.Level {
         get {
             return shared.maxSupportedWindowLevel
         }
@@ -157,6 +157,12 @@ public extension ZVProgressHUD {
 
 public extension ZVProgressHUD {
     
+    /// show a toast
+    ///
+    /// - Parameters:
+    ///   - text: toast content
+    ///   - superview: super view, if superview is nil, show on main window
+    ///   - delayTimeInterval: the view will show delay the `delayTimeInterval`
     class func showText(_ text: String,
                         in superview: UIView? = nil,
                         delay delayTimeInterval: TimeInterval = 0.0) {
@@ -164,6 +170,12 @@ public extension ZVProgressHUD {
         show(with: .text(value: text), in: superview, delay: delayTimeInterval)
     }
     
+    /// show a success message
+    ///
+    /// - Parameters:
+    ///   - title: the success message remind users what you want
+    ///   - superview: super view, if superview is nil, show on main window
+    ///   - delayTimeInterval: the view will show delay the `delayTimeInterval`
     class func showSuccess(with title: String = "",
                            in superview: UIView? = nil,
                            delay delayTimeInterval: TimeInterval = 0.0) {
@@ -172,6 +184,13 @@ public extension ZVProgressHUD {
         show(with: displayType, in: superview, delay: delayTimeInterval)
     }
     
+    
+    /// show a error message
+    ///
+    /// - Parameters:
+    ///   - title: the error message remind users what you want
+    ///   - superview: super view, if superview is nil, show on main window
+    ///   - delayTimeInterval: the view will show delay the `delayTimeInterval`
     class func showError(with title: String = "",
                          in superview: UIView? = nil,
                          delay delayTimeInterval: TimeInterval = 0.0) {
@@ -180,6 +199,12 @@ public extension ZVProgressHUD {
         show(with: displayType, in: superview, delay: delayTimeInterval)
     }
     
+    /// show a warning message
+    ///
+    /// - Parameters:
+    ///   - title: the warning message remind users what you want
+    ///   - superview: super view, if superview is nil, show on main window
+    ///   - delayTimeInterval: the view will show delay the `delayTimeInterval`
     class func showWarning(with title: String = "",
                            in superview: UIView? = nil,
                            delay delayTimeInterval: TimeInterval = 0.0) {
@@ -188,6 +213,12 @@ public extension ZVProgressHUD {
         show(with: displayType, in: superview, delay: delayTimeInterval)
     }
     
+    /// show a waiting alert
+    ///
+    /// - Parameters:
+    ///   - title: the message remind users what you want
+    ///   - superview: super view, if superview is nil, show on main window
+    ///   - delayTimeInterval: the view will show delay the `delayTimeInterval`
     class func show(with title: String = "",
                     in superview: UIView? = nil,
                     delay delayTimeInterval: TimeInterval = 0.0) {
@@ -196,6 +227,13 @@ public extension ZVProgressHUD {
         show(with: displayType, in: superview, delay: delayTimeInterval)
     }
     
+    /// show the progress of some task
+    ///
+    /// - Parameters:
+    ///   - progress: the progress of your task
+    ///   - title: the message remind users what you want
+    ///   - superview: super view, if superview is nil, show on main window
+    ///   - delayTimeInterval: the view will show delay the `delayTimeInterval`
     class func showProgress(_ progress: Float,
                             title: String = "",
                             in superview: UIView? = nil,
@@ -205,6 +243,14 @@ public extension ZVProgressHUD {
         show(with: displayType, in: superview, delay: delayTimeInterval)
     }
     
+    /// show a custom image
+    ///
+    /// - Parameters:
+    ///   - image: your image
+    ///   - title: the message remind users what you want
+    ///   - superview: super view, if superview is nil, show on main window
+    ///   - dismissAtomically: if `true` the `HUD` will dissmiss atomically
+    ///   - delayTimeInterval: the view will show delay the `delayTimeInterval`
     class func showImage(_ image: UIImage,
                          title: String = "",
                          in superview: UIView? = nil,
@@ -215,6 +261,14 @@ public extension ZVProgressHUD {
         show(with: displayType, in: superview, delay: delayTimeInterval)
     }
     
+    /// show the animation waiting alert
+    ///
+    /// - Parameters:
+    ///   - images: animation image array
+    ///   - duration: animation duration @see UIImage
+    ///   - title: the message remind users what you want
+    ///   - superview: super view, if superview is nil, show on main window
+    ///   - delayTimeInterval: the view will show delay the `delayTimeInterval`
     class func showAnimation(_ images: [UIImage],
                              duration: TimeInterval = 0.0,
                              title: String = "",
@@ -223,13 +277,17 @@ public extension ZVProgressHUD {
         
         guard images.count > 0 else { return }
         var animationDuration = duration
-        if animationDuration == 0 {
-            animationDuration = Double(images.count) * 0.1
-        }
+        if animationDuration == 0 { animationDuration = Double(images.count) * 0.1 }
         let displayType: DisplayType = .indicator(title: title, type: .animation(value: images, duration: animationDuration))
         show(with: displayType, in: superview, delay: delayTimeInterval)
     }
     
+    /// show custom display type @see ZVProgressHUD.DisplayType
+    ///
+    /// - Parameters:
+    ///   - displayType: ZVProgressHUD.DisplayType
+    ///   - superview: super view, if superview is nil, show on main window
+    ///   - delayTimeInterval: the view will show delay the `delayTimeInterval`
     class func show(with displayType: DisplayType,
                     in superview: UIView? = nil,
                     delay delayTimeInterval: TimeInterval = 0.0) {
@@ -237,6 +295,11 @@ public extension ZVProgressHUD {
         shared.show(with: displayType, in: superview, delay: delayTimeInterval)
     }
     
+    /// dismiss the hud
+    ///
+    /// - Parameters:
+    ///   - delay: the view will dissmiss delay the `delayTimeInterval`
+    ///   - completion: dismiss completion handler
     class func dismiss(delay: TimeInterval = 0.0, completion: ZVProgressHUDCompletionHandler? = nil) {
         shared.dismiss(with: delay, completion: completion)
     }

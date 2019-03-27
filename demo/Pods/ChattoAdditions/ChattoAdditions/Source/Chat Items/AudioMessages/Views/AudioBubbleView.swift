@@ -191,14 +191,17 @@ private class AudioBubbleLayoutModel {
         let bubbleSize: CGSize
         let preferredMaxLayoutWidth: CGFloat
         let iconSize: CGSize
+        let isIncoming: Bool
         
         init(duration:String,
              bubbleSize: CGSize,
              iconSize: CGSize,
+             isIncoming: Bool,
              preferredMaxLayoutWidth width: CGFloat) {
             self.duration = duration
             self.bubbleSize = bubbleSize
             self.iconSize = iconSize
+            self.isIncoming = isIncoming
             self.preferredMaxLayoutWidth = width
         }
         
@@ -208,6 +211,7 @@ private class AudioBubbleLayoutModel {
             self.init(duration: model.duration!,
                       bubbleSize: style.bubbleSize(viewModel: model),
                       iconSize: style.playIconImage(viewModel: model).size,
+                      isIncoming : model.isIncoming,
                       preferredMaxLayoutWidth: width)
         }
     }
@@ -220,18 +224,27 @@ private class AudioBubbleLayoutModel {
     func calculateLayout() {
         let size = self.layoutContext.bubbleSize
         self.bubbleFrame = CGRect(origin: .zero, size: size)
-        self.iconFrame = CGRect(x: 10, y: 5, width: 30, height: 30)
-        self.size = size
         let duration = self.layoutContext.duration as NSString
         let font = UIFont.systemFont(ofSize: 12)
-        let fontAttributes = [NSAttributedStringKey.font: font]
+        let fontAttributes = [NSAttributedString.Key.font: font]
         let labelSize = duration.size(withAttributes: fontAttributes)
-        let labelFrame = CGRect(x: size.width - labelSize.width-5, y: (size.height - labelSize.height )/2, width: labelSize.width+5, height: labelSize.height)
-        let xOffset:CGFloat = iconFrame.width + 20
-        let width = labelFrame.origin.x - xOffset - 10;
-        self.progressLableFrame = labelFrame
-        self.progressViewFrame = CGRect(x: xOffset, y: size.height/2, width: width, height: 15)
         
+        if layoutContext.isIncoming {
+            self.iconFrame = CGRect(x: 10, y: 5, width: 30, height: 30)
+            let labelFrame = CGRect(x: size.width-labelSize.width-10, y: (size.height-labelSize.height)/2, width: labelSize.width+5, height: labelSize.height)
+            let xOffset:CGFloat = iconFrame.width+15
+            let width = size.width - (xOffset+labelFrame.width+15)
+            self.progressLableFrame = labelFrame
+            self.progressViewFrame = CGRect(x: xOffset, y: size.height/2, width: width, height: 15)
+        } else {
+            self.iconFrame = CGRect(x: 5, y: 5, width: 30, height: 30)
+            let labelFrame = CGRect(x: size.width-labelSize.width-15, y: (size.height-labelSize.height)/2, width: labelSize.width+5, height: labelSize.height)
+            let xOffset:CGFloat = iconFrame.width+10
+            let width = size.width - (xOffset+labelFrame.width+20)
+            self.progressLableFrame = labelFrame
+            self.progressViewFrame = CGRect(x: xOffset, y: size.height/2, width: width, height: 15)
+        }
+        self.size = size
     }
-
+    
 }

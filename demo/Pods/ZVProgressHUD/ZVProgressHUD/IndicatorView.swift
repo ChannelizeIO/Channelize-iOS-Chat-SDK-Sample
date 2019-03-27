@@ -201,7 +201,7 @@ private extension IndicatorView {
         progressIndicatorView?.removeFromSuperview()
 
         if nativeActivityIndicatorView == nil {
-            nativeActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+            nativeActivityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
             nativeActivityIndicatorView?.color = tintColor
             nativeActivityIndicatorView?.hidesWhenStopped = true
         }

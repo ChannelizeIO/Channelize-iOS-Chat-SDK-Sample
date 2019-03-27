@@ -50,7 +50,7 @@ open class ZVProgressHUD: UIControl {
     internal var displayStyle: DisplayStyle = .light
     internal var maskType: MaskType = .none
     
-    internal var maxSupportedWindowLevel: UIWindowLevel = UIWindowLevelNormal
+    internal var maxSupportedWindowLevel: UIWindow.Level = UIWindow.Level.normal
     internal var fadeInAnimationTimeInterval: TimeInterval = AnimationDuration.fadeIn
     internal var fadeOutAnimationTImeInterval: TimeInterval = AnimationDuration.fadeOut
     
@@ -228,7 +228,7 @@ extension ZVProgressHUD {
                 
                 if displayTimeInterval > 0 {
                     self.fadeOutTimer = Timer.scheduledTimer(timeInterval: displayTimeInterval, target: self, selector: #selector(self.dismiss(_:)), userInfo: nil, repeats: false)
-                    RunLoop.main.add(self.fadeOutTimer!, forMode: .commonModes)
+                    RunLoop.main.add(self.fadeOutTimer!, forMode: RunLoop.Mode.common)
                 } else {
 
                     if displayType.indicatorType.progressValueChecker.0 &&
@@ -255,7 +255,7 @@ extension ZVProgressHUD {
             
             if displayTimeInterval > 0 {
                 fadeOutTimer = Timer.scheduledTimer(timeInterval: displayTimeInterval, target: self, selector: #selector(self.dismiss(_:)), userInfo: nil, repeats: false)
-                RunLoop.main.add(fadeOutTimer!, forMode: .commonModes)
+                RunLoop.main.add(fadeOutTimer!, forMode: RunLoop.Mode.common)
             } else {
                 if displayType.indicatorType.progressValueChecker.0 &&
                     displayType.indicatorType.progressValueChecker.1 >= 1.0 {
@@ -337,7 +337,7 @@ extension ZVProgressHUD {
         if superview == nil {
             containerView?.addSubview(self)
         } else {
-            containerView?.bringSubview(toFront: self)
+            containerView?.bringSubviewToFront(self)
         }
         
         if maskLayer.superlayer == nil {
@@ -347,19 +347,19 @@ extension ZVProgressHUD {
         if baseView.superview == nil {
             addSubview(baseView)
         } else {
-            bringSubview(toFront: baseView)
+            bringSubviewToFront(baseView)
         }
         
         if indicatorView.superview == nil {
             baseView.addSubview(indicatorView)
         } else {
-            baseView.bringSubview(toFront: indicatorView)
+            baseView.bringSubviewToFront(indicatorView)
         }
         
         if titleLabel.superview == nil {
             baseView.addSubview(titleLabel)
         } else {
-            baseView.bringSubview(toFront: titleLabel)
+            baseView.bringSubviewToFront(titleLabel)
         }
     }
     
@@ -379,32 +379,32 @@ extension ZVProgressHUD {
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(placeSubviews(_:)),
-                                               name: .UIApplicationDidChangeStatusBarOrientation,
+                                               name: UIApplication.didChangeStatusBarOrientationNotification,
                                                object: nil)
 
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(placeSubviews(_:)),
-                                               name: .UIApplicationDidBecomeActive,
+                                               name: UIApplication.didBecomeActiveNotification,
                                                object: nil)
 
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(placeSubviews(_:)),
-                                               name: .UIKeyboardWillShow,
+                                               name: UIResponder.keyboardWillShowNotification,
                                                object: nil)
 
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(placeSubviews(_:)),
-                                               name: .UIKeyboardWillHide,
+                                               name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(placeSubviews(_:)),
-                                               name: .UIKeyboardDidShow,
+                                               name: UIResponder.keyboardDidShowNotification,
                                                object: nil)
 
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(placeSubviews(_:)),
-                                               name: .UIKeyboardDidHide,
+                                               name: UIResponder.keyboardDidHideNotification,
                                                object: nil)
     }
 }
@@ -427,7 +427,7 @@ private extension ZVProgressHUD {
         var labelSize: CGSize = .zero
         if !titleLabel.isHidden, let title = titleLabel.text as NSString?, title.length > 0 {
             let maxSize: CGSize = .init(width: frame.width * 0.618, height: frame.width * 0.618)
-            let attributes: [NSAttributedStringKey: Any] = [NSAttributedStringKey.font: font]
+            let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font]
             let options: NSStringDrawingOptions = [.usesFontLeading, .truncatesLastVisibleLine, .usesLineFragmentOrigin]
             labelSize = title.boundingRect(with: maxSize, options: options, attributes: attributes, context: nil).size
             titleLabel.frame = CGRect(origin: .zero, size: labelSize)
@@ -478,9 +478,9 @@ private extension ZVProgressHUD {
         
         if let notification = notification, let keyboardInfo = notification.userInfo {
 
-            let keyboardFrame = keyboardInfo[UIKeyboardFrameBeginUserInfoKey] as? CGRect
-            animationDuration = keyboardInfo[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval ?? 0
-            if notification.name == .UIKeyboardWillShow || notification.name == .UIKeyboardDidShow {
+            let keyboardFrame = keyboardInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? CGRect
+            animationDuration = keyboardInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval ?? 0
+            if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardDidShowNotification {
                 if orientation == .portrait {
                     keybordHeight = keyboardFrame?.height ?? 0
                 }
@@ -587,7 +587,7 @@ private extension ZVProgressHUD {
             if  window.screen == UIScreen.main,
                 window.isHidden == false,
                 window.alpha > 0,
-                window.windowLevel >= UIWindowLevelNormal,
+                window.windowLevel >= UIWindow.Level.normal,
                 window.windowLevel <= maxSupportedWindowLevel {
                 keyWindow = window
                 return

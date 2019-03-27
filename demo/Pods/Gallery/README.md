@@ -79,11 +79,12 @@ There are lots of customization points in `Config` structs. For example
 Config.Permission.image = UIImage(named: ImageList.Gallery.cameraIcon)
 Config.Font.Text.bold = UIFont(name: FontList.OpenSans.bold, size: 14)!
 Config.Camera.recordLocation = true
+Config.tabsToShow = [.imageTab, .cameraTab]
 ```
 
 ### Video Editor
 
-`Galery` cares more about video with its editing functionalities. We have `VideoEditor` and `AdvancedVideoEditor` to trim, resize, scale and define quality of the selected video
+`Gallery` cares more about video with its editing functionalities. We have `VideoEditor` and `AdvancedVideoEditor` to trim, resize, scale and define quality of the selected video
 
 ```swift
 func galleryController(_ controller: GalleryController, didSelectVideo video: Video) {

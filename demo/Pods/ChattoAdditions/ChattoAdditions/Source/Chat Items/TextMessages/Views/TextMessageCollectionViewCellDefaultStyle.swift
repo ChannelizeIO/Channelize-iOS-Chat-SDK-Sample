@@ -70,8 +70,8 @@ open class TextMessageCollectionViewCellDefaultStyle: TextMessageCollectionViewC
     public let textStyle: TextStyle
     public let baseStyle: BaseMessageCollectionViewCellDefaultStyle
     public init (
-        bubbleImages: BubbleImages = Class.createDefaultBubbleImages(),
-        textStyle: TextStyle = Class.createDefaultTextStyle(),
+        bubbleImages: BubbleImages = TextMessageCollectionViewCellDefaultStyle.createDefaultBubbleImages(),
+        textStyle: TextStyle = TextMessageCollectionViewCellDefaultStyle.createDefaultTextStyle(),
         baseStyle: BaseMessageCollectionViewCellDefaultStyle = BaseMessageCollectionViewCellDefaultStyle()) {
             self.bubbleImages = bubbleImages
             self.textStyle = textStyle
