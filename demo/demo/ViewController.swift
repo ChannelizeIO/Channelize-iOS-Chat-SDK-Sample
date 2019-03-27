@@ -1,15 +1,14 @@
 //
 //  ViewController.swift
-//  demo
+//  AMLoginSingup
 //
-//  Created by Apple on 12/18/18.
-//  Copyright © 2018 Channelize. All rights reserved.
+//  Created by amir on 10/11/16.
+//  Copyright © 2016 amirs.eu. All rights reserved.
 //
 
 import UIKit
 import ZVProgressHUD
-import Channelize_API
-import Channelize
+import PrimeMessenger
 import SDWebImage
 
 enum AMLoginSignupViewMode {
@@ -53,7 +52,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var logoBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var logoButtomInSingupConstraint: NSLayoutConstraint!
     @IBOutlet weak var logoCenterConstraint: NSLayoutConstraint!
-    
+   
     
     @IBOutlet weak var forgotPassTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var socialsView: UIView!
@@ -71,9 +70,8 @@ class ViewController: UIViewController {
     //MARK: - controller
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        ZVProgressHUD.maskType = .custom(color: UIColor.lightGray.alpha(0.20))
+    
+        ZVProgressHUD.maskType = .custom(color: lightestGray.withAlphaComponent(0.20))
         ZVProgressHUD.minimumDismissTimeInterval = 0.4
         ZVProgressHUD.displayStyle = .custom(backgroundColor: .white, foregroundColor: appDefaultColor)
         
@@ -81,16 +79,19 @@ class ViewController: UIViewController {
         toggleViewMode(animated: false)
         signupContentView.layer.cornerRadius = 10
         //add keyboard notification
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboarFrameChange(notification:)), name: .UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboarFrameChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
-        if(Channelize.main.currentUserId() != nil){
+        if(PrimeMessenger.currentUserId() != nil){
             if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController{
                 navigationController.setNavigationBarHidden(true, animated: false)
-                CHMain.instance.launchApp(navigationController: navigationController, data: nil)
+                PrimeMessenger.app.openMessenger(navigationController: navigationController,
+                                                 data: nil)
             }
+            
         }
+        
     }
-    
+
     @objc func applicationDidBecomeActive(){
         
     }
@@ -98,44 +99,47 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+ 
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     //MARK: - button actions
     @IBAction func loginButtonTouchUpInside(_ sender: AnyObject) {
-        
+   
         if mode == .signup {
             toggleViewMode(animated: true)
-            Channelize.main.logout()
+            PrimeMessenger.logout()
+        
         }else{
-            ZVProgressHUD.show(with: "Signing in")
+            
             guard let email = loginEmailInputView.textFieldView.text, let password = loginPasswordInputView.textFieldView.text,!email.isEmpty,!password.isEmpty else {
                 print("Form is not valid")
                 return
             }
-            if(Channelize.main.currentUserId() != nil){
+            ZVProgressHUD.show(with: "Signing in")
+            if(PrimeMessenger.currentUserId() != nil){
                 ZVProgressHUD.showError()
-                Channelize.main.logout()
+                PrimeMessenger.logout()
             }else{
-                Channelize.main.login(username: email, password: password, completion: {(user,error) in
-                    if error != nil {
-                        ZVProgressHUD.showError()
-                    } else {
+                PrimeMessenger.app.login(username: email, password: password){(status) in
+                    if(status){
                         ZVProgressHUD.showSuccess()
                         if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController{
                             navigationController.setNavigationBarHidden(true, animated: false)
-                            CHMain.instance.launchApp(navigationController: navigationController, data: nil)
+                            PrimeMessenger.app.openMessenger(navigationController: navigationController,
+                                                             data: nil)
                         }
+                    }else{
+                        ZVProgressHUD.showError()
                     }
-                })
+                }
             }
         }
     }
     
     @IBAction func signupButtonTouchUpInside(_ sender: AnyObject) {
-        
+   
         if mode == .login {
             toggleViewMode(animated: true)
         }else{
@@ -147,7 +151,7 @@ class ViewController: UIViewController {
     
     //MARK: - toggle view
     func toggleViewMode(animated:Bool){
-        
+    
         // toggle mode
         mode = mode == .login ? .signup:.login
         
@@ -203,18 +207,18 @@ class ViewController: UIViewController {
         let userInfo = notification.userInfo as! [String:AnyObject]
         
         // get top of keyboard in view
-        let topOfKetboard = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue .origin.y
+        let topOfKetboard = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue .origin.y
         
         
         // get animation curve for animate view like keyboard animation
         var animationDuration:TimeInterval = 0.25
-        var animationCurve:UIViewAnimationCurve = .easeOut
-        if let animDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber {
+        var animationCurve:UIView.AnimationCurve = .easeOut
+        if let animDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber {
             animationDuration = animDuration.doubleValue
         }
         
-        if let animCurve = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber {
-            animationCurve =  UIViewAnimationCurve.init(rawValue: animCurve.intValue)!
+        if let animCurve = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber {
+            animationCurve =  UIView.AnimationCurve.init(rawValue: animCurve.intValue)!
         }
         
         
@@ -258,6 +262,6 @@ class ViewController: UIViewController {
     
     override var prefersStatusBarHidden: Bool {
         return true
-    }
+    }  
 }
 

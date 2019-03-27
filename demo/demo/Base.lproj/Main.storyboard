@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="PMMain" automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="UITabBarController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -35,7 +35,7 @@
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cJ0-35-l2X" userLabel="View - login contents">
                                                 <rect key="frame" x="20" y="142" width="290" height="219"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9FI-dJ-rEG" userLabel="Input View - email" customClass="AMInputView" customModule="demo" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9FI-dJ-rEG" userLabel="Input View - email" customClass="AMInputView" customModule="Demo" customModuleProvider="target">
                                                         <rect key="frame" x="40" y="8" width="210" height="52"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -49,9 +49,9 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSecureTextEntry" value="NO"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56d-eU-jOn" userLabel="Input View - password" customClass="AMInputView" customModule="demo" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56d-eU-jOn" userLabel="Input View - password" customClass="AMInputView" customModule="Demo" customModuleProvider="target">
                                                         <rect key="frame" x="40" y="84" width="210" height="52"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.54155092975353758" blue="0.95749916429796955" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="52" id="2XZ-sp-xyf"/>
                                                         </constraints>
@@ -95,7 +95,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.090196078431372548" green="0.38039215686274508" blue="0.71372549019607845" alpha="0.92141770054206229" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.090196078431372548" green="0.38039215686274508" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="jXd-lF-yfE" firstAttribute="centerY" secondItem="8sw-T9-t5g" secondAttribute="centerY" priority="300" id="3Hf-jV-YcO"/>
                                             <constraint firstItem="cJ0-35-l2X" firstAttribute="centerX" secondItem="8sw-T9-t5g" secondAttribute="centerX" id="8Ed-tt-JTh"/>
@@ -109,10 +109,9 @@
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NSH-2V-rzY" userLabel="View - signup contents">
                                                 <rect key="frame" x="-122.5" y="142" width="290" height="220"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5B-oc-RNd" userLabel="Input View - email" customClass="AMInputView" customModule="demo" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5B-oc-RNd" userLabel="Input View - email" customClass="AMInputView" customModule="Demo" customModuleProvider="target">
                                                         <rect key="frame" x="40" y="8" width="210" height="52"/>
-                                                        <color key="backgroundColor" red="0.090196078431372548" green="0.38039215686274508" blue="0.71372549019607845" alpha="0.74200021404109584" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <color key="tintColor" red="0.090196078430000007" green="0.3803921569" blue="0.71372549019999998" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.090196078431372548" green="0.38039215686274508" blue="0.71372549019607845" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="52" id="GCc-a8-upv"/>
                                                         </constraints>
@@ -124,10 +123,9 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSecureTextEntry" value="NO"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="skc-QG-V4p" userLabel="Input View - password" customClass="AMInputView" customModule="demo" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="skc-QG-V4p" userLabel="Input View - password" customClass="AMInputView" customModule="Demo" customModuleProvider="target">
                                                         <rect key="frame" x="40" y="84" width="210" height="52"/>
-                                                        <color key="backgroundColor" red="0.090196078431372548" green="0.38039215686274508" blue="0.71372549019607845" alpha="0.74074272260273977" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <color key="tintColor" red="0.090196078430000007" green="0.3803921569" blue="0.71372549019999998" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.090196078431372548" green="0.38039215686274508" blue="0.71372549019607845" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="52" id="eGq-cf-eFz"/>
                                                         </constraints>
@@ -136,10 +134,9 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSecureTextEntry" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m7a-qe-QgK" userLabel="Input View - password" customClass="AMInputView" customModule="demo" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m7a-qe-QgK" userLabel="Input View - password" customClass="AMInputView" customModule="Demo" customModuleProvider="target">
                                                         <rect key="frame" x="40" y="160" width="210" height="52"/>
-                                                        <color key="backgroundColor" red="0.090196078431372548" green="0.38039215686274508" blue="0.71372549019607845" alpha="0.73905714897260277" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <color key="tintColor" red="0.090196078430000007" green="0.3803921569" blue="0.71372549019999998" alpha="0.91360766267123283" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.090196078431372548" green="0.38039215686274508" blue="0.71372549019607845" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="52" id="UcX-nL-eAz"/>
                                                         </constraints>
@@ -149,7 +146,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.090196078431372548" green="0.38039215686274508" blue="0.71372549019607845" alpha="0.33130886130136988" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.090196078431372548" green="0.38039215686274508" blue="0.71372549019607845" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="m7a-qe-QgK" secondAttribute="bottom" constant="8" id="02n-Nb-nI9"/>
                                                     <constraint firstItem="m7a-qe-QgK" firstAttribute="top" secondItem="skc-QG-V4p" secondAttribute="bottom" constant="24" id="0Md-iE-sHr"/>
@@ -171,15 +168,14 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="37"/>
                                                 <state key="normal" title="SIGN UP">
-                                                    <color key="titleColor" red="0.090196078431372548" green="0.38039215686274508" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" red="0.090196078430000007" green="0.3803921569" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="0.090196078431372548" green="0.38039215686274508" blue="0.71372549019607845" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="signupButtonTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zgN-Co-d9K"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.9217679794520548" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="6mp-lc-RtO" firstAttribute="top" secondItem="NSH-2V-rzY" secondAttribute="bottom" priority="400" constant="35" id="EL0-cn-iAL"/>
                                             <constraint firstItem="NSH-2V-rzY" firstAttribute="centerX" secondItem="j0y-e6-LbF" secondAttribute="centerX" id="bSg-67-RiB"/>
@@ -224,15 +220,14 @@
                                             <constraint firstAttribute="height" constant="64" id="wkd-gO-WQh"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oy1-fw-KpS" userLabel="View - logo">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oy1-fw-KpS" userLabel="View - logo">
                                         <rect key="frame" x="135" y="50" width="60" height="60"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="R9U-Kg-dJj">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.090196078431372548" green="0.38039215686274508" blue="0.71372549019607845" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.090196078431372548" green="0.38039215686274508" blue="0.71372549019607845" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="R9U-Kg-dJj" firstAttribute="centerY" secondItem="oy1-fw-KpS" secondAttribute="centerY" id="7Sq-Se-4ui"/>
                                             <constraint firstAttribute="height" constant="60" id="J1Q-yn-rQT"/>
