@@ -3,14 +3,14 @@
 <plist version="1.0">
 <dict>
     <key>MAP_API_KEY</key>
-    <string>AIzaSyArBM9KKsj7UIrqlf0VVF1ajZwrKwX7SN0</string>
+    <string></string>
     <key>GIPHY_API_KEY</key>
-    <string>Hbj9gr7HtEv0QyE2REtUVa24WjvCsGdu</string>
+    <string></string>
     <key>MQTT_URL</key>
-    <string>socialengineaddonsmobiledemo.primemessenger.com</string>
+    <string></string>
     <key>API_URL</key>
-    <string>https://socialengineaddonsmobiledemo.primemessenger.com/api</string>
+    <string></string>
     <key>PUBLIC_KEY</key>
-    <string>gILWq2ulb1GocfxD</string>
+    <string></string>
 </dict>
 </plist>
