@@ -1,3 +1,9 @@
+/* 
+  PrimeLocalizable.strings
+  
+  Copyright © 2018 bigstep. All rights reserved.
+*/
+
 "pmImage" = "Photo";
 "pmVideo" = "Video";
 "pmAudio" = "Audio";
@@ -117,6 +123,7 @@
 "pmAudioSoonLoadText" = "Audio Will Load Soon";
 "pmMakeGroupAdminText" = "Make Admin";
 "pmChangeGroupAdminText" = "Are you sure you want to make him/her Group Admin? This will give him/her access to all Admin rights";
+"pmYouSureText" = "You Sure ?";
 "pmYes" = "Yes";
 "pmNo" = "No";
 "pmWhatLikeToDoText" = "Are you sure you want to remove this member from group?";
@@ -185,7 +192,7 @@
 "pmNoMessages" = "No recent messages. Say hello!";
 "pmFileDeleted" = "This file has been deleted.";
 "pmChoose" = "Choose";
-"pmRemoved" = "Removed";
+"pmRmoved" = "Removed";
 "pmAddedAsAdmin" = "%@ added as Admin";
 "pmUpdated" = "Updated successfully";
 "pmFailed" = "Failed";
@@ -205,7 +212,8 @@
 "pmGif" = "Gif";
 "pmSticker" = "Sticker";
 "pmStickerAndGif" = "Send Stickers and Gif";
-"pmLocation" = "Share Location";
+"pmNewChat" = "New Chat";
+"pmLocation" = "Location";
 "pmNearby" = "Nearby";
 "pmMore" = "More";
 "pmNewChat" = "New Chat";
@@ -227,6 +235,29 @@
 "pmReply" = "Reply";
 "pmNoCallLogs" = "No Call Logs available";
 "pmNoCallHistory" = "No Call History";
-
-
-
+"pmAudioRecordingProgress" = "Release to Send, Drag up to Discard";
+"pmAudioRecordingCancel" = "Release to Cancel";
+"pmMicrophonePermission" = "Microphone Permission";
+"pmMicrophoneMessage" = "For Audio Recording, In iPhone settings, tap App and turn on Microphone";
+"pmOpenAppSetting" = "Open Settings";
+"pmOpenSetting" = "Open Settings";
+"pmYearsAgo" = "%@ years ago";
+"pmOneYearAgo" = "1 Year Ago";
+"pmLastYear" = "Last Year";
+"pmMonthsAgo" = "%@ months ago";
+"pmOneMonthAgo" = "1 Month Ago";
+"pmLastMonth" = "Last Month";
+"pmWeeksAgo" = "%@ weeks ago";
+"pmOneWeekAgo" = "1 Week Ago";
+"pmLastWeek" = "Last Week";
+"pmDaysAgo" = "%@ days ago";
+"pmOneDayAgo" = "1 Day Ago";
+"pmHoursAgo" = "%@ hours ago";
+"pmOneHourAgo" = "1 Hour Ago";
+"pmAnHourAgo" = "an hour ago";
+"pmMinutesAgo" = "%@ Minutes Ago";
+"pmOneMinAgo" = "1 minute ago";
+"pmAMinAgo" = "a min ago";
+"pmSecondsAgo" = "%@ sec ago";
+"pmJustNow" = "Just Now";
+"pmAudioButtonTip" = "Press and Hold Mic Icon to send Audio clip";
