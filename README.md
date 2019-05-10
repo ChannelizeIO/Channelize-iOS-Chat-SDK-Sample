@@ -2,7 +2,7 @@ The following documentation is built to help you with installing our iOS SDK int
 
 The Channelize SDK can be installed using the following method	The Channelize SDK can be installed using the following method
 
-Firstly, you will need to register on Channelize: https://channelize.io/pricing	Firstly, you will need to register on Channelize: https://channelize.io/pricing
+Firstly, you will need to register on Channelize: https://channelize.io/pricing
 
  After the successful payment at https://channelize.io/pricing you'll get the zip file file that will contains the all messaging and other feature of channelize.io.	
 
