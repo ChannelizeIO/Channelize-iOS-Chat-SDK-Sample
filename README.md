@@ -12,8 +12,7 @@ Firstly, you will need to register on Channelize: https://channelize.io/pricing	
 - Drag and drop it in the `Embedded Binaries` section of your project as described in the below image. 	
 
 ScreenShot url:
-
-https://github.com/ChannelizeIO/Channelize-iOS/blob/master/demo/Assests/framwork_placement.png	
+![](https://github.com/ChannelizeIO/Channelize-iOS/blob/master/demo/Assests/framwork_placement.png)	
 
 ## Dependencies	
 **Requirement**	
