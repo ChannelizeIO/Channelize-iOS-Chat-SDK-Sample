@@ -8,7 +8,8 @@ Pod::Spec.new do |s|
   s.license      = { :type => "GPL", :file => "LICENSE" }
   s.author       = { "Channelize" => "support@channelize.io" }
   s.platform     = :ios, "9.0"
-s.source       = { :git => "https://github.com/ChannelizeIO/Channelize-iOS.git", :tag => "#{s.version}", :branch => "master" }
+  s.swift_version = "4.2"
+  s.source       = { :git => "https://github.com/ChannelizeIO/Channelize-iOS.git", :tag => "#{s.version}", :branch => "master" }
   s.vendored_frameworks = "Channelize_API.framework"
   s.dependency "AWSMobileClient", "2.9.3"
   s.dependency "AWSIoT", "2.9.3"
