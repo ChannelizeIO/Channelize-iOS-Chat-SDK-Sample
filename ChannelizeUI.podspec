@@ -19,4 +19,10 @@ Pod::Spec.new do |s|
   s.dependency "GiphyCoreSDK", "1.4.0"
   s.dependency "Crashlytics", "3.12.0"
   s.dependency "SDWebImage/GIF", "4.4.3"
+  s.dependency "Gallery", "2.2.0"
+  s.dependency "Lightbox", "2.3.0"
+  s.dependency "SwiftIconFont", "3.0.0"
+  s.dependency "InputBarAccessoryView", "4.2.1"
+  s.dependency "ZVProgressHUD", "2.0.3"
+  s.dependency "ZVActivityIndicatorView", "0.1.3"
 end

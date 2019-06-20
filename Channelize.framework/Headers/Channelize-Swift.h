@@ -253,10 +253,6 @@ SWIFT_CLASS("_TtC10Channelize23RecentMessageController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-
-@interface RecentMessageController (SWIFT_EXTENSION(Channelize)) <UIGestureRecognizerDelegate>
-@end
-
 @class UICollectionView;
 
 @interface RecentMessageController (SWIFT_EXTENSION(Channelize)) <UICollectionViewDelegateFlowLayout>
@@ -264,15 +260,14 @@ SWIFT_CLASS("_TtC10Channelize23RecentMessageController")
 - (CGFloat)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 @end
 
+
+@interface RecentMessageController (SWIFT_EXTENSION(Channelize)) <UIGestureRecognizerDelegate>
+@end
+
 @class UISearchBar;
 
 @interface RecentMessageController (SWIFT_EXTENSION(Channelize)) <UISearchBarDelegate>
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar * _Nonnull)searchBar SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface RecentMessageController (SWIFT_EXTENSION(Channelize))
-- (void)didUserBlockedWithIsMe:(BOOL)isMe userId:(NSString * _Nullable)userId SWIFT_DEPRECATED_OBJC("Swift method 'RecentMessageController.didUserBlocked(isMe:userId:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 @class UIScrollView;
@@ -291,6 +286,13 @@ SWIFT_CLASS("_TtC10Channelize23RecentMessageController")
 - (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView didSelectItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+@end
+
+
+@interface RecentMessageController (SWIFT_EXTENSION(Channelize))
+- (void)didUserGetOnlineWithUserId:(NSString * _Nonnull)userId SWIFT_DEPRECATED_OBJC("Swift method 'RecentMessageController.didUserGetOnline(userId:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+- (void)didUserGetOfflineWithUserId:(NSString * _Nonnull)userId SWIFT_DEPRECATED_OBJC("Swift method 'RecentMessageController.didUserGetOffline(userId:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+- (void)didUserBlockedWithIsMe:(BOOL)isMe userId:(NSString * _Nullable)userId SWIFT_DEPRECATED_OBJC("Swift method 'RecentMessageController.didUserBlocked(isMe:userId:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 
