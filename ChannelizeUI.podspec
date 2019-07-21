@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ChannelizeUI"
-  s.version      = "4.0.0"
+  s.version      = "4.0.1"
   s.summary      = "Channelize UI SDK"
   s.description  = "A Messaging UI SDK built for Channelize API SDK"
   s.homepage     = "https://channelize.io/"
@@ -11,10 +11,6 @@ Pod::Spec.new do |s|
   s.swift_version = "4.2"
  s.source       = { :git => "https://github.com/ChannelizeIO/Channelize-iOS.git", :tag => "#{s.version}", :branch => "master" }
   s.vendored_frameworks = "Channelize.framework"
-  s.dependency "AWSMobileClient", "2.9.3"
-  s.dependency "AWSIoT", "2.9.3"
-  s.dependency "Alamofire", "4.8.0"
-  s.dependency "AlamofireObjectMapper", "5.2.0"
   s.dependency "CWStatusBarNotification", "2.3.5"
   s.dependency "GiphyCoreSDK", "1.4.0"
   s.dependency "Crashlytics", "3.12.0"
