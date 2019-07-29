@@ -165,6 +165,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_feature(modules)
 @import CoreGraphics;
 @import Foundation;
+@import InputBarAccessoryView;
 @import UIKit;
 #endif
 
@@ -239,6 +240,11 @@ SWIFT_CLASS("_TtC10Channelize11CHTokenView")
 @end
 
 
+@interface InputTextView (SWIFT_EXTENSION(Channelize)) <UITextViewDelegate>
+- (BOOL)textView:(UITextView * _Nonnull)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString * _Nonnull)text SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
 
 @class UICollectionViewLayout;
 @class NSBundle;
@@ -253,15 +259,15 @@ SWIFT_CLASS("_TtC10Channelize23RecentMessageController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+@interface RecentMessageController (SWIFT_EXTENSION(Channelize)) <UIGestureRecognizerDelegate>
+@end
+
 @class UICollectionView;
 
 @interface RecentMessageController (SWIFT_EXTENSION(Channelize)) <UICollectionViewDelegateFlowLayout>
 - (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 - (CGFloat)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface RecentMessageController (SWIFT_EXTENSION(Channelize)) <UIGestureRecognizerDelegate>
 @end
 
 @class UISearchBar;

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ChannelizeUI"
-  s.version      = "4.0.2"
+  s.version      = "4.0.3"
   s.summary      = "Channelize UI SDK"
   s.description  = "A Messaging UI SDK built for Channelize API SDK"
   s.homepage     = "https://channelize.io/"
