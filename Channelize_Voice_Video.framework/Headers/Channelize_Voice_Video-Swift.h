@@ -164,6 +164,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 #if __has_feature(modules)
 @import CallKit;
+@import CoreGraphics;
 @import ObjectiveC;
 @import UIKit;
 #endif
@@ -205,6 +206,12 @@ SWIFT_CLASS("_TtC22Channelize_Voice_Video12CallProvider")
 
 
 
+
+
+@interface UILabel (SWIFT_EXTENSION(Channelize_Voice_Video))
+- (void)drawRect:(CGRect)rect;
+@property (nonatomic, readonly) CGSize intrinsicContentSize;
+@end
 
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
