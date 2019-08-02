@@ -312,12 +312,6 @@ SWIFT_CLASS("_TtC10Channelize23RecentMessageController")
 
 
 
-@interface UILabel (SWIFT_EXTENSION(Channelize))
-- (void)drawRect:(CGRect)rect;
-@property (nonatomic, readonly) CGSize intrinsicContentSize;
-@end
-
-
 
 
 @interface UITabBar (SWIFT_EXTENSION(Channelize))
