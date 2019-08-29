@@ -246,6 +246,8 @@ SWIFT_CLASS("_TtC10Channelize11CHTokenView")
 
 
 
+
+
 @class UICollectionViewLayout;
 @class NSBundle;
 
@@ -253,6 +255,7 @@ SWIFT_CLASS("_TtC10Channelize23RecentMessageController")
 @interface RecentMessageController : UICollectionViewController
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)animated;
+- (void)viewDidAppear:(BOOL)animated;
 - (void)viewWillDisappear:(BOOL)animated;
 - (nonnull instancetype)initWithCollectionViewLayout:(UICollectionViewLayout * _Nonnull)layout OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
@@ -260,14 +263,18 @@ SWIFT_CLASS("_TtC10Channelize23RecentMessageController")
 @end
 
 
-@interface RecentMessageController (SWIFT_EXTENSION(Channelize)) <UIGestureRecognizerDelegate>
-@end
+
+
 
 @class UICollectionView;
 
 @interface RecentMessageController (SWIFT_EXTENSION(Channelize)) <UICollectionViewDelegateFlowLayout>
 - (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 - (CGFloat)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface RecentMessageController (SWIFT_EXTENSION(Channelize)) <UIGestureRecognizerDelegate>
 @end
 
 @class UISearchBar;
@@ -307,6 +314,99 @@ SWIFT_CLASS("_TtC10Channelize23RecentMessageController")
 - (void)didChangeTypingStatusWithConversationId:(NSString * _Nullable)conversationId userId:(NSString * _Nullable)userId isTyping:(BOOL)isTyping SWIFT_DEPRECATED_OBJC("Swift method 'RecentMessageController.didChangeTypingStatus(conversationId:userId:isTyping:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
+@class UIFont;
+@class UIColor;
+
+SWIFT_CLASS("_TtC10Channelize18TTSegmentedControl")
+@interface TTSegmentedControl : UIView
+@property (nonatomic, strong) UIFont * _Nonnull defaultTextFont;
+@property (nonatomic, strong) UIFont * _Nonnull selectedTextFont;
+@property (nonatomic, strong) UIColor * _Nonnull defaultTextColor;
+@property (nonatomic, strong) UIColor * _Nonnull selectedTextColor;
+@property (nonatomic) BOOL useGradient;
+@property (nonatomic, strong) UIColor * _Nonnull containerBackgroundColor;
+@property (nonatomic, strong) UIColor * _Nonnull thumbColor;
+@property (nonatomic, copy) NSArray<UIColor *> * _Nullable thumbGradientColors;
+@property (nonatomic, strong) UIColor * _Nonnull thumbShadowColor;
+@property (nonatomic) BOOL useShadow;
+@property (nonatomic) CGSize padding;
+@property (nonatomic) CGFloat cornerRadius;
+@property (nonatomic) BOOL hasBounceAnimation SWIFT_DEPRECATED_OBJC("Swift property 'TTSegmentedControl.hasBounceAnimation' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, copy) NSArray<NSString *> * _Nonnull itemTitles SWIFT_DEPRECATED_OBJC("Swift property 'TTSegmentedControl.itemTitles' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, copy) NSArray<NSAttributedString *> * _Null_unspecified attributedDefaultTitles SWIFT_DEPRECATED_OBJC("Swift property 'TTSegmentedControl.attributedDefaultTitles' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, copy) NSArray<NSAttributedString *> * _Null_unspecified attributedSelectedTitles SWIFT_DEPRECATED_OBJC("Swift property 'TTSegmentedControl.attributedSelectedTitles' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, copy) void (^ _Nullable didSelectItemWith)(NSInteger, NSString * _Nullable) SWIFT_DEPRECATED_OBJC("Swift property 'TTSegmentedControl.didSelectItemWith' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic) BOOL allowDrag SWIFT_DEPRECATED_OBJC("Swift property 'TTSegmentedControl.allowDrag' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic) BOOL allowChangeThumbWidth SWIFT_DEPRECATED_OBJC("Swift property 'TTSegmentedControl.allowChangeThumbWidth' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic) BOOL noItemSelected SWIFT_DEPRECATED_OBJC("Swift property 'TTSegmentedControl.noItemSelected' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+- (void)awakeFromNib;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)layoutSubviews;
++ (UIColor * _Nonnull)UIColorFromRGB:(NSUInteger)rgbValue SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_OBJC("Swift method 'TTSegmentedControl.UIColorFromRGB(_:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@end
+
+
+
+@class UITouch;
+@class UIEvent;
+
+@interface TTSegmentedControl (SWIFT_EXTENSION(Channelize))
+- (void)touchesEnded:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
+- (void)touchesMoved:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
+- (void)touchesBegan:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
+- (void)touchesCancelled:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
+@end
+
+
+
+
+
+
+@interface TTSegmentedControl (SWIFT_EXTENSION(Channelize))
+@property (nonatomic, readonly) NSInteger currentIndex SWIFT_DEPRECATED_OBJC("Swift property 'TTSegmentedControl.currentIndex' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+- (void)selectItemAtIndex:(NSInteger)index animated:(BOOL)animated SWIFT_DEPRECATED_OBJC("Swift method 'TTSegmentedControl.selectItemAt(index:animated:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+- (void)changeTitle:(NSString * _Nonnull)title atIndex:(NSInteger)atIndex SWIFT_DEPRECATED_OBJC("Swift method 'TTSegmentedControl.changeTitle(_:atIndex:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+- (void)changeAttributedTitle:(NSAttributedString * _Nonnull)title selectedTile:(NSAttributedString * _Nullable)selectedTile atIndex:(NSInteger)atIndex SWIFT_DEPRECATED_OBJC("Swift method 'TTSegmentedControl.changeAttributedTitle(_:selectedTile:atIndex:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+- (NSString * _Nonnull)titleForItemAtIndex:(NSInteger)index SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_OBJC("Swift method 'TTSegmentedControl.titleForItemAtIndex(_:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+- (void)changeThumbShadowColor:(UIColor * _Nonnull)color SWIFT_DEPRECATED_OBJC("Swift method 'TTSegmentedControl.changeThumbShadowColor(_:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+- (void)changeThumbColor:(UIColor * _Nonnull)color SWIFT_DEPRECATED_OBJC("Swift method 'TTSegmentedControl.changeThumbColor(_:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+- (void)changeBackgroundColor:(UIColor * _Nonnull)color SWIFT_DEPRECATED_OBJC("Swift method 'TTSegmentedControl.changeBackgroundColor(_:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+- (void)changeThumbGradientColors:(NSArray<UIColor *> * _Nonnull)colors SWIFT_DEPRECATED_OBJC("Swift method 'TTSegmentedControl.changeThumbGradientColors(_:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@end
+
+
+@interface UIColor (SWIFT_EXTENSION(Channelize))
+/// Constructing color from hex string
+/// \param hex A hex string, can either contain # or not
+///
+- (nonnull instancetype)initWithHex:(NSString * _Nonnull)string SWIFT_DEPRECATED_OBJC("Swift initializer 'UIColor.init(hex:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull systemBlue SWIFT_DEPRECATED_OBJC("Swift property 'UIColor.systemBlue' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");)
++ (UIColor * _Nonnull)systemBlue SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_OBJC("Swift property 'UIColor.systemBlue' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull systemGray SWIFT_DEPRECATED_OBJC("Swift property 'UIColor.systemGray' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");)
++ (UIColor * _Nonnull)systemGray SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_OBJC("Swift property 'UIColor.systemGray' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull systemGreen SWIFT_DEPRECATED_OBJC("Swift property 'UIColor.systemGreen' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");)
++ (UIColor * _Nonnull)systemGreen SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_OBJC("Swift property 'UIColor.systemGreen' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull systemIndigo SWIFT_DEPRECATED_OBJC("Swift property 'UIColor.systemIndigo' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");)
++ (UIColor * _Nonnull)systemIndigo SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_OBJC("Swift property 'UIColor.systemIndigo' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull systemOrange SWIFT_DEPRECATED_OBJC("Swift property 'UIColor.systemOrange' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");)
++ (UIColor * _Nonnull)systemOrange SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_OBJC("Swift property 'UIColor.systemOrange' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull systemPink SWIFT_DEPRECATED_OBJC("Swift property 'UIColor.systemPink' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");)
++ (UIColor * _Nonnull)systemPink SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_OBJC("Swift property 'UIColor.systemPink' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull systemPurple SWIFT_DEPRECATED_OBJC("Swift property 'UIColor.systemPurple' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");)
++ (UIColor * _Nonnull)systemPurple SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_OBJC("Swift property 'UIColor.systemPurple' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull systemRed SWIFT_DEPRECATED_OBJC("Swift property 'UIColor.systemRed' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");)
++ (UIColor * _Nonnull)systemRed SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_OBJC("Swift property 'UIColor.systemRed' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull systemTeal SWIFT_DEPRECATED_OBJC("Swift property 'UIColor.systemTeal' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");)
++ (UIColor * _Nonnull)systemTeal SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_OBJC("Swift property 'UIColor.systemTeal' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull systemYellow SWIFT_DEPRECATED_OBJC("Swift property 'UIColor.systemYellow' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");)
++ (UIColor * _Nonnull)systemYellow SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_OBJC("Swift property 'UIColor.systemYellow' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@end
+
+
+
+
+
 
 
 
@@ -317,6 +417,10 @@ SWIFT_CLASS("_TtC10Channelize23RecentMessageController")
 @interface UITabBar (SWIFT_EXTENSION(Channelize))
 - (CGSize)sizeThatFits:(CGSize)size SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
+
+
 
 
 

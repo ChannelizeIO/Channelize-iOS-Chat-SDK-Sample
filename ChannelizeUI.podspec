@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ChannelizeUI"
-  s.version      = "4.0.6"
+  s.version      = "4.0.7"
   s.summary      = "Channelize UI SDK"
   s.description  = "A Messaging UI SDK built for Channelize API SDK"
   s.homepage     = "https://channelize.io/"
@@ -15,10 +15,9 @@ Pod::Spec.new do |s|
   s.dependency "GiphyCoreSDK", "1.4.0"
   s.dependency "Crashlytics", "3.12.0"
   s.dependency "SDWebImage/GIF", "4.4.3"
-  s.dependency "Gallery", "2.2.0"
-  s.dependency "Lightbox", "2.3.0"
   s.dependency "SwiftIconFont", "3.0.0"
   s.dependency "InputBarAccessoryView", "4.2.1"
   s.dependency "ZVProgressHUD", "2.0.3"
   s.dependency "ZVActivityIndicatorView", "0.1.3"
+  S.dependency "RealmSwift"
 end
