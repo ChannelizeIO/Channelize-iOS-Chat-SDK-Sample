@@ -164,8 +164,10 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 #if __has_feature(modules)
 @import CoreGraphics;
+@import Dispatch;
 @import Foundation;
 @import InputBarAccessoryView;
+@import ObjectiveC;
 @import UIKit;
 #endif
 
@@ -237,6 +239,14 @@ SWIFT_CLASS("_TtC10Channelize11CHTokenView")
 - (void)dismissTokenView SWIFT_DEPRECATED_OBJC("Swift method 'CHTokenView.dismissTokenView()' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC10Channelize11Cancellable")
+@interface Cancellable : NSObject
+@property (nonatomic, readonly) BOOL isCancelled SWIFT_DEPRECATED_OBJC("Swift property 'Cancellable.isCancelled' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+- (void)cancel SWIFT_DEPRECATED_OBJC("Swift method 'Cancellable.cancel()' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -313,6 +323,35 @@ SWIFT_CLASS("_TtC10Channelize23RecentMessageController")
 - (void)didAdminAddedWithConversationId:(NSString * _Nullable)conversationId isAdmin:(BOOL)isAdmin userId:(NSString * _Nullable)userId SWIFT_DEPRECATED_OBJC("Swift method 'RecentMessageController.didAdminAdded(conversationId:isAdmin:userId:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 - (void)didChangeTypingStatusWithConversationId:(NSString * _Nullable)conversationId userId:(NSString * _Nullable)userId isTyping:(BOOL)isTyping SWIFT_DEPRECATED_OBJC("Swift method 'RecentMessageController.didChangeTypingStatus(conversationId:userId:isTyping:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
+
+@class NSURLSession;
+@class NSError;
+
+SWIFT_CLASS("_TtC10Channelize16SwiftLinkPreview")
+@interface SwiftLinkPreview : NSObject
+@property (nonatomic, strong) NSURLSession * _Nonnull session SWIFT_DEPRECATED_OBJC("Swift property 'SwiftLinkPreview.session' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, strong) dispatch_queue_t _Nonnull workQueue SWIFT_DEPRECATED_OBJC("Swift property 'SwiftLinkPreview.workQueue' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, strong) dispatch_queue_t _Nonnull responseQueue SWIFT_DEPRECATED_OBJC("Swift property 'SwiftLinkPreview.responseQueue' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) dispatch_queue_t _Nonnull defaultWorkQueue SWIFT_DEPRECATED_OBJC("Swift property 'SwiftLinkPreview.defaultWorkQueue' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");)
++ (dispatch_queue_t _Nonnull)defaultWorkQueue SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_OBJC("Swift property 'SwiftLinkPreview.defaultWorkQueue' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithSession:(NSURLSession * _Nullable)session workQueue:(dispatch_queue_t _Nullable)workQueue responseQueue:(dispatch_queue_t _Nullable)responseQueue disableInMemoryCache:(BOOL)disableInMemoryCache cacheInvalidationTimeout:(NSTimeInterval)cacheInvalidationTimeout cacheCleanupInterval:(NSTimeInterval)cacheCleanupInterval OBJC_DESIGNATED_INITIALIZER;
+- (Cancellable * _Nonnull)previewLink:(NSString * _Nonnull)text onSuccess:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))onSuccess onError:(void (^ _Nonnull)(NSError * _Nonnull))onError;
+@end
+
+@class NSURLSessionTask;
+@class NSHTTPURLResponse;
+
+@interface SwiftLinkPreview (SWIFT_EXTENSION(Channelize)) <NSURLSessionDataDelegate>
+- (void)URLSession:(NSURLSession * _Nonnull)session task:(NSURLSessionTask * _Nonnull)task willPerformHTTPRedirection:(NSHTTPURLResponse * _Nonnull)response newRequest:(NSURLRequest * _Nonnull)request completionHandler:(void (^ _Nonnull)(NSURLRequest * _Nullable))completionHandler;
+@end
+
+
+@interface SwiftLinkPreview (SWIFT_EXTENSION(Channelize))
+- (NSURL * _Nullable)extractURLWithText:(NSString * _Nonnull)text SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_OBJC("Swift method 'SwiftLinkPreview.extractURL(text:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@end
+
+
 
 @class UIFont;
 @class UIColor;
@@ -417,6 +456,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _N
 @interface UITabBar (SWIFT_EXTENSION(Channelize))
 - (CGSize)sizeThatFits:(CGSize)size SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
 
 
 
