@@ -14,6 +14,6 @@ Pod::Spec.new do |s|
   s.dependency 'AWSMobileClient', '2.9.3'
   s.dependency 'AWSIoT', '2.9.3'
   s.dependency 'Alamofire', '4.8.0'
-  s.dependency 'AlamofireObjectMapper', '5.2.0'
-  s.dependency 'ObjectMapper', '3.4.2'
+  #s.dependency 'AlamofireObjectMapper', '5.2.0'
+  #s.dependency 'ObjectMapper', '3.4.2'
 end
