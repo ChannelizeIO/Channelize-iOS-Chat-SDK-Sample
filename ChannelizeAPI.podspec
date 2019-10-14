@@ -8,6 +8,7 @@ Pod::Spec.new do |s|
   s.license      = { :type => 'GPL', :file => 'LICENSE' }
   s.author       = { "Channelize" => 'support@channelize.io' }
   s.platform     = :ios, '9.0'
+  s.requires_arc = true
   s.swift_version = '4.2'
   s.source       = { :git => 'https://github.com/ChannelizeIO/Channelize-iOS.git', :tag => '4.0.7', :branch => 'master' }
   s.vendored_frameworks = 'Channelize_API.framework'

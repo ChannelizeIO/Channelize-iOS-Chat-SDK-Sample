@@ -19,5 +19,5 @@ Pod::Spec.new do |s|
   s.dependency "InputBarAccessoryView", "4.2.1"
   s.dependency "ZVProgressHUD", "2.0.3"
   s.dependency "ZVActivityIndicatorView", "0.1.3"
-  S.dependency "RealmSwift"
+  s.dependency "RealmSwift"
 end
