@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ChannelizeUI"
-  s.version      = "4.0.7"
+  s.version      = "4.11.0"
   s.summary      = "Channelize UI SDK"
   s.description  = "A Messaging UI SDK built for Channelize API SDK"
   s.homepage     = "https://channelize.io/"
@@ -9,7 +9,8 @@ Pod::Spec.new do |s|
   s.author       = { "Channelize" => "support@channelize.io" }
   s.platform     = :ios, "9.0"
   s.swift_version = "4.2"
- s.source       = { :git => "https://github.com/ChannelizeIO/Channelize-iOS.git", :tag => "#{s.version}", :branch => "master" }
+  s.requires_arc = true
+ s.source       = { :git => "https://github.com/ChannelizeIO/Channelize-iOS.git", :tag => "#{s.version}", :branch => "pods/Xcode11" }
   s.vendored_frameworks = "Channelize.framework"
   s.dependency "CWStatusBarNotification", "2.3.5"
   s.dependency "GiphyCoreSDK", "1.4.0"
@@ -19,5 +20,5 @@ Pod::Spec.new do |s|
   s.dependency "InputBarAccessoryView", "4.2.1"
   s.dependency "ZVProgressHUD", "2.0.3"
   s.dependency "ZVActivityIndicatorView", "0.1.3"
-  s.dependency "RealmSwift"
+  s.dependency "RealmSwift", "3.17.3"
 end
