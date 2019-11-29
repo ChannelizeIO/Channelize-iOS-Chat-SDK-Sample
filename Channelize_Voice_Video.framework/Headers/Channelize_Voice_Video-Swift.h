@@ -184,10 +184,21 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 @class CXProvider;
+@class CXStartCallAction;
 @class CXEndCallAction;
 @class CXAnswerCallAction;
-@class CXStartCallAction;
 @class CXSetMutedCallAction;
+
+SWIFT_CLASS("_TtC22Channelize_Voice_Video15CallKitProvider")
+@interface CallKitProvider : NSObject <CXProviderDelegate>
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (void)providerDidReset:(CXProvider * _Nonnull)provider;
+- (void)provider:(CXProvider * _Nonnull)provider performStartCallAction:(CXStartCallAction * _Nonnull)action;
+- (void)provider:(CXProvider * _Nonnull)provider performEndCallAction:(CXEndCallAction * _Nonnull)action;
+- (void)provider:(CXProvider * _Nonnull)provider performAnswerCallAction:(CXAnswerCallAction * _Nonnull)action;
+- (void)provider:(CXProvider * _Nonnull)provider performSetMutedCallAction:(CXSetMutedCallAction * _Nonnull)action;
+@end
+
 
 SWIFT_CLASS("_TtC22Channelize_Voice_Video12CallProvider")
 @interface CallProvider : NSObject <CXProviderDelegate>
@@ -199,6 +210,8 @@ SWIFT_CLASS("_TtC22Channelize_Voice_Video12CallProvider")
 - (void)provider:(CXProvider * _Nonnull)provider performStartCallAction:(CXStartCallAction * _Nonnull)action;
 - (void)provider:(CXProvider * _Nonnull)provider performSetMutedCallAction:(CXSetMutedCallAction * _Nonnull)action;
 @end
+
+
 
 
 
