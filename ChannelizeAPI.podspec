@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '9.0'
   s.requires_arc = true
   s.swift_version = '4.2'
-  s.source       = { :git => 'https://github.com/ChannelizeIO/Channelize-iOS.git', :tag => '4.11.0', :branch => 'pods/Xcode11' }
+  s.source       = { :git => 'https://github.com/ChannelizeIO/Channelize-iOS.git', :tag => '4.11.1', :branch => 'pods/Xcode11' }
   s.vendored_frameworks = 'Channelize_API.framework'
   s.dependency 'AWSMobileClient', '2.9.3'
   s.dependency 'AWSIoT', '2.9.3'
