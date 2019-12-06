@@ -276,6 +276,8 @@ SWIFT_CLASS("_TtC10Channelize11Cancellable")
 
 
 
+
+
 @class UICollectionViewLayout;
 @class NSBundle;
 
@@ -324,16 +326,19 @@ SWIFT_CLASS("_TtC10Channelize23RecentMessageController")
 
 
 @interface RecentMessageController (SWIFT_EXTENSION(Channelize))
-- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
-- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-- (void)collectionView:(UICollectionView * _Nonnull)collectionView didSelectItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-@end
-
-
-@interface RecentMessageController (SWIFT_EXTENSION(Channelize))
 - (void)didUserGetOnlineWithUserId:(NSString * _Nonnull)userId SWIFT_DEPRECATED_OBJC("Swift method 'RecentMessageController.didUserGetOnline(userId:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 - (void)didUserGetOfflineWithUserId:(NSString * _Nonnull)userId SWIFT_DEPRECATED_OBJC("Swift method 'RecentMessageController.didUserGetOffline(userId:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 - (void)didUserBlockedWithIsMe:(BOOL)isMe userId:(NSString * _Nullable)userId SWIFT_DEPRECATED_OBJC("Swift method 'RecentMessageController.didUserBlocked(isMe:userId:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@end
+
+@class UICollectionReusableView;
+
+@interface RecentMessageController (SWIFT_EXTENSION(Channelize))
+- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (void)collectionView:(UICollectionView * _Nonnull)collectionView didSelectItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UICollectionReusableView * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView viewForSupplementaryElementOfKind:(NSString * _Nonnull)kind atIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
