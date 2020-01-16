@@ -1,5 +1,6 @@
 PODS:
-  - Alamofire (4.8.0)
+  - AgoraRtcEngine_iOS (2.9.1)
+  - Alamofire (4.8.2)
   - AlamofireObjectMapper (5.2.0):
     - Alamofire (~> 4.7)
     - ObjectMapper (~> 3.4)
@@ -15,7 +16,23 @@ PODS:
   - AWSMobileClient (2.9.3):
     - AWSAuthCore (= 2.9.3)
     - AWSCognitoIdentityProvider (= 2.9.3)
-  - Cache (5.2.0)
+  - ChannelizeAPI (4.10.1):
+    - Alamofire (= 4.8.2)
+    - AlamofireObjectMapper (= 5.2.0)
+    - AWSIoT (= 2.9.3)
+    - AWSMobileClient (= 2.9.3)
+  - ChannelizeCall (4.10.1):
+    - AgoraRtcEngine_iOS (>= 2.3.1)
+    - SDWebImage/GIF (= 4.4.3)
+  - ChannelizeUI (4.10.1):
+    - Crashlytics (= 3.12.0)
+    - CWStatusBarNotification (= 2.3.5)
+    - InputBarAccessoryView (= 4.2.1)
+    - RealmSwift (= 3.17.3)
+    - SDWebImage/GIF (= 4.4.3)
+    - SwiftIconFont (= 3.0.0)
+    - ZVActivityIndicatorView (= 0.1.3)
+    - ZVProgressHUD (= 2.0.3)
   - Chatto (3.3.1)
   - ChattoAdditions (3.3.1):
     - Chatto
@@ -24,15 +41,75 @@ PODS:
     - Fabric (~> 1.9.0)
   - CWStatusBarNotification (2.3.5)
   - Fabric (1.9.0)
+  - Firebase/Core (5.15.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 5.4.0)
+  - Firebase/CoreOnly (5.15.0):
+    - FirebaseCore (= 5.1.10)
+  - Firebase/Messaging (5.15.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (= 3.2.2)
+  - FirebaseAnalytics (5.4.0):
+    - FirebaseCore (~> 5.1)
+    - FirebaseInstanceID (~> 3.3)
+    - GoogleAppMeasurement (= 5.4.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
+    - GoogleUtilities/MethodSwizzler (~> 5.2)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - nanopb (~> 0.3)
+  - FirebaseAnalyticsInterop (1.4.0)
+  - FirebaseCore (5.1.10):
+    - GoogleUtilities/Logger (~> 5.2)
+  - FirebaseInstanceID (3.3.0):
+    - FirebaseCore (~> 5.1)
+    - GoogleUtilities/Environment (~> 5.3)
+    - GoogleUtilities/UserDefaults (~> 5.3)
+  - FirebaseMessaging (3.2.2):
+    - FirebaseAnalyticsInterop (~> 1.1)
+    - FirebaseCore (~> 5.1)
+    - FirebaseInstanceID (~> 3.0)
+    - GoogleUtilities/Environment (~> 5.2)
+    - GoogleUtilities/Reachability (~> 5.2)
+    - Protobuf (~> 3.1)
   - FLAnimatedImage (1.0.12)
-  - Gallery (2.2.0)
-  - GiphyCoreSDK (1.4.0)
-  - Imaginary (4.2.0):
-    - Cache (~> 5.0)
+  - GoogleAppMeasurement (5.4.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
+    - GoogleUtilities/MethodSwizzler (~> 5.2)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - nanopb (~> 0.3)
+  - GoogleUtilities/AppDelegateSwizzler (5.8.0):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (5.8.0)
+  - GoogleUtilities/Logger (5.8.0):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (5.8.0):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (5.8.0):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (5.8.0)"
+  - GoogleUtilities/Reachability (5.8.0):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (5.8.0):
+    - GoogleUtilities/Logger
   - InputBarAccessoryView (4.2.1)
-  - Lightbox (2.3.0):
-    - Imaginary (~> 4.0)
-  - ObjectMapper (3.4.2)
+  - nanopb (0.3.9011):
+    - nanopb/decode (= 0.3.9011)
+    - nanopb/encode (= 0.3.9011)
+  - nanopb/decode (0.3.9011)
+  - nanopb/encode (0.3.9011)
+  - ObjectMapper (3.5.1)
+  - Protobuf (3.11.1)
+  - Realm (3.17.3):
+    - Realm/Headers (= 3.17.3)
+  - Realm/Headers (3.17.3)
+  - RealmSwift (3.17.3):
+    - Realm (= 3.17.3)
   - SDWebImage/Core (4.4.3)
   - SDWebImage/GIF (4.4.3):
     - FLAnimatedImage (~> 1.0)
@@ -43,25 +120,17 @@ PODS:
     - ZVActivityIndicatorView
 
 DEPENDENCIES:
-  - Alamofire (= 4.8.0)
-  - AlamofireObjectMapper (= 5.2.0)
-  - AWSIoT (= 2.9.3)
-  - AWSMobileClient (= 2.9.3)
-  - Chatto (from `https://github.com/BigStepTechnologies/Chatto`, branch `update/v1.0`)
-  - ChattoAdditions (from `https://github.com/BigStepTechnologies/Chatto`, branch `update/v1.0`)
-  - Crashlytics (= 3.12.0)
-  - CWStatusBarNotification (= 2.3.5)
-  - Gallery (= 2.2.0)
-  - GiphyCoreSDK (= 1.4.0)
-  - InputBarAccessoryView (= 4.2.1)
-  - Lightbox (= 2.3.0)
-  - SDWebImage/GIF (= 4.4.3)
-  - SwiftIconFont (= 3.0.0)
-  - ZVActivityIndicatorView (= 0.1.3)
-  - ZVProgressHUD (= 2.0.3)
+  - ChannelizeAPI (~> 4.10.0)
+  - ChannelizeCall (~> 4.10.0)
+  - ChannelizeUI (~> 4.10.0)
+  - Chatto (from `https://github.com/BigStepTechnologies/Chatto`, branch `update/v4.0`)
+  - ChattoAdditions (from `https://github.com/BigStepTechnologies/Chatto`, branch `update/v4.0`)
+  - Firebase/Core (= 5.15.0)
+  - Firebase/Messaging (= 5.15.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
+    - AgoraRtcEngine_iOS
     - Alamofire
     - AlamofireObjectMapper
     - AWSAuthCore
@@ -70,17 +139,27 @@ SPEC REPOS:
     - AWSCore
     - AWSIoT
     - AWSMobileClient
-    - Cache
+    - ChannelizeAPI
+    - ChannelizeCall
+    - ChannelizeUI
     - Crashlytics
     - CWStatusBarNotification
     - Fabric
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseAnalyticsInterop
+    - FirebaseCore
+    - FirebaseInstanceID
+    - FirebaseMessaging
     - FLAnimatedImage
-    - Gallery
-    - GiphyCoreSDK
-    - Imaginary
+    - GoogleAppMeasurement
+    - GoogleUtilities
     - InputBarAccessoryView
-    - Lightbox
+    - nanopb
     - ObjectMapper
+    - Protobuf
+    - Realm
+    - RealmSwift
     - SDWebImage
     - SwiftIconFont
     - ZVActivityIndicatorView
@@ -88,22 +167,23 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   Chatto:
-    :branch: update/v1.0
+    :branch: update/v4.0
     :git: https://github.com/BigStepTechnologies/Chatto
   ChattoAdditions:
-    :branch: update/v1.0
+    :branch: update/v4.0
     :git: https://github.com/BigStepTechnologies/Chatto
 
 CHECKOUT OPTIONS:
   Chatto:
-    :commit: f1e0e9a87242f98b95dbc3e8ed86910670dcc529
+    :commit: b1d9674c55e047186549ee6b9514380d8706d076
     :git: https://github.com/BigStepTechnologies/Chatto
   ChattoAdditions:
-    :commit: f1e0e9a87242f98b95dbc3e8ed86910670dcc529
+    :commit: b1d9674c55e047186549ee6b9514380d8706d076
     :git: https://github.com/BigStepTechnologies/Chatto
 
 SPEC CHECKSUMS:
-  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  AgoraRtcEngine_iOS: b2eedd8f9ab47b71163f3285e836bd23feb43fff
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
   AWSAuthCore: 616e8c65607d7d4b29a1320e62fe2c6586f2f396
   AWSCognitoIdentityProvider: 827e8d7ec506dd09ed4f72afe7be587a6dd85af5
@@ -111,24 +191,34 @@ SPEC CHECKSUMS:
   AWSCore: 5cbb6c6ccfad4b55e494c2e8df87781512f7881e
   AWSIoT: d7debf750a8f485a9e93177fda7a345a9121053b
   AWSMobileClient: 57b907ae11832376a2d7cf07eba5fbe2c6b8cfa4
-  Cache: 807c5d86d01a177f06ede9865add3aea269bbfd4
-  Chatto: 45f1df6af89c0b1b526e7d6368a9dca4a4728def
-  ChattoAdditions: 8b1f6f57ad45576e56b5e92f3d41e307e025a440
+  ChannelizeAPI: c5a7bec9ba9b31eddbc25a664de55f0668dd69cc
+  ChannelizeCall: 8094f6f649f12e9c4a1748e5b6975fb04d2da994
+  ChannelizeUI: 369abd85a03d582646ab6cea7a534fac1cf1a3d0
+  Chatto: ebf5f731e9771086f33e37372798a721ec555fa1
+  ChattoAdditions: 40b5b0b0967f97e62e66376dada34586ef8a1e7e
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   CWStatusBarNotification: 3d2738b25c3207f60cc50201388d3c96182545ff
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
+  Firebase: 8bb9268bff82374f2cbaaabb143e725743c316ae
+  FirebaseAnalytics: c06f9d70577d79074214700a71fd5d39de5550fb
+  FirebaseAnalyticsInterop: d48b6ab67bcf016a05e55b71fc39c61c0cb6b7f3
+  FirebaseCore: 35747502d9e8c6ee217385ad04446c7c2aaf9c5c
+  FirebaseInstanceID: e2fa4cb35ef5558c200f7f0ad8a53e212215f93e
+  FirebaseMessaging: b412996f6a09337d232bb3a6676ce4d1f353d024
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
-  Gallery: 3f4c780c4b22906d6b0a5e55d12167cdc4b4fc5b
-  GiphyCoreSDK: 1fe401c5fc65f182e7aa8b7fb2c9005f2a523374
-  Imaginary: dae33d06dbc2ada22f98afef5eb45cc061311a2c
+  GoogleAppMeasurement: 98b71f5e04142793729a5ef23e5b96651ff4b70f
+  GoogleUtilities: 04fce34bcd5620c1ee76fb79172105c74a4df335
   InputBarAccessoryView: 37175becdced159cd9ea335f47ae001b1e112909
-  Lightbox: d317750e4132bfb871a5307cfe0a2c7d6a583c65
-  ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
+  nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
+  Protobuf: 20d79da7f20b5928b80043b05080b816e802659e
+  Realm: 5a1d9d47bfc101dd597668b1a8af4288a2557f6d
+  RealmSwift: b7fdc2d18616621c31df5c7a398a45a2163f8eb0
   SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
   SwiftIconFont: 2ba18554a77c44948dc35b561b344e3c23834a84
   ZVActivityIndicatorView: f652f592d048e1b189d5e90a01107ca2de9742a1
   ZVProgressHUD: eae3c3f358d36b3bacc2f7d1dcc6b3b59d101c47
 
-PODFILE CHECKSUM: 9647c2f74e8a476d9fa45f9cbd93fbe640411508
+PODFILE CHECKSUM: 623018b1f8330ec6435a7b1b9c25d11898422840
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.0

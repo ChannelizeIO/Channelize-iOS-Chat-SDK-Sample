@@ -99,7 +99,7 @@ open class TextMessageCollectionViewCellDefaultStyle: TextMessageCollectionViewC
         return viewModel.isIncoming ? self.incomingColor : self.outgoingColor
     }
     
-    public func baseColor(viewModel: TextMessageViewModelProtocol) -> UIColor {
+    open func baseColor(viewModel: TextMessageViewModelProtocol) -> UIColor {
         return viewModel.isIncoming ? self.baseStyle.baseColorOutgoing : UIColor.white
     }
     

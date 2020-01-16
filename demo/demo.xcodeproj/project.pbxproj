@@ -3,18 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		031E7D7FEC6B69FBB3BC6231 /* Pods_demoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60870525439E4179C3BDFA44 /* Pods_demoUITests.framework */; };
-		183E2058224B6FE300999BF4 /* Channelize_API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183E2055224B6FDA00999BF4 /* Channelize_API.framework */; };
-		183E2059224B6FE300999BF4 /* Channelize_API.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 183E2055224B6FDA00999BF4 /* Channelize_API.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		183E205A224B6FE300999BF4 /* Channelize.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183E2054224B6FD900999BF4 /* Channelize.framework */; };
-		183E205B224B6FE300999BF4 /* Channelize.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 183E2054224B6FD900999BF4 /* Channelize.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1866A40721C92DA500966620 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1866A40621C92DA500966620 /* AppDelegate.swift */; };
-		1866A40921C92DA500966620 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1866A40821C92DA500966620 /* ViewController.swift */; };
-		1866A40C21C92DA500966620 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1866A40A21C92DA500966620 /* Main.storyboard */; };
 		1866A40E21C92DA600966620 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1866A40D21C92DA600966620 /* Assets.xcassets */; };
 		1866A41121C92DA600966620 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1866A40F21C92DA600966620 /* LaunchScreen.storyboard */; };
 		1866A41C21C92DA600966620 /* demoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1866A41B21C92DA600966620 /* demoTests.swift */; };
@@ -23,7 +17,14 @@
 		1866A43E21CA19E500966620 /* AMInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1866A43D21CA19E500966620 /* AMInputView.xib */; };
 		1866A44221CA1C1A00966620 /* PMStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1866A44121CA1C1A00966620 /* PMStyle.swift */; };
 		1866A44521CA1CBA00966620 /* CHLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1866A44421CA1CBA00966620 /* CHLocalizable.strings */; };
-		1866A44921CA1CCC00966620 /* Channelize-Info-demo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1866A44821CA1CCC00966620 /* Channelize-Info-demo.plist */; };
+		186753CD23D02A7D0027EC0B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186753CC23D02A7D0027EC0B /* LoginViewController.swift */; };
+		186753CF23D02C070027EC0B /* UIKit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186753CE23D02C070027EC0B /* UIKit+Extension.swift */; };
+		186753D123D0397A0027EC0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 186753D023D0397A0027EC0B /* Main.storyboard */; };
+		186753D523D051690027EC0B /* GiphyCoreSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186753D423D051690027EC0B /* GiphyCoreSDK.framework */; };
+		186753D623D051690027EC0B /* GiphyCoreSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 186753D423D051690027EC0B /* GiphyCoreSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		186753D823D051EE0027EC0B /* Channelize-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 186753D723D051EE0027EC0B /* Channelize-Info.plist */; };
+		186753DA23D05AFF0027EC0B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 186753D923D05AFE0027EC0B /* GoogleService-Info.plist */; };
+		186753DC23D05F180027EC0B /* SignUpScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186753DB23D05F180027EC0B /* SignUpScreenViewController.swift */; };
 		3FBCA6399DD4D3A079E48A97 /* Pods_demoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 083FBB1E285FB2090F3D45A4 /* Pods_demoTests.framework */; };
 		AE92217236F8267D8BA6A27C /* Pods_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA3DD4CF5ABE5FB5A9194C5B /* Pods_demo.framework */; };
 /* End PBXBuildFile section */
@@ -52,8 +53,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				183E2059224B6FE300999BF4 /* Channelize_API.framework in Embed Frameworks */,
-				183E205B224B6FE300999BF4 /* Channelize.framework in Embed Frameworks */,
+				186753D623D051690027EC0B /* GiphyCoreSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,12 +62,8 @@
 
 /* Begin PBXFileReference section */
 		083FBB1E285FB2090F3D45A4 /* Pods_demoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_demoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		183E2054224B6FD900999BF4 /* Channelize.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Channelize.framework; sourceTree = "<group>"; };
-		183E2055224B6FDA00999BF4 /* Channelize_API.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Channelize_API.framework; sourceTree = "<group>"; };
 		1866A40321C92DA500966620 /* demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1866A40621C92DA500966620 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1866A40821C92DA500966620 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		1866A40B21C92DA500966620 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1866A40D21C92DA600966620 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1866A41021C92DA600966620 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1866A41221C92DA600966620 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,7 +78,13 @@
 		1866A44121CA1C1A00966620 /* PMStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMStyle.swift; sourceTree = "<group>"; };
 		1866A44321CA1C4800966620 /* demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = demo.entitlements; sourceTree = "<group>"; };
 		1866A44421CA1CBA00966620 /* CHLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = CHLocalizable.strings; sourceTree = "<group>"; };
-		1866A44821CA1CCC00966620 /* Channelize-Info-demo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Channelize-Info-demo.plist"; sourceTree = "<group>"; };
+		186753CC23D02A7D0027EC0B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		186753CE23D02C070027EC0B /* UIKit+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Extension.swift"; sourceTree = "<group>"; };
+		186753D023D0397A0027EC0B /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		186753D423D051690027EC0B /* GiphyCoreSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GiphyCoreSDK.framework; sourceTree = "<group>"; };
+		186753D723D051EE0027EC0B /* Channelize-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Channelize-Info.plist"; sourceTree = "<group>"; };
+		186753D923D05AFE0027EC0B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		186753DB23D05F180027EC0B /* SignUpScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreenViewController.swift; sourceTree = "<group>"; };
 		531159C76B40A323A2F51B0A /* Pods-demoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-demoTests/Pods-demoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		58A7EDCD20E85E35DA24A53C /* Pods-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-demo/Pods-demo.debug.xcconfig"; sourceTree = "<group>"; };
 		60870525439E4179C3BDFA44 /* Pods_demoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_demoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,8 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				183E2058224B6FE300999BF4 /* Channelize_API.framework in Frameworks */,
-				183E205A224B6FE300999BF4 /* Channelize.framework in Frameworks */,
+				186753D523D051690027EC0B /* GiphyCoreSDK.framework in Frameworks */,
 				AE92217236F8267D8BA6A27C /* Pods_demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -126,8 +127,8 @@
 		1866A3FA21C92DA400966620 = {
 			isa = PBXGroup;
 			children = (
-				183E2055224B6FDA00999BF4 /* Channelize_API.framework */,
-				183E2054224B6FD900999BF4 /* Channelize.framework */,
+				186753D923D05AFE0027EC0B /* GoogleService-Info.plist */,
+				186753D423D051690027EC0B /* GiphyCoreSDK.framework */,
 				1866A40521C92DA500966620 /* demo */,
 				1866A41A21C92DA600966620 /* demoTests */,
 				1866A42521C92DA600966620 /* demoUITests */,
@@ -153,14 +154,16 @@
 				1866A44321CA1C4800966620 /* demo.entitlements */,
 				1866A43A21CA19CE00966620 /* AMInputView */,
 				1866A40621C92DA500966620 /* AppDelegate.swift */,
-				1866A40821C92DA500966620 /* ViewController.swift */,
 				1866A44121CA1C1A00966620 /* PMStyle.swift */,
-				1866A40A21C92DA500966620 /* Main.storyboard */,
 				1866A40D21C92DA600966620 /* Assets.xcassets */,
 				1866A40F21C92DA600966620 /* LaunchScreen.storyboard */,
-				1866A44821CA1CCC00966620 /* Channelize-Info-demo.plist */,
 				1866A44421CA1CBA00966620 /* CHLocalizable.strings */,
 				1866A41221C92DA600966620 /* Info.plist */,
+				186753CC23D02A7D0027EC0B /* LoginViewController.swift */,
+				186753CE23D02C070027EC0B /* UIKit+Extension.swift */,
+				186753D023D0397A0027EC0B /* Main.storyboard */,
+				186753D723D051EE0027EC0B /* Channelize-Info.plist */,
+				186753DB23D05F180027EC0B /* SignUpScreenViewController.swift */,
 			);
 			path = demo;
 			sourceTree = "<group>";
@@ -332,11 +335,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1866A44921CA1CCC00966620 /* Channelize-Info-demo.plist in Resources */,
+				186753DA23D05AFF0027EC0B /* GoogleService-Info.plist in Resources */,
+				186753D823D051EE0027EC0B /* Channelize-Info.plist in Resources */,
 				1866A41121C92DA600966620 /* LaunchScreen.storyboard in Resources */,
 				1866A43E21CA19E500966620 /* AMInputView.xib in Resources */,
+				186753D123D0397A0027EC0B /* Main.storyboard in Resources */,
 				1866A40E21C92DA600966620 /* Assets.xcassets in Resources */,
-				1866A40C21C92DA500966620 /* Main.storyboard in Resources */,
 				1866A44521CA1CBA00966620 /* CHLocalizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -363,61 +367,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-demo/Pods-demo-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AWSAuthCore/AWSAuthCore.framework",
-				"${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProvider/AWSCognitoIdentityProvider.framework",
-				"${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProviderASF/AWSCognitoIdentityProviderASF.framework",
-				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
-				"${BUILT_PRODUCTS_DIR}/AWSIoT/AWSIoT.framework",
-				"${BUILT_PRODUCTS_DIR}/AWSMobileClient/AWSMobileClient.framework",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/CWStatusBarNotification/CWStatusBarNotification.framework",
-				"${BUILT_PRODUCTS_DIR}/Cache/Cache.framework",
-				"${BUILT_PRODUCTS_DIR}/Chatto/Chatto.framework",
-				"${BUILT_PRODUCTS_DIR}/ChattoAdditions/ChattoAdditions.framework",
-				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
-				"${BUILT_PRODUCTS_DIR}/Gallery/Gallery.framework",
-				"${BUILT_PRODUCTS_DIR}/GiphyCoreSDK/GiphyCoreSDK.framework",
-				"${BUILT_PRODUCTS_DIR}/Imaginary/Imaginary.framework",
-				"${BUILT_PRODUCTS_DIR}/InputBarAccessoryView/InputBarAccessoryView.framework",
-				"${BUILT_PRODUCTS_DIR}/Lightbox/Lightbox.framework",
-				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftIconFont/SwiftIconFont.framework",
-				"${BUILT_PRODUCTS_DIR}/ZVActivityIndicatorView/ZVActivityIndicatorView.framework",
-				"${BUILT_PRODUCTS_DIR}/ZVProgressHUD/ZVProgressHUD.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-demo/Pods-demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSAuthCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognitoIdentityProvider.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognitoIdentityProviderASF.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSIoT.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSMobileClient.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CWStatusBarNotification.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cache.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Chatto.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChattoAdditions.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gallery.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GiphyCoreSDK.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Imaginary.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/InputBarAccessoryView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lightbox.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftIconFont.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZVActivityIndicatorView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZVProgressHUD.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-demo/Pods-demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-demo/Pods-demo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-demo/Pods-demo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A6D7C81E54D2C0D70590F885 /* [CP] Check Pods Manifest.lock */ = {
@@ -482,8 +441,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1866A43C21CA19DC00966620 /* AMInputView.swift in Sources */,
-				1866A40921C92DA500966620 /* ViewController.swift in Sources */,
 				1866A44221CA1C1A00966620 /* PMStyle.swift in Sources */,
+				186753CD23D02A7D0027EC0B /* LoginViewController.swift in Sources */,
+				186753CF23D02C070027EC0B /* UIKit+Extension.swift in Sources */,
+				186753DC23D05F180027EC0B /* SignUpScreenViewController.swift in Sources */,
 				1866A40721C92DA500966620 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -520,14 +481,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1866A40A21C92DA500966620 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1866A40B21C92DA500966620 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1866A40F21C92DA600966620 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -675,7 +628,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.channelize.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "53dea528-2162-4fbe-9299-b47a8fcf2005";
-				PROVISIONING_PROFILE_SPECIFIER = "Channelize Demo";
+				PROVISIONING_PROFILE_SPECIFIER = PrimeMessenger_dev;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -701,7 +654,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.channelize.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "53dea528-2162-4fbe-9299-b47a8fcf2005";
-				PROVISIONING_PROFILE_SPECIFIER = "Channelize Demo";
+				PROVISIONING_PROFILE_SPECIFIER = PrimeMessenger_dev;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

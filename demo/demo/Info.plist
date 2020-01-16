@@ -22,30 +22,29 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <true/>
-    </dict>
-    <key>NSCameraUsageDescription</key>
-    <string>You can take photos to document your job.</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>This app wants to access your location</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>This app wants to access your location</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>You can select photos to attach to reports.</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>Microphone to start a call</string>
-    <key>UIBackgroundModes</key>
-    <array>
-        <string>remote-notification</string>
-        <string>voip</string>
-    </array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>You can take photos to document your job.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This app wants to access your location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app wants to access your location</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Microphone to start a call</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>You can select photos to attach to reports.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+		<string>voip</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

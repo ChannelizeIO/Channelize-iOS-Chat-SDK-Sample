@@ -1,0 +1,27 @@
+${PODS_ROOT}/Target Support Files/Pods-demo/Pods-demo-frameworks.sh
+${BUILT_PRODUCTS_DIR}/AWSAuthCore/AWSAuthCore.framework
+${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProvider/AWSCognitoIdentityProvider.framework
+${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProviderASF/AWSCognitoIdentityProviderASF.framework
+${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework
+${BUILT_PRODUCTS_DIR}/AWSIoT/AWSIoT.framework
+${BUILT_PRODUCTS_DIR}/AWSMobileClient/AWSMobileClient.framework
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework
+${BUILT_PRODUCTS_DIR}/CWStatusBarNotification/CWStatusBarNotification.framework
+${PODS_ROOT}/ChannelizeAPI/Channelize_API.framework
+${PODS_ROOT}/ChannelizeCall/Channelize_Voice_Video.framework
+${PODS_ROOT}/ChannelizeUI/Channelize.framework
+${BUILT_PRODUCTS_DIR}/Chatto/Chatto.framework
+${BUILT_PRODUCTS_DIR}/ChattoAdditions/ChattoAdditions.framework
+${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework
+${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework
+${BUILT_PRODUCTS_DIR}/InputBarAccessoryView/InputBarAccessoryView.framework
+${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework
+${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework
+${BUILT_PRODUCTS_DIR}/Realm/Realm.framework
+${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework
+${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
+${BUILT_PRODUCTS_DIR}/SwiftIconFont/SwiftIconFont.framework
+${BUILT_PRODUCTS_DIR}/ZVActivityIndicatorView/ZVActivityIndicatorView.framework
+${BUILT_PRODUCTS_DIR}/ZVProgressHUD/ZVProgressHUD.framework
+${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework

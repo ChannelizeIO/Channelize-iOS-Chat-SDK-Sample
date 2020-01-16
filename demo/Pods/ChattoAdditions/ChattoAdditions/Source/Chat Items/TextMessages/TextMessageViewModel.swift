@@ -29,11 +29,18 @@ public protocol TextMessageViewModelProtocol: DecoratedMessageViewModelProtocol 
     var quotedUser: String? { get }
     var quotedBody: String? { get }
     var quotedImage: String? { get }
+    var taggedUsersDictionary : [String:String]? { get }
     var cellAccessibilityIdentifier: String { get }
     var bubbleAccessibilityIdentifier: String { get }
+    var isDeleted : Bool? { get }
 }
 
 open class TextMessageViewModel<TextMessageModelT: TextMessageModelProtocol>: TextMessageViewModelProtocol {
+    
+    open var taggedUsersDictionary: [String:String]? {
+        return self.textMessage.taggedUsersDictionary
+    }
+    
     open var quotedUser: String? {
         return self.textMessage.quotedUser
     }
@@ -44,6 +51,10 @@ open class TextMessageViewModel<TextMessageModelT: TextMessageModelProtocol>: Te
     
     open var quotedImage: String? {
         return self.textMessage.quotedImage
+    }
+    
+    open var isDeleted: Bool? {
+        return self.textMessage.isDeleted
     }
     
     open var text: String {

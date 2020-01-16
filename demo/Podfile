@@ -3,24 +3,13 @@
 
 def primemessenger_pods
 
-    $awsVersion = '2.9.3'
-    pod 'AWSMobileClient', $awsVersion
-    pod 'AWSIoT', $awsVersion
-    pod 'Alamofire', '4.8.0'
-    pod 'AlamofireObjectMapper', '5.2.0'
-    pod 'Gallery', '2.2.0'
-    pod 'Lightbox', '2.3.0'
-    pod 'SwiftIconFont', '3.0.0'
-    pod 'CWStatusBarNotification', '2.3.5'
-    pod 'GiphyCoreSDK', '1.4.0'
-    pod 'Chatto',  :git => 'https://github.com/BigStepTechnologies/Chatto', :branch => 'update/v1.0'
-    pod 'ChattoAdditions',  :git => 'https://github.com/BigStepTechnologies/Chatto', :branch => 'update/v1.0'
-    pod 'Crashlytics', '3.12.0'
-    pod 'InputBarAccessoryView', '4.2.1'
-    pod 'SDWebImage/GIF', '4.4.3'
-    pod 'ZVProgressHUD', '2.0.3'
-    pod 'ZVActivityIndicatorView', '0.1.3'
-
+    pod 'ChannelizeUI', '~> 4.10.0'
+    pod 'ChannelizeAPI', '~> 4.10.0'
+    pod 'ChannelizeCall', '~> 4.10.0'
+    pod 'Chatto',  :git => 'https://github.com/BigStepTechnologies/Chatto', :branch => 'update/v4.0'
+    pod 'ChattoAdditions',  :git => 'https://github.com/BigStepTechnologies/Chatto', :branch => 'update/v4.0'
+    pod 'Firebase/Core', '5.15.0'
+    pod 'Firebase/Messaging', '5.15.0'
 end
 
 target 'demo' do
@@ -39,4 +28,12 @@ target 'demo' do
     # Pods for testing
   end
 
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['SWIFT_VERSION'] = '4.2'
+    end
+  end
 end
