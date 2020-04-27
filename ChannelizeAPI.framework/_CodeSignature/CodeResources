@@ -14,15 +14,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		J4KT0CLyhna3WGwnEDTPtFcv43Y=
+		tG7SeqqB1ImrI+9QkFXUHdqSSsk=
 		</data>
-		<key>Modules/ChannelizeAPI.swiftmodule/x86_64.swiftdoc</key>
+		<key>Modules/ChannelizeAPI.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		oWQfjdXi33fpd5Xf485kWzhhi8k=
+		HY9h1gKRlrtkq7KIjFMVvCqEMkU=
 		</data>
-		<key>Modules/ChannelizeAPI.swiftmodule/x86_64.swiftmodule</key>
+		<key>Modules/ChannelizeAPI.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		T2OS1oeQRHnq2v0hZL16+uQ2UF4=
+		9HxBZSU/v1712lUW7SiwzILLTvY=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -45,18 +45,18 @@
 			BYgqCkVRhSU6GVTLc/P1pcmnH0ZhirKA4R0ZTxI+qQ4=
 			</data>
 		</dict>
-		<key>Modules/ChannelizeAPI.swiftmodule/x86_64.swiftdoc</key>
+		<key>Modules/ChannelizeAPI.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			9oaD6echzLn01308sP5r9y6WtWSd4rwd4/7+B245VXU=
+			Rt2MA/1J0hZzHfBVy9hXLV6AHl6xiY8WpBs2yVN0WC8=
 			</data>
 		</dict>
-		<key>Modules/ChannelizeAPI.swiftmodule/x86_64.swiftmodule</key>
+		<key>Modules/ChannelizeAPI.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			JDSC8z/bVtnqX3elCWSZtqJLVO5OsAsoiUqoACbSCRc=
+			fFmfCpBi2Q05X1dcPwblPklrZnASy43vcxCXyDK48Rk=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
