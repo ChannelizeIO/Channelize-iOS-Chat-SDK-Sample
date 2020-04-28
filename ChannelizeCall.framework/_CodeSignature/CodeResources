@@ -6,19 +6,19 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		pQzE58v1qhEsy3lnUejx97LMMLY=
+		3m58Fg5uV8EUXrG/24iSagkSOeI=
 		</data>
 		<key>Frameworks/ChannelizeAPI.framework/ChannelizeAPI</key>
 		<data>
-		z1Z4z7SS517GuyTPw6H05X49THY=
+		eMk/pZK+HdPtpmxftjcK62Mp0Eo=
 		</data>
 		<key>Frameworks/ChannelizeAPI.framework/Info.plist</key>
 		<data>
-		fVMjWUj4KqR0if9ReUTSxuB/JYc=
+		tG7SeqqB1ImrI+9QkFXUHdqSSsk=
 		</data>
 		<key>Frameworks/ChannelizeAPI.framework/_CodeSignature/CodeResources</key>
 		<data>
-		uCJNKZGrK5WVBxOA7C/C9yu+oDo=
+		kwqmMz4dosjCemR99pnAwLPs70g=
 		</data>
 		<key>Headers/ChannelizeCall-Swift.h</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		9nATN2NbsFajAPoBWnXu4aD/wEo=
+		xGI9ZJlw6vzTct+Qddvi10Tqjzo=
 		</data>
 		<key>Modules/ChannelizeCall.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Modules/ChannelizeCall.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		7VOwaFCxVz43F55qS111KMmQSD4=
+		oEw4e6aZMPkWSaqWbIh1RiDbmgs=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -51,28 +51,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			cmbJ6VimS3+QgXcNAREJJEgasqnepMWIztoPp1Lu5MI=
+			i3P9QYF8YvU6tL/H0Ar0WKTi2wuwG1oX1VHTkFRf4Lw=
 			</data>
 		</dict>
 		<key>Frameworks/ChannelizeAPI.framework/ChannelizeAPI</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			zqGkfLVP7neuU2Fv5QEQi77gStjUcgfzRrgOctH3Gmw=
+			KEBcl3jhDvpZbhL+ckDT0o6LEd317bsvIg4VriS2gUI=
 			</data>
 		</dict>
 		<key>Frameworks/ChannelizeAPI.framework/Info.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			zWURwK+RW3UfIupzUtjRhQBQBR8jbP/phtGHqFISjd8=
+			AjNwqTK1ZEuQy1fRPQ1tksRA86LAvLArF3zXK8KzG9E=
 			</data>
 		</dict>
 		<key>Frameworks/ChannelizeAPI.framework/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			l+NYGxepKfF2+7jz1ME4sBd0HdY9dh7KYaCyfon8PM4=
+			CueDfxT9nLvJ49oMhKifiGrOZTLP0fb65AxasBQL3Eg=
 			</data>
 		</dict>
 		<key>Headers/ChannelizeCall-Swift.h</key>
@@ -100,7 +100,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			OUQCD/ypVKUJONN5mtmyBpOgEeJfQzNADNTvF1aqRYc=
+			5AwOq7Oan32JTUqbriGBR1Y1HVgE+ejOooiAshw/7JY=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
