@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
 s.name         = "ChannelizeCall"
-s.version      = "4.20.4"
+s.version      = "4.20.5"
 s.summary      = "Channelize Call SDK"
 s.description  = "A Video and Audio call SDK using Channelize API SDK"
 s.homepage     = "https://channelize.io/"
@@ -13,6 +13,6 @@ s.source       = { :git => "https://github.com/ChannelizeIO/Channelize-iOS-Chat-
 s.vendored_frameworks = "ChannelizeCall.framework"
 s.dependency "AgoraRtcEngine_iOS", "2.9.0"
 s.dependency "SDWebImage", "~> 5.0"
-s.dependency "ChannelizeAPI", ">= 4.20.4"
+s.dependency "ChannelizeAPI", ">= 4.20.5"
 end
 
