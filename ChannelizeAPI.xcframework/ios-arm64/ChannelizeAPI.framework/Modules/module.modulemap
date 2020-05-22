@@ -1,0 +1,11 @@
+framework module ChannelizeAPI {
+  umbrella header "ChannelizeAPI.h"
+
+  export *
+  module * { export * }
+}
+
+module ChannelizeAPI.Swift {
+    header "ChannelizeAPI-Swift.h"
+    requires objc
+}

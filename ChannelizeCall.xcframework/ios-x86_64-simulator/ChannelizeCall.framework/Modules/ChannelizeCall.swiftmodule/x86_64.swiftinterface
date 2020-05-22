@@ -1,0 +1,52 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.1.3 effective-4.2 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
+// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 4.2 -enforce-exclusivity=checked -Onone -module-name ChannelizeCall
+import AVFoundation
+import AgoraRtcEngineKit
+import Alamofire
+import CallKit
+import ChannelizeAPI
+@_exported import ChannelizeCall
+import Foundation
+import SDWebImage
+import Swift
+import UIKit
+@objc public class CHCallKitProvider : ObjectiveC.NSObject, CallKit.CXProviderDelegate {
+  @objc override dynamic public init()
+  @objc deinit
+  @objc public func providerDidReset(_ provider: CallKit.CXProvider)
+  @objc public func provider(_ provider: CallKit.CXProvider, perform action: CallKit.CXStartCallAction)
+  @objc public func provider(_ provider: CallKit.CXProvider, perform action: CallKit.CXEndCallAction)
+  @objc public func provider(_ provider: CallKit.CXProvider, perform action: CallKit.CXAnswerCallAction)
+  @objc public func provider(_ provider: CallKit.CXProvider, perform action: CallKit.CXSetMutedCallAction)
+}
+public class CHCall : ChannelizeAPI.CallSDKDelegates {
+  public var newCallProvider: ChannelizeCall.CHCallKitProvider?
+  public var callKitProvider: ChannelizeCall.CHCallKitProvider?
+  public var currentCall: ChannelizeAPI.CHActiveCall?
+  public static var instance: ChannelizeCall.CHCall
+  public var isAnyCallIsOngoing: Swift.Bool
+  public static var isIncomingCall: Swift.Bool
+  public static var isCallConnected: Swift.Bool
+  public static var isCallAcceptedOnAnotherDevice: Swift.Bool
+  public static var isCallEndedFromRemote: Swift.Bool
+  public static func configureVoiceVideo()
+  public static func launchCallViewController(navigationController: UIKit.UINavigationController?, user: ChannelizeAPI.CHUser, type: Swift.String)
+  public func launchCallViewController(navigationController: UIKit.UINavigationController?, activeCall: ChannelizeAPI.CHActiveCall)
+  public func getCallObject(user: ChannelizeAPI.CHUser, type: ChannelizeAPI.CHCallScreen) -> ChannelizeAPI.CHActiveCall
+  public static func showIncomingCall(call: ChannelizeAPI.CHActiveCall, completion: (Foundation.NSError?) -> Swift.Void)
+  public static func sendUserBusyNotification(forCallId: Swift.String, userId: Swift.String)
+  public static func processCallActionNotification(userInfo: [Swift.AnyHashable : Any])
+  public static func processCallRecievedNotification(callId: Swift.String)
+  public static func processCallAcceptedNotification(callId: Swift.String)
+  public static func processCallRejectNotification(callId: Swift.String)
+  public static func processCallEndNotification(callId: Swift.String)
+  public static func performOutGoingCallRejected(callTopic: Swift.String)
+  public static func performOnGoingCallEnded(callTopic: Swift.String)
+  public static func postCallRecievedNotification(callTopic: Swift.String)
+  public static func postCallAcceptedNotification(callTopic: Swift.String)
+  public func getActiveCall() -> ChannelizeAPI.CHActiveCall?
+  public func removeCurrentCall()
+  public func removeCallProvider()
+  @objc deinit
+}

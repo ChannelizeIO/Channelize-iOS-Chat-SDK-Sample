@@ -1,0 +1,982 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.1.3 effective-4.2 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
+// swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 4.2 -enforce-exclusivity=checked -Onone -module-name ChannelizeAPI
+import AVFoundation
+import AWSCore
+import AWSIoT
+import AWSMobileClient
+import Alamofire
+@_exported import ChannelizeAPI
+import Foundation
+import ObjectMapper
+import Swift
+public protocol CHCallEventDelegates {
+  func didCallAccepted(data: Foundation.Data, topic: Swift.String)
+  func didCallEnded(data: Foundation.Data, topic: Swift.String)
+  func didCallRejected(data: Foundation.Data, topic: Swift.String)
+  func didCallRecieved(data: Foundation.Data, topic: Swift.String)
+}
+extension CHCallEventDelegates {
+  public func didCallAccepted(data: Foundation.Data, topic: Swift.String)
+  public func didCallRejected(data: Foundation.Data, topic: Swift.String)
+  public func didCallRecieved(data: Foundation.Data, topic: Swift.String)
+}
+public class CHAttachmentMetaData : ObjectMapper.Mappable {
+  public var subjectId: Swift.String?
+  public var subjectType: Swift.String?
+  public var objectType: Swift.String?
+  public var objectValues: Any?
+  public var subjectUser: ChannelizeAPI.CHUser?
+  public var objectUsers: [ChannelizeAPI.CHUser]?
+  public var objectUser: ChannelizeAPI.CHUser?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class CHUserTypingStatusModel : ObjectMapper.Mappable {
+  public var conversation: ChannelizeAPI.CHConversation?
+  public var user: ChannelizeAPI.CHUser?
+  public var timeStamp: Foundation.Date?
+  public var isTyping: Swift.Bool?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class CHConversationMuteStatusModel : ObjectMapper.Mappable {
+  public var conversation: ChannelizeAPI.CHConversation?
+  public var mutedUser: ChannelizeAPI.CHUser?
+  public var timeStamp: Foundation.Date?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class CHCurrentUserJoinConversationModel : ObjectMapper.Mappable {
+  public var conversation: ChannelizeAPI.CHConversation?
+  public var timeStamp: Foundation.Date?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class CHNewMemberAddedModel : ObjectMapper.Mappable {
+  public var conversation: ChannelizeAPI.CHConversation?
+  public var timeStamp: Foundation.Date?
+  public var addedMembers: [ChannelizeAPI.CHMember]?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public enum CallSubscribers {
+  case callInvite
+  case callReceived(id: Swift.String)
+  case callAccept(id: Swift.String)
+  case callReject(id: Swift.String)
+  case callEnd(id: Swift.String)
+  public var topic: Swift.String {
+    get
+  }
+  public func value() -> Swift.String
+}
+public class CHNewAdminAddedModel : ObjectMapper.Mappable {
+  public var conversation: ChannelizeAPI.CHConversation?
+  public var adminUser: ChannelizeAPI.CHUser?
+  public var timeStamp: Foundation.Date?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public enum ChannelizeKeys : Swift.String {
+  case userId
+  case accessToken
+  case displayName
+  case profileImageUrl
+  case isUserOnline
+  case isNotificationOn
+  case currentLanguage
+  public func key() -> Swift.String
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol CallSDKDelegates {
+  static func configureVoiceVideo()
+  static func launchCallViewController(navigationController: UIKit.UINavigationController?, user: ChannelizeAPI.CHUser, type: Swift.String)
+  static func showIncomingCall(call: ChannelizeAPI.CHActiveCall, completion: (Foundation.NSError?) -> Swift.Void)
+}
+open class Channelize {
+  public static var instance: ChannelizeAPI.Channelize
+  public static func configure()
+  public static func configureAws()
+  public static func login(email: Swift.String, password: Swift.String, completion: @escaping (ChannelizeAPI.CHUser?, Swift.String?) -> ())
+  public static func login(userId: Swift.String, accessToken: Swift.String, completion: @escaping (ChannelizeAPI.CHUser?, Swift.String?) -> ())
+  public static func connect()
+  public static func disconnect()
+  public static func updateFcmToken(token: Swift.String, completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func updateVoipToken(token: Swift.String, completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func logout(completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func updateUserToken(token: Swift.String)
+  public static func updateUser(user: ChannelizeAPI.CHUser, token: Swift.String)
+  public func setUserOtherDetails(user: ChannelizeAPI.CHUser?)
+  public func setCurrentUserId(userId: Swift.String?)
+  public func setCurrentUserDisplayName(name: Swift.String?)
+  public func setCurrentUserProfileImageUrl(url: Swift.String?)
+  public static func getCurrentUserId() -> Swift.String
+  public static func getCurrentUserDisplayName() -> Swift.String
+  public static func getCurrentUserProfileImageUrl() -> Swift.String?
+  public static func setAccessToken(token: Swift.String)
+  public static func getAccessToken() -> Swift.String?
+  public static func addConversationEventDelegate(delegate: ChannelizeAPI.CHConversationEventDelegate, identifier: Foundation.UUID)
+  public static func addUserEventDelegate(delegate: ChannelizeAPI.CHUserEventDelegates, identifier: Foundation.UUID)
+  public static func removeConversationDelegate(identifier: Foundation.UUID)
+  public static func removeUserEventDelegate(identifier: Foundation.UUID)
+  public static func setUserOffline()
+  public static func setUserOnline()
+  @objc deinit
+}
+public class CHUserStatusModel : ObjectMapper.Mappable {
+  public var hasBlocked: Swift.Bool?
+  public var isBlocked: Swift.Bool?
+  public var hasFollowed: Swift.Bool?
+  public var isFollowed: Swift.Bool?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class CHConversationUpdatedModel : ObjectMapper.Mappable {
+  public var conversationID: Swift.String?
+  public var type: Swift.String?
+  public var customType: Swift.String?
+  public var isGroup: Swift.Bool?
+  public var title: Swift.String?
+  public var profileImageUrl: Swift.String?
+  public var memberCount: Swift.Int?
+  public var createdAt: Foundation.Date?
+  public var timeStamp: Foundation.Date?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class CHMentionedUser : ObjectMapper.Mappable {
+  public var id: Swift.String?
+  public var userId: Swift.String?
+  public var order: Swift.Int?
+  public var wordCount: Swift.Int?
+  public var user: ChannelizeAPI.CHUser?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public protocol CHConversationEventDelegate {
+  func didNewMembersAddedToConversation(model: ChannelizeAPI.CHNewMemberAddedModel?)
+  func didMembersRemovedFromConversation(model: ChannelizeAPI.CHMembersRemovedModel?)
+  func didNewAdminAddedToConversation(model: ChannelizeAPI.CHNewAdminAddedModel?)
+  func didUpdateConversationMuteStatus(model: ChannelizeAPI.CHConversationMuteStatusModel?)
+  func didCurrentUserRemovedFromConversation(model: ChannelizeAPI.CHCurrentUserRemovedModel?)
+  func didConversationInfoUpdated(model: ChannelizeAPI.CHConversationUpdatedModel?)
+  func didConversationCleared(model: ChannelizeAPI.CHConversationClearModel?)
+  func didConversationDeleted(model: ChannelizeAPI.CHConversationDeleteModel?)
+  func didRecieveNewMessage(model: ChannelizeAPI.CHNewMessageRecievedModel?)
+  func didConversationMessageDeleted(model: ChannelizeAPI.CHMessageDeletedModel?)
+  func didConversationMessageDeletedForEveryOne(model: ChannelizeAPI.CHMessageDeletedModel?)
+  func didConversationMarkAsRead(model: ChannelizeAPI.CHConversationMarkReadModel?)
+  func didCurrentUserJoinedConversation(model: ChannelizeAPI.CHCurrentUserJoinConversationModel?)
+  func didTypingUserStatusUpdated(model: ChannelizeAPI.CHUserTypingStatusModel?)
+  func didMessageReactionAdded(model: ChannelizeAPI.CHReactionEventModel?)
+  func didMessageReactionRemoved(model: ChannelizeAPI.CHReactionEventModel?)
+}
+extension CHConversationEventDelegate {
+  public func didRecieveNewMessage(model: ChannelizeAPI.CHNewMessageRecievedModel?)
+  public func didNewMembersAddedToConversation(model: ChannelizeAPI.CHNewMemberAddedModel?)
+  public func didMembersRemovedFromConversation(model: ChannelizeAPI.CHMembersRemovedModel?)
+  public func didNewAdminAddedToConversation(model: ChannelizeAPI.CHNewAdminAddedModel?)
+  public func didUpdateConversationMuteStatus(model: ChannelizeAPI.CHConversationMuteStatusModel?)
+  public func didCurrentUserRemovedFromConversation(model: ChannelizeAPI.CHCurrentUserRemovedModel?)
+  public func didConversationInfoUpdated(model: ChannelizeAPI.CHConversationUpdatedModel?)
+  public func didConversationCleared(model: ChannelizeAPI.CHConversationClearModel?)
+  public func didConversationDeleted(model: ChannelizeAPI.CHConversationDeleteModel?)
+  public func didConversationMessageDeleted(model: ChannelizeAPI.CHMessageDeletedModel?)
+  public func didConversationMessageDeletedForEveryOne(model: ChannelizeAPI.CHMessageDeletedModel?)
+  public func didConversationMarkAsRead(model: ChannelizeAPI.CHConversationMarkReadModel?)
+  public func didCurrentUserJoinedConversation(model: ChannelizeAPI.CHCurrentUserJoinConversationModel?)
+  public func didTypingUserStatusUpdated(model: ChannelizeAPI.CHUserTypingStatusModel?)
+  public func didMessageReactionAdded(model: ChannelizeAPI.CHReactionEventModel?)
+  public func didMessageReactionRemoved(model: ChannelizeAPI.CHReactionEventModel?)
+}
+public class CHMessageDeletedModel : ObjectMapper.Mappable {
+  public var conversation: ChannelizeAPI.CHConversation?
+  public var deletedMessages: [ChannelizeAPI.CHMessage]?
+  public var timeStamp: Foundation.Date?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class CHReactionEventModel : ObjectMapper.Mappable {
+  public var message: ChannelizeAPI.CHMessage?
+  public var reactionKey: Swift.String?
+  public var reactingUserId: Swift.String?
+  public var reactingUserName: Swift.String?
+  public var timeStamp: Foundation.Date?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public enum AttachmentType : Swift.String {
+  case image
+  case metaMessage
+  case audio
+  case location
+  case sticker
+  case gif
+  case video
+  case doc
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum AdminMessageType : Swift.String {
+  case groupCreate
+  case addMembers
+  case groupLeave
+  case removeMember
+  case makeGroupAdmin
+  case changeGroupTitle
+  case changeGroupPhoto
+  case missedVideoCall
+  case missedVoiceCall
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public class CHAttachment : ObjectMapper.Mappable {
+  public var type: ChannelizeAPI.AttachmentType?
+  public var adminMessageType: ChannelizeAPI.AdminMessageType?
+  public var name: Swift.String?
+  public var mimeType: Swift.String?
+  public var attachmentExtension: Swift.String?
+  public var attachMentSize: Swift.Int?
+  public var fileUrl: Swift.String?
+  public var thumbnailUrl: Swift.String?
+  public var locationLatitude: Swift.Double?
+  public var locationLongitude: Swift.Double?
+  public var locationAddress: Swift.String?
+  public var locationTitle: Swift.String?
+  public var audioDuration: Swift.Double?
+  public var gifStickerDownloadUrl: Swift.String?
+  public var gifStickerStillUrl: Swift.String?
+  public var gifStickerOriginalUrl: Swift.String?
+  public var metaData: ChannelizeAPI.CHAttachmentMetaData?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class CHUserStatusUpdatedModel : ObjectMapper.Mappable {
+  public var timeStamp: Foundation.Date?
+  public var updatedUser: ChannelizeAPI.CHUser?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class ChannelizeAPIService {
+  public static func getRecentConversation()
+  public static func updateUserInfo(userId: Swift.String, queryBuilder: ChannelizeAPI.CHUserUpdateQueryBuilder, completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func getUserInfo(userId: Swift.String, completion: @escaping (ChannelizeAPI.CHUser?, Swift.String?) -> ())
+  public static func deleteUser(userId: Swift.String, completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func addUserAsFriend(userId: Swift.String, friendshipType: ChannelizeAPI.FriendShipType, completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func removeUserAsFriend(userId: Swift.String, friendshipType: ChannelizeAPI.FriendShipType, completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func blockUser(userId: Swift.String, completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func unblockUser(userId: Swift.String, completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func getRelationshipStatus(userId: Swift.String, completion: @escaping (ChannelizeAPI.CHUserStatusModel?, Swift.String?) -> ())
+  public static func getBlockedUsersCount(queryBuilder: ChannelizeAPI.CHUserCountQueryBuilder, completion: @escaping (Swift.Int, Swift.String?) -> ())
+  public static func getBlockedUsers(queryBuilder: ChannelizeAPI.CHUserQueryBuilder, completion: @escaping ([ChannelizeAPI.CHUser]?, Swift.String?) -> ())
+  public static func getUsersList(queryBuilder: ChannelizeAPI.CHUserQueryBuilder, completion: @escaping ([ChannelizeAPI.CHUser]?, Swift.String?) -> ())
+  public static func getFriendsListCount(queryBuilder: ChannelizeAPI.CHUserCountQueryBuilder, completion: @escaping (Swift.Int, Swift.String?) -> ())
+  public static func getFriendsList(queryBuilder: ChannelizeAPI.CHFriendQueryBuilder, completion: @escaping ([ChannelizeAPI.CHUser]?, Swift.String?) -> ())
+  public static func getBlockedUsersCount(params: Alamofire.Parameters?, completion: @escaping (Swift.Int, Swift.String?) -> ())
+  public static func getBlockedUsers(params: Alamofire.Parameters?, completion: @escaping ([ChannelizeAPI.CHUser]?, Swift.String?) -> ())
+  public static func getUsersList(params: Alamofire.Parameters?, completion: @escaping ([ChannelizeAPI.CHUser]?, Swift.String?) -> ())
+  public static func getFriendsCount(params: Alamofire.Parameters?, completion: @escaping (Swift.Int, Swift.String?) -> ())
+  public static func getFriendsList(params: Alamofire.Parameters?, completion: @escaping ([ChannelizeAPI.CHUser]?, Swift.String?) -> ())
+  public static func addMessageReaction(messageId: Swift.String, reactionType: Swift.String, completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func removeMessageReaction(messageId: Swift.String, reactionType: Swift.String, completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func listMessageReactors(messageId: Swift.String, reactionType: Swift.String, limit: Swift.Int, skip: Swift.Int, completion: @escaping ([ChannelizeAPI.CHReactorModel]?, Swift.String?) -> ())
+  public static func getConversationMessagesCount(conversationId: Swift.String, queryBuilder: ChannelizeAPI.CHGetMessageCountQueryBuilder, completion: @escaping (Swift.Int, Swift.String?) -> ())
+  public static func getConversationMessages(conversationId: Swift.String, queryBuilder: ChannelizeAPI.CHGetMessageQueryBuilder, completion: @escaping ([ChannelizeAPI.CHMessage]?, Swift.String?) -> ())
+  public static func sendMessage(queryBuilder: ChannelizeAPI.CHMessageQueryBuilder, uploadProgress: @escaping (Foundation.UUID?, Swift.Double?) -> (), completion: @escaping (ChannelizeAPI.CHMessage?, Swift.String?) -> ())
+  public static func forwardMessages(messageIds: [Swift.String], userIds: [Swift.String], conversationIds: [Swift.String], completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func markConversationRead(conversationId: Swift.String, completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func deleteMessages(messageIds: [Swift.String], completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func deleteMessagesForEveryOne(messageIds: [Swift.String], completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func getUnreadMessageCount(completion: @escaping (Swift.Int, Swift.String?) -> ())
+  public static func getConversationMessages(conversationId: Swift.String, params: Alamofire.Parameters?, completion: @escaping ([ChannelizeAPI.CHMessage]?, Swift.String?) -> ())
+  public static func sendTextMessage(params: Alamofire.Parameters?, completion: @escaping (ChannelizeAPI.CHMessage?, Swift.String?) -> ())
+  public static func sendImageMessage(imageData: Foundation.Data?, thumbnailData: Foundation.Data?, conversationId: Swift.String, params: Alamofire.Parameters?, uploadProgress: @escaping (Swift.Double) -> (), comletion: @escaping (ChannelizeAPI.CHMessage?, Swift.String?) -> ())
+  public static func sendVideoMessage(videoData: Foundation.Data?, thumbnailData: Foundation.Data?, conversationId: Swift.String, params: Alamofire.Parameters?, uploadProgress: @escaping (Swift.Double) -> (), completion: @escaping (ChannelizeAPI.CHMessage?, Swift.String?) -> ())
+  public static func sendLocationMessage(params: Alamofire.Parameters?, locationName: Swift.String?, locationAddress: Swift.String?, latitude: Swift.Double?, longitude: Swift.Double?, completion: @escaping (ChannelizeAPI.CHMessage?, Swift.String?) -> ())
+  public static func sendGifStickerMessage(params: Alamofire.Parameters?, stillUrl: Swift.String, originalUrl: Swift.String, downSampledUrl: Swift.String, type: Swift.String, completion: @escaping (ChannelizeAPI.CHMessage?, Swift.String?) -> ())
+  public static func sendAudioMessage(params: Alamofire.Parameters?, audioData: Foundation.Data, uploadProgress: @escaping (Swift.Double) -> (), completion: @escaping (ChannelizeAPI.CHMessage?, Swift.String?) -> ())
+  public static func updateUserSettings(params: Alamofire.Parameters?, completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func getConversationList(params: Alamofire.Parameters?, completion: @escaping ([ChannelizeAPI.CHConversation]?, Swift.String?) -> ())
+  public static func sendIsTypingStatus(conversationId: Swift.String, isTyping: Swift.Bool, completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func publishMessage(params: [Swift.String : Any], topic: Swift.String)
+  public static func getConversationsCount(queryBuilder: ChannelizeAPI.CHConversationsCountQueryBuilder, completion: @escaping (Swift.Int, Swift.String?) -> ())
+  public static func getConversationList(queryBuilder: ChannelizeAPI.CHListConversationsQueryBuilder, completion: @escaping ([ChannelizeAPI.CHConversation]?, Swift.String?) -> ())
+  public static func createNewConversation(queryBuilder: ChannelizeAPI.CHNewConversationQueryBuilder, profileImageData: Foundation.Data?, completion: @escaping (ChannelizeAPI.CHConversation?, Swift.String?) -> ())
+  public static func createNewConversation(title: Swift.String, membersIds: [Swift.String], profileImageData: Foundation.Data?, completion: @escaping (ChannelizeAPI.CHConversation?, Swift.String?) -> ())
+  public static func getConversationsMembers(conversationId: Swift.String, completion: @escaping ([ChannelizeAPI.CHMember]?, Swift.String?) -> ())
+  public static func getConversationWithId(conversationId: Swift.String, completion: @escaping (ChannelizeAPI.CHConversation?, Swift.String?) -> ())
+  public static func getConversationWithUser(userId: Swift.String, completion: @escaping (ChannelizeAPI.CHConversation?, Swift.String?) -> ())
+  public static func addMembersToConversation(conversationId: Swift.String, userIds: [Swift.String], completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func removeMemberFromConversation(conversationId: Swift.String, userIds: [Swift.String], completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func addAdminToConversation(conversationId: Swift.String, userId: Swift.String, completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func clearConversation(conversationId: Swift.String, completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func deleteConversation(conversationId: Swift.String, completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func leaveConversation(conversatinoId: Swift.String, completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func updateConversationTitle(conversationId: Swift.String, newTitle: Swift.String, completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func updateConversationProfileImage(conversationId: Swift.String, profileImageUrl: Swift.String?, imageData: Foundation.Data?, completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func muteConversation(conversationId: Swift.String, isMute: Swift.Bool, completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func getRecentCalls(params: Alamofire.Parameters?, completion: @escaping ([ChannelizeAPI.CHRecentCall]?, Swift.String?) -> ())
+  public static func joinIncomingCallSubscribers(callId: Swift.String)
+  public static func leaveIncomingCallSubscribers(callId: Swift.String)
+  public static func joinCallSubscribers(callId: Swift.String)
+  public static func leaveCallSubscribers(callId: Swift.String)
+  public static func generateCall(params: Alamofire.Parameters?, completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func publishCallToServer(callId: Swift.String, params: Alamofire.Parameters?, completion: @escaping (Swift.Bool, Swift.String?) -> ())
+  public static func addCallDelegate(delegate: ChannelizeAPI.CHCallEventDelegates, identifier: Foundation.UUID)
+  public static func removeCallDelegate(with identifier: Foundation.UUID)
+  public static func joinReactionsSubscribers(conversationId: Swift.String)
+  public static func leaveReactionsSubscribers(conversationId: Swift.String)
+  @objc deinit
+}
+public protocol CHBuilderMessageType {
+  var attachMentIdentifier: Foundation.UUID? { get set }
+  var type: ChannelizeAPI.AttachmentType { get }
+  func generateParams() -> [Swift.String : Any]
+}
+public enum CHMessageSorting : Swift.String {
+  case ASC
+  case DESC
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public class CHGetMessageCountQueryBuilder {
+  public var ids: [Swift.String]?
+  public var types: [ChannelizeAPI.MessageType]?
+  public var customTypes: [Swift.String]?
+  public var attachmentTypes: [ChannelizeAPI.AttachmentType]?
+  public var ownerIds: [Swift.String]?
+  public var parentId: Swift.String?
+  public init()
+  @objc deinit
+}
+public class CHGetMessageQueryBuilder {
+  public var ids: [Swift.String]?
+  public var types: [ChannelizeAPI.MessageType]?
+  public var customTypes: [Swift.String]?
+  public var attachmentTypes: [ChannelizeAPI.AttachmentType]?
+  public var ownerIds: [Swift.String]?
+  public var parentId: Swift.String?
+  public var sort: ChannelizeAPI.CHMessageSorting?
+  public var limit: Swift.Int?
+  public var skip: Swift.Int?
+  public init()
+  @objc deinit
+}
+public class CHMessageQueryBuilder {
+  public var id: Swift.String?
+  public var conversationId: Swift.String?
+  public var userId: Swift.String?
+  public var messageType: ChannelizeAPI.MessageType?
+  public var customType: Swift.String?
+  public var body: Swift.String?
+  public var createdAt: Foundation.Date?
+  public var ownerId: Swift.String?
+  public var parentId: Swift.String?
+  public var recipients: [Swift.String]?
+  public var attachments: [ChannelizeAPI.CHBuilderMessageType]?
+  public var mentionedUsers: [ChannelizeAPI.CHMentionedUserQueryBuilder]?
+  public init()
+  @objc deinit
+}
+public class CHMentionedUserQueryBuilder {
+  public var userId: Swift.String?
+  public var order: Swift.Int?
+  public var wordCount: Swift.Int?
+  public init()
+  @objc deinit
+}
+public class CHDocAttachmentQueryBuilder : ChannelizeAPI.CHBuilderMessageType {
+  public var fileName: Swift.String?
+  public var fileData: Foundation.Data?
+  public var fileExtension: Swift.String?
+  public var mimeType: Swift.String?
+  public var attachMentIdentifier: Foundation.UUID?
+  public var size: Swift.Int?
+  public var type: ChannelizeAPI.AttachmentType {
+    get
+  }
+  public init()
+  public func generateParams() -> [Swift.String : Any]
+  @objc deinit
+}
+public class CHImageAttachmentQueryBuilder : ChannelizeAPI.CHBuilderMessageType {
+  public var fileName: Swift.String?
+  public var imageData: Foundation.Data?
+  public var thumbNailData: Foundation.Data?
+  public var fileExtension: Swift.String?
+  public var mimeType: Swift.String?
+  public var attachMentIdentifier: Foundation.UUID?
+  public init()
+  public func generateParams() -> [Swift.String : Any]
+  public var type: ChannelizeAPI.AttachmentType {
+    get
+  }
+  @objc deinit
+}
+public class CHVideoAttachmentQueryBuilder : ChannelizeAPI.CHBuilderMessageType {
+  public func generateParams() -> [Swift.String : Any]
+  public var type: ChannelizeAPI.AttachmentType {
+    get
+  }
+  public init()
+  public var fileName: Swift.String?
+  public var videoData: Foundation.Data?
+  public var thumbNailData: Foundation.Data?
+  public var fileExtension: Swift.String?
+  public var mimeType: Swift.String?
+  public var attachMentIdentifier: Foundation.UUID?
+  @objc deinit
+}
+public class CHAudioAttachmentQueryBuilder : ChannelizeAPI.CHBuilderMessageType {
+  public var type: ChannelizeAPI.AttachmentType {
+    get
+  }
+  public var duration: Swift.Double?
+  public var audioData: Foundation.Data?
+  public var fileName: Swift.String?
+  public var fileExtension: Swift.String?
+  public var mimeType: Swift.String?
+  public var attachMentIdentifier: Foundation.UUID?
+  public init()
+  public func generateParams() -> [Swift.String : Any]
+  @objc deinit
+}
+public class CHLocationAttachmentQueryBuilder : ChannelizeAPI.CHBuilderMessageType {
+  public var type: ChannelizeAPI.AttachmentType {
+    get
+  }
+  public var attachMentIdentifier: Foundation.UUID?
+  public var locationLatitude: Swift.Double?
+  public var locationLongitude: Swift.Double?
+  public var locationAddress: Swift.String?
+  public var locationTitle: Swift.String?
+  public init()
+  public func generateParams() -> [Swift.String : Any]
+  @objc deinit
+}
+public class CHStickerAttachmentQueryBuilder : ChannelizeAPI.CHBuilderMessageType {
+  public var type: ChannelizeAPI.AttachmentType {
+    get
+  }
+  public var attachMentIdentifier: Foundation.UUID?
+  public var stickerDownSampledUrl: Swift.String?
+  public var stickerStillUrl: Swift.String?
+  public var stickerOriginalUrl: Swift.String?
+  public init()
+  public func generateParams() -> [Swift.String : Any]
+  @objc deinit
+}
+public class CHGifAttachmentQueryBuilder : ChannelizeAPI.CHBuilderMessageType {
+  public var type: ChannelizeAPI.AttachmentType {
+    get
+  }
+  public var attachMentIdentifier: Foundation.UUID?
+  public var gifDownSampledUrl: Swift.String?
+  public var gifStillUrl: Swift.String?
+  public var gifOriginalUrl: Swift.String?
+  public init()
+  public func generateParams() -> [Swift.String : Any]
+  @objc deinit
+}
+public class CHCurrentUserRemovedModel : ObjectMapper.Mappable {
+  public var conversation: ChannelizeAPI.CHConversation?
+  public var timeStamp: Foundation.Date?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class CHConversationDeleteModel : ObjectMapper.Mappable {
+  public var conversation: ChannelizeAPI.CHConversation?
+  public var timeStamp: Foundation.Date?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class CHConversationMarkReadModel : ObjectMapper.Mappable {
+  public var conversation: ChannelizeAPI.CHConversation?
+  public var user: ChannelizeAPI.CHUser?
+  public var timeStamp: Foundation.Date?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public enum CallType : Swift.String {
+  case Out
+  case In
+  case Rejected
+  case Missed
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum CHCallScreen : Swift.String {
+  case voice
+  case video
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum CHCallStatus : Swift.String {
+  case ongoing
+  case rejected
+  case ended
+  case received
+  case started
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum CHCallResponder : Swift.String {
+  case phone
+  case app
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc open class CHActiveCall : ObjectiveC.NSObject {
+  final public let callId: Swift.String
+  final public let uuid: Foundation.UUID
+  final public let userId: Swift.String
+  final public let isOutgoing: Swift.Bool
+  open var displayName: Swift.String?
+  open var profileImageUrl: Swift.String?
+  open var type: ChannelizeAPI.CHCallScreen
+  open var endedBy: Swift.String?
+  open var hasMuted: Swift.Bool? {
+    get
+    set(newValue)
+  }
+  open var hasDeclined: Swift.Bool? {
+    get
+    set(newValue)
+  }
+  open var hasStartedConnecting: Swift.Bool {
+    get
+    set(newValue)
+  }
+  open var hasConnected: Swift.Bool {
+    get
+    set(newValue)
+  }
+  open var hasEnded: Swift.Bool {
+    get
+    set(newValue)
+  }
+  open var duration: Foundation.TimeInterval {
+    get
+  }
+  public init(uuid: Foundation.UUID, callId: Swift.String, uid: Swift.String, isOutgoing: Swift.Bool = false)
+  public func getCurrentUser() -> ChannelizeAPI.CHUser?
+  @objc override dynamic public init()
+  @objc deinit
+}
+public class CHMember : ObjectMapper.Mappable {
+  public var id: Swift.String?
+  public var userId: Swift.String?
+  public var isAdmin: Swift.Bool?
+  public var user: ChannelizeAPI.CHUser?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class CHUser : ObjectMapper.Mappable {
+  public var id: Swift.String?
+  public var displayName: Swift.String?
+  public var profileImageUrl: Swift.String?
+  public var metaData: [Swift.String : Any]?
+  public var profileUrl: Swift.String?
+  public var isOnline: Swift.Bool?
+  public var lastSeen: Foundation.Date?
+  public var hasBlocked: Swift.Bool?
+  public var isBlocked: Swift.Bool?
+  public var isAdmin: Swift.Bool?
+  public var isNotificationOn: Swift.Bool?
+  public var language: Swift.String?
+  public var isDeleted: Swift.Bool?
+  public var isActive: Swift.Bool?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public enum CHConversationType : Swift.String {
+  case privateConversation
+  case publicConversation
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum CHConversationSorting : Swift.String {
+  case ASC
+  case DESC
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public class CHNewConversationQueryBuilder {
+  public var id: Swift.String?
+  public var isGroup: Swift.Bool
+  public var customType: Swift.String?
+  public var conversationType: ChannelizeAPI.CHConversationType
+  public var title: Swift.String?
+  public var profileImageData: Foundation.Data?
+  public var members: [Swift.String]
+  public var config: [Swift.String : Any]?
+  public init()
+  @objc deinit
+}
+public class CHListConversationsQueryBuilder {
+  public var ids: [Swift.String]?
+  public var isGroup: Swift.Bool?
+  public var conversationType: ChannelizeAPI.CHConversationType?
+  public var customTypes: Swift.String?
+  public var searchQuery: Swift.String?
+  public var membersIncluded: [Swift.String]?
+  public var membersExactly: [Swift.String]?
+  public var includeDeleted: Swift.Bool?
+  public var includeOnlyActive: Swift.Bool?
+  public var sorting: ChannelizeAPI.CHConversationSorting?
+  public var includeMembers: Swift.Bool?
+  public var limit: Swift.Int?
+  public var skip: Swift.Int?
+  public init()
+  @objc deinit
+}
+public class CHCreateConversationQueryBuilder {
+  public var id: Swift.String?
+  public var isGroup: Swift.Bool?
+  public var conversationType: ChannelizeAPI.CHConversationType?
+  public var customType: Swift.String?
+  public var title: Swift.String?
+  public var profileImageUrl: Swift.String?
+  public var members: [Swift.String]
+  public var createdAt: Foundation.Date?
+  public init()
+  @objc deinit
+}
+public class CHConversationsCountQueryBuilder {
+  public var ids: [Swift.String]?
+  public var isGroup: Swift.Bool?
+  public var conversationType: ChannelizeAPI.CHConversationType?
+  public var customTypes: Swift.String?
+  public var searchQuery: Swift.String?
+  public var membersIncluded: [Swift.String]?
+  public var membersExactly: [Swift.String]?
+  public var includeDeleted: Swift.Bool?
+  public var includeOnlyActive: Swift.Bool?
+  public init()
+  @objc deinit
+}
+public enum CHCallType : Swift.String {
+  case video
+  case voice
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public class CHCall : ObjectMapper.Mappable {
+  public var id: Swift.String!
+  public var callType: ChannelizeAPI.CHCallType?
+  public var callerId: Swift.Int?
+  public var createdAt: Foundation.Date?
+  public var recipients: [ChannelizeAPI.CHCallRecipient]?
+  public var myRecipient: ChannelizeAPI.CHCallRecipient?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public enum MessageType : Swift.String {
+  case normal
+  case admin
+  case quotedMessage
+  case forward
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public class CHMessage : ObjectMapper.Mappable {
+  public var id: Swift.String?
+  public var conversationId: Swift.String?
+  public var messageType: ChannelizeAPI.MessageType?
+  public var createdAt: Foundation.Date?
+  public var updatedAt: Foundation.Date?
+  public var body: Swift.String?
+  public var ownerId: Swift.String?
+  public var attachments: [ChannelizeAPI.CHAttachment]?
+  public var owner: ChannelizeAPI.CHUser?
+  public var mentionedUser: [ChannelizeAPI.CHMentionedUser]?
+  public var isDeleted: Swift.Bool?
+  public var parentMessage: ChannelizeAPI.CHMessage?
+  public var reactionsCount: [Swift.String : Swift.Int]?
+  public var reactorsInfo: [Swift.String : [Swift.String]]?
+  public var myReactions: [Swift.String]?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class CHMembersRemovedModel : ObjectMapper.Mappable {
+  public var conversation: ChannelizeAPI.CHConversation?
+  public var timeStamp: Foundation.Date?
+  public var removedUsers: [ChannelizeAPI.CHUser]?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class CHConversation : ObjectMapper.Mappable {
+  public var id: Swift.String?
+  public var title: Swift.String?
+  public var membersCount: Swift.Int?
+  public var isGroup: Swift.Bool?
+  public var groupOwnerId: Swift.String?
+  public var profileImageUrl: Swift.String?
+  public var createdAt: Foundation.Date?
+  public var conversationType: Swift.String?
+  public var metaData: Foundation.NSDictionary?
+  public var lastReadDictionary: [Swift.String : Swift.String]?
+  public var unreadMessageCount: Swift.Int?
+  public var isMute: Swift.Bool?
+  public var isActive: Swift.Bool?
+  public var isCurrentUserAdmin: Swift.Bool?
+  public var isDeleted: Swift.Bool?
+  public var lastUpDatedAt: Foundation.Date?
+  public var conversationPartner: ChannelizeAPI.CHUser?
+  public var lastMessage: ChannelizeAPI.CHMessage?
+  public var members: [ChannelizeAPI.CHMember]?
+  public var isAllMessageRead: Swift.Bool?
+  public var lastReadAtByPartner: Foundation.Date?
+  public var isTyping: Swift.Bool?
+  public var typingUserId: Swift.String?
+  public var typingUserName: Swift.String?
+  public var lastReadByMe: Foundation.Date?
+  public var conversationProfileImage: Swift.String?
+  public var coversationTitle: Swift.String?
+  public var canReplyToConversation: Swift.Bool?
+  public var isPartnerIsBlocked: Swift.Bool?
+  public var isPartenerHasBlocked: Swift.Bool?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class CHCallMember : ObjectMapper.Mappable {
+  public var id: Swift.String!
+  public var userId: Swift.String?
+  public var resourceType: Swift.String?
+  public var newCallCount: Swift.Int?
+  public var isActive: Swift.Bool?
+  public var updatedAt: Foundation.Date?
+  public var lastCall: ChannelizeAPI.CHCall?
+  public var user: ChannelizeAPI.CHUser?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class CHUserUnblockModel : ObjectMapper.Mappable {
+  public var unblockerUser: ChannelizeAPI.CHUser?
+  public var unblockedUser: ChannelizeAPI.CHUser?
+  public var timeStamp: Foundation.Date?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+open class ISODateTransform : ObjectMapper.TransformType {
+  public typealias Object = Foundation.Date
+  public typealias JSON = Swift.String
+  public init()
+  public func transformFromJSON(_ value: Any?) -> Foundation.Date?
+  public func transformToJSON(_ value: Foundation.Date?) -> Swift.String?
+  @objc deinit
+}
+public class CHCallRecipient : ObjectMapper.Mappable {
+  public var id: Swift.String!
+  public var userId: Swift.String?
+  public var state: ChannelizeAPI.CallType?
+  public var duration: Swift.Double?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public enum FriendShipType : Swift.Int {
+  case oneWay
+  case twoWay
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public class CHUserBlockModel : ObjectMapper.Mappable {
+  public var blockerUser: ChannelizeAPI.CHUser?
+  public var blockedUser: ChannelizeAPI.CHUser?
+  public var timeStamp: Foundation.Date?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class CHNewMessageRecievedModel : ObjectMapper.Mappable {
+  public var message: ChannelizeAPI.CHMessage?
+  public var timeStamp: Foundation.Date?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public protocol CHUserEventDelegates {
+  func didUserBlocked(model: ChannelizeAPI.CHUserBlockModel?)
+  func didUserUnBlocked(model: ChannelizeAPI.CHUserUnblockModel?)
+  func didUserStatusUpdated(model: ChannelizeAPI.CHUserStatusUpdatedModel?)
+  func didUserAddedAsFriend(model: ChannelizeAPI.CHUserAddedFriendModel?)
+  func didUserRemovedAsFriend(model: ChannelizeAPI.CHUserRemovedFriendModel?)
+}
+extension CHUserEventDelegates {
+  public func didUserBlocked(model: ChannelizeAPI.CHUserBlockModel?)
+  public func didUserUnBlocked(model: ChannelizeAPI.CHUserUnblockModel?)
+  public func didUserStatusUpdated(model: ChannelizeAPI.CHUserStatusUpdatedModel?)
+  public func didUserAddedAsFriend(model: ChannelizeAPI.CHUserAddedFriendModel?)
+  public func didUserRemovedAsFriend(model: ChannelizeAPI.CHUserRemovedFriendModel?)
+}
+public class CHConversationClearModel : ObjectMapper.Mappable {
+  public var conversation: ChannelizeAPI.CHConversation?
+  public var timeStamp: Foundation.Date?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class CHUserAddedFriendModel : ObjectMapper.Mappable {
+  public var timeStamp: Foundation.Date?
+  public var addedUser: ChannelizeAPI.CHUser?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class CHUserRemovedFriendModel : ObjectMapper.Mappable {
+  public var timeStamp: Foundation.Date?
+  public var removedUser: ChannelizeAPI.CHUser?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class CHReactorModel : ObjectMapper.Mappable {
+  public var userId: Swift.String?
+  public var displayName: Swift.String?
+  public var profileImageUrl: Swift.String?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public enum CHSearchSortingType : Swift.String {
+  case ASC
+  case DESC
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum CHUserVisibility {
+  case online
+  case offline
+  public static func == (a: ChannelizeAPI.CHUserVisibility, b: ChannelizeAPI.CHUserVisibility) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public class CHUserCountQueryBuilder {
+  public var isOnline: Swift.Bool?
+  public var searchQuery: Swift.String?
+  public var includeBlocked: Swift.Bool?
+  public var metaData: [Swift.String : Any]?
+  public init()
+  @objc deinit
+}
+public class CHFriendQueryBuilder {
+  public var isOnline: Swift.Bool?
+  public var searchQuery: Swift.String?
+  public var sorting: ChannelizeAPI.CHSearchSortingType?
+  public var limit: Swift.Int?
+  public var skip: Swift.Int?
+  public var skipUserIds: Swift.String?
+  public var includeBlocked: Swift.Bool?
+  public var metaData: [Swift.String : Any]?
+  public init()
+  @objc deinit
+}
+public class CHUserQueryBuilder {
+  public var isOnline: Swift.Bool?
+  public var searchQuery: Swift.String?
+  public var sorting: ChannelizeAPI.CHSearchSortingType?
+  public var limit: Swift.Int?
+  public var skip: Swift.Int?
+  public var includeDeleted: Swift.Bool?
+  public var metaData: [Swift.String : Any]?
+  public init()
+  @objc deinit
+}
+public class CHUserUpdateQueryBuilder {
+  public var displayName: Swift.String?
+  public var language: Swift.String?
+  public var profileImageUrl: Swift.String?
+  public var metaData: [Swift.String : Any]?
+  public var profileUrl: Swift.String?
+  public var isOnline: Swift.Bool?
+  public var visibility: ChannelizeAPI.CHUserVisibility?
+  public var notificationOn: Swift.Bool?
+  public var createdAt: Swift.String?
+  public var email: Swift.String?
+  public init()
+  public func generateParams() -> [Swift.String : Any]
+  @objc deinit
+}
+public class CHRecentCall : ObjectMapper.Mappable {
+  public var id: Swift.String!
+  public var isGroup: Swift.Bool?
+  public var resourceType: Swift.String?
+  public var members: [ChannelizeAPI.CHCallMember]?
+  public var calls: [ChannelizeAPI.CHCall]?
+  public var currentMember: ChannelizeAPI.CHCallMember?
+  public var callPartnerMember: ChannelizeAPI.CHCallMember?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
