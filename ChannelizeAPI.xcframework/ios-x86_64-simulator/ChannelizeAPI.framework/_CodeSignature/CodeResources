@@ -14,31 +14,31 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		3k4+wd4kGDJZSczZ4oxcYPWJlYU=
+		ObfyTRvpuEN7se64185YjvKFEJM=
 		</data>
 		<key>Modules/ChannelizeAPI.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		l7N7oxmkc9m/IX12Kp+sy+Zm3o0=
+		W4Bhn0tXcc2XHbhRBP+inxF/XkI=
 		</data>
 		<key>Modules/ChannelizeAPI.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		fjRVjUb4P5F/zt6xg7QSzmIwY2A=
+		6NvMIKqKInkPQ3PJoTvjWjXE9eg=
 		</data>
 		<key>Modules/ChannelizeAPI.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		ZyllmEFld4wO5qLuIyj1YUr8v3I=
+		fWeO0evLBNjGSRWI4ooa19WLQko=
 		</data>
 		<key>Modules/ChannelizeAPI.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		l7N7oxmkc9m/IX12Kp+sy+Zm3o0=
+		W4Bhn0tXcc2XHbhRBP+inxF/XkI=
 		</data>
 		<key>Modules/ChannelizeAPI.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		fjRVjUb4P5F/zt6xg7QSzmIwY2A=
+		6NvMIKqKInkPQ3PJoTvjWjXE9eg=
 		</data>
 		<key>Modules/ChannelizeAPI.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		ZyllmEFld4wO5qLuIyj1YUr8v3I=
+		fWeO0evLBNjGSRWI4ooa19WLQko=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -49,10 +49,6 @@
 	<dict>
 		<key>Headers/ChannelizeAPI-Swift.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			Xeo89N3VqSBa04SkT+V0lQLG4G8=
-			</data>
 			<key>hash2</key>
 			<data>
 			lHZpstcEykCID8ggtfYclPx8i1zqrjvk/JpC5ssRyP0=
@@ -60,10 +56,6 @@
 		</dict>
 		<key>Headers/ChannelizeAPI.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			joUI+QwdPvQWY5qo8Q6aTc4JYq0=
-			</data>
 			<key>hash2</key>
 			<data>
 			qgB3a36I0qTz3wd+CSfNgUpaEYEThpk2IQIXPPgls/g=
@@ -71,76 +63,48 @@
 		</dict>
 		<key>Modules/ChannelizeAPI.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			l7N7oxmkc9m/IX12Kp+sy+Zm3o0=
-			</data>
 			<key>hash2</key>
 			<data>
-			TNIcaYb833HQ4uOXTR74JQ3Y4pNRdrzXLxOP9uUFl8M=
+			rznBo1RvPMsPI2NdPLt1RaoiwZXpnP5YCavLO4AfjOo=
 			</data>
 		</dict>
 		<key>Modules/ChannelizeAPI.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			fjRVjUb4P5F/zt6xg7QSzmIwY2A=
-			</data>
 			<key>hash2</key>
 			<data>
-			/xxMRKc/95LBKEhuoPG0jdR+10p1PzY5hSKqnSCIEAs=
+			tV6St0NK8GEwdK4YMvez+bAX8ZnLG3+sCn9Db+TclS8=
 			</data>
 		</dict>
 		<key>Modules/ChannelizeAPI.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			ZyllmEFld4wO5qLuIyj1YUr8v3I=
-			</data>
 			<key>hash2</key>
 			<data>
-			lRJp6enjnXRmC/VH4G8QwkEKVuzj+ISLeH/mdhz3JqA=
+			MueZHDASeJXkSfPKzCAzgBHXbxv6oW1geWKnfVkKChY=
 			</data>
 		</dict>
 		<key>Modules/ChannelizeAPI.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			l7N7oxmkc9m/IX12Kp+sy+Zm3o0=
-			</data>
 			<key>hash2</key>
 			<data>
-			TNIcaYb833HQ4uOXTR74JQ3Y4pNRdrzXLxOP9uUFl8M=
+			rznBo1RvPMsPI2NdPLt1RaoiwZXpnP5YCavLO4AfjOo=
 			</data>
 		</dict>
 		<key>Modules/ChannelizeAPI.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			fjRVjUb4P5F/zt6xg7QSzmIwY2A=
-			</data>
 			<key>hash2</key>
 			<data>
-			/xxMRKc/95LBKEhuoPG0jdR+10p1PzY5hSKqnSCIEAs=
+			tV6St0NK8GEwdK4YMvez+bAX8ZnLG3+sCn9Db+TclS8=
 			</data>
 		</dict>
 		<key>Modules/ChannelizeAPI.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			ZyllmEFld4wO5qLuIyj1YUr8v3I=
-			</data>
 			<key>hash2</key>
 			<data>
-			lRJp6enjnXRmC/VH4G8QwkEKVuzj+ISLeH/mdhz3JqA=
+			MueZHDASeJXkSfPKzCAzgBHXbxv6oW1geWKnfVkKChY=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			U4DR8/x8ckWnQglTSd4E7Htvh3c=
-			</data>
 			<key>hash2</key>
 			<data>
 			n6Bbdn6eOtMgJlEquUoGrW3wchKjiJ9cLwRP73NBg8s=

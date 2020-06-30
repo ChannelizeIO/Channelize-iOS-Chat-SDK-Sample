@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.1.3 effective-4.2 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
-// swift-module-flags: -target x86_64-apple-ios10.3-simulator -enable-objc-interop -enable-library-evolution -swift-version 4.2 -enforce-exclusivity=checked -Onone -module-name ChannelizeAPI
+// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 4.2 -enforce-exclusivity=checked -Onone -module-name ChannelizeAPI
 import AVFoundation
 import AWSCore
 import AWSIoT
@@ -130,6 +130,8 @@ open class Channelize {
   public static func addUserEventDelegate(delegate: ChannelizeAPI.CHUserEventDelegates, identifier: Foundation.UUID)
   public static func removeConversationDelegate(identifier: Foundation.UUID)
   public static func removeUserEventDelegate(identifier: Foundation.UUID)
+  public static func removeAllConversationsEventDelegates()
+  public static func removeAllUserEventsDelegates()
   public static func setUserOffline()
   public static func setUserOnline()
   @objc deinit
@@ -283,6 +285,7 @@ public class CHUserStatusUpdatedModel : ObjectMapper.Mappable {
 }
 public class ChannelizeAPIService {
   public static func getRecentConversation()
+  public static func isAllUsearchEnable(completion: @escaping (Swift.Bool, Swift.String?) -> Swift.Void)
   public static func updateUserInfo(userId: Swift.String, queryBuilder: ChannelizeAPI.CHUserUpdateQueryBuilder, completion: @escaping (Swift.Bool, Swift.String?) -> ())
   public static func getUserInfo(userId: Swift.String, completion: @escaping (ChannelizeAPI.CHUser?, Swift.String?) -> ())
   public static func deleteUser(userId: Swift.String, completion: @escaping (Swift.Bool, Swift.String?) -> ())

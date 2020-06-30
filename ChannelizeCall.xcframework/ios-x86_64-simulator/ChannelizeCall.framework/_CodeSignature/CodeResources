@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		zhutSugzysSOSZhol3T4g87CFXc=
+		r4r6x0b8yXbGlN2xllhL5WefhqU=
 		</data>
 		<key>Headers/ChannelizeCall-Swift.h</key>
 		<data>
@@ -18,31 +18,31 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		EGdfVG1Qkffzw8EP1k3yj/ucrUU=
+		wOvbgJ1rL0gO7G9tSIxaPI7E3EM=
 		</data>
 		<key>Modules/ChannelizeCall.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		YCHCFMcjfT0PoGUvmJ6UEO1/sUc=
+		Ng80/5F+xqA1BeRlYq5IhTHfais=
 		</data>
 		<key>Modules/ChannelizeCall.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		zF1Xeqd+M9BvPPXvgzleLkQ7Fao=
+		oZ4fYH5eWGQ6G6Q/tKZfZ38NMrI=
 		</data>
 		<key>Modules/ChannelizeCall.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		gmSzNRaOoDM+XO+gwXTFUfSk0iA=
+		B6+z+xiSOYr9kzG+bFVEm7uEkxc=
 		</data>
 		<key>Modules/ChannelizeCall.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		YCHCFMcjfT0PoGUvmJ6UEO1/sUc=
+		Ng80/5F+xqA1BeRlYq5IhTHfais=
 		</data>
 		<key>Modules/ChannelizeCall.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		zF1Xeqd+M9BvPPXvgzleLkQ7Fao=
+		oZ4fYH5eWGQ6G6Q/tKZfZ38NMrI=
 		</data>
 		<key>Modules/ChannelizeCall.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		gmSzNRaOoDM+XO+gwXTFUfSk0iA=
+		B6+z+xiSOYr9kzG+bFVEm7uEkxc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -53,21 +53,13 @@
 	<dict>
 		<key>Assets.car</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			zhutSugzysSOSZhol3T4g87CFXc=
-			</data>
 			<key>hash2</key>
 			<data>
-			rrJOQyQL6DyZho+a0yFww15kSkFodBV7OUg5Xt/VrWM=
+			RY5eAEhMmwxnk1kSDgin4vm15PEVR6CpMNcX4tdmjsA=
 			</data>
 		</dict>
 		<key>Headers/ChannelizeCall-Swift.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			i2QFAaTty52JRbPW066TfxV3Jpg=
-			</data>
 			<key>hash2</key>
 			<data>
 			K2PyZYj1xgsibXSNn3ldVDot46mYxRGgtYVrM+cGFr4=
@@ -75,10 +67,6 @@
 		</dict>
 		<key>Headers/ChannelizeCall.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			+cuSE03uUFuWt9bMHKIaUqXXFkg=
-			</data>
 			<key>hash2</key>
 			<data>
 			4r1dTtPDLI13AekFPFIOm80UvzmWGIU8/1TS7md3x74=
@@ -86,76 +74,48 @@
 		</dict>
 		<key>Modules/ChannelizeCall.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			YCHCFMcjfT0PoGUvmJ6UEO1/sUc=
-			</data>
 			<key>hash2</key>
 			<data>
-			95ebjry5esdYubOZ9JTycOUo09gATuKTlZqsc3baoZc=
+			MV1wB/C71sujnlhkcFgp9QDJ/T9L/0suYTiewnO8jcw=
 			</data>
 		</dict>
 		<key>Modules/ChannelizeCall.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			zF1Xeqd+M9BvPPXvgzleLkQ7Fao=
-			</data>
 			<key>hash2</key>
 			<data>
-			tGOZUEcFuNzcjYptZHL2xws+/WB9spudfuW/Y0a1hLQ=
+			E+pcQVGQEYRAVi9uBBBmTtRiNWsyBxR+/IDrjMWiD+k=
 			</data>
 		</dict>
 		<key>Modules/ChannelizeCall.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			gmSzNRaOoDM+XO+gwXTFUfSk0iA=
-			</data>
 			<key>hash2</key>
 			<data>
-			ikJMiS/3u26E2FC002m09tI0VXRYU5TT6iQojzYijUM=
+			b4yDKMzZwWJe1pLiCpvN6tIC70QxLvOaERPdBq+w6G4=
 			</data>
 		</dict>
 		<key>Modules/ChannelizeCall.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			YCHCFMcjfT0PoGUvmJ6UEO1/sUc=
-			</data>
 			<key>hash2</key>
 			<data>
-			95ebjry5esdYubOZ9JTycOUo09gATuKTlZqsc3baoZc=
+			MV1wB/C71sujnlhkcFgp9QDJ/T9L/0suYTiewnO8jcw=
 			</data>
 		</dict>
 		<key>Modules/ChannelizeCall.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			zF1Xeqd+M9BvPPXvgzleLkQ7Fao=
-			</data>
 			<key>hash2</key>
 			<data>
-			tGOZUEcFuNzcjYptZHL2xws+/WB9spudfuW/Y0a1hLQ=
+			E+pcQVGQEYRAVi9uBBBmTtRiNWsyBxR+/IDrjMWiD+k=
 			</data>
 		</dict>
 		<key>Modules/ChannelizeCall.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			gmSzNRaOoDM+XO+gwXTFUfSk0iA=
-			</data>
 			<key>hash2</key>
 			<data>
-			ikJMiS/3u26E2FC002m09tI0VXRYU5TT6iQojzYijUM=
+			b4yDKMzZwWJe1pLiCpvN6tIC70QxLvOaERPdBq+w6G4=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			0ylJ4Z++UF3U9TWMPDPcyRbW+x8=
-			</data>
 			<key>hash2</key>
 			<data>
 			mGazwrVxPfMmQT5FMYUG2iuSOOC5UPlagMh1UsIq2Zk=

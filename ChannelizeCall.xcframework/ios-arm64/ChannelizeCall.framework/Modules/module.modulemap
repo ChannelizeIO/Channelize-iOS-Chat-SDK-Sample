@@ -1,0 +1,11 @@
+framework module ChannelizeCall {
+  umbrella header "ChannelizeCall.h"
+
+  export *
+  module * { export * }
+}
+
+module ChannelizeCall.Swift {
+    header "ChannelizeCall-Swift.h"
+    requires objc
+}
