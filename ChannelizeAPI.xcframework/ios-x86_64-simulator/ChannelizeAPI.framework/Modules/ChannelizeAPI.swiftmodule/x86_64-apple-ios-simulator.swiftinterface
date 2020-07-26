@@ -21,6 +21,20 @@ extension CHCallEventDelegates {
   public func didCallRejected(data: Foundation.Data, topic: Swift.String)
   public func didCallRecieved(data: Foundation.Data, topic: Swift.String)
 }
+public protocol CHCallEventsSubscribersDelegates {
+  func didCurrentUserInvitedToCall(call: ChannelizeAPI.CHApiCall)
+  func didCurrentUserRejectCall(call: ChannelizeAPI.CHApiCall)
+  func didCurrentOngoingCallEnded(call: ChannelizeAPI.CHApiCall)
+  func didOtherUserRecievedCall(dataModel: ChannelizeAPI.CHCallInviteRecievedModel)
+  func didOtherUserRejectedCall(call: ChannelizeAPI.CHApiCall)
+}
+extension CHCallEventsSubscribersDelegates {
+  public func didCurrentUserInvitedToCall(call: ChannelizeAPI.CHApiCall)
+  public func didCurrentUserRejectCall(call: ChannelizeAPI.CHApiCall)
+  public func didCurrentOngoingCallEnded(call: ChannelizeAPI.CHApiCall)
+  public func didOtherUserRecievedCall(dataModel: ChannelizeAPI.CHCallInviteRecievedModel)
+  public func didOtherUserRejectedCall(call: ChannelizeAPI.CHApiCall)
+}
 public class CHAttachmentMetaData : ObjectMapper.Mappable {
   public var subjectId: Swift.String?
   public var subjectType: Swift.String?
@@ -65,6 +79,43 @@ public class CHNewMemberAddedModel : ObjectMapper.Mappable {
   public func mapping(map: ObjectMapper.Map)
   @objc deinit
 }
+public class ChannelizeCallAPIRequester {
+  public static var instance: ChannelizeAPI.ChannelizeCallAPIRequester
+  public func createGetRequest(at urlPath: ChannelizeAPI.CallSDKPaths, params: Alamofire.Parameters?) -> Alamofire.DataRequest
+  public func createPostRequest(at urlPath: ChannelizeAPI.CallSDKPaths, params: Alamofire.Parameters?) -> Alamofire.DataRequest
+  public func createPutRequest(at urlPath: ChannelizeAPI.CallSDKPaths, params: Alamofire.Parameters?) -> Alamofire.DataRequest
+  public func createDeleteRequest(at urlPath: ChannelizeAPI.CallSDKPaths, params: Alamofire.Parameters?) -> Alamofire.DataRequest
+  @objc deinit
+}
+public enum CallEventsSubscribers : Swift.CaseIterable {
+  case callDeleted
+  case callInvited
+  case callJoined
+  case callRejected
+  public var topic: Swift.String {
+    get
+  }
+  public static func == (a: ChannelizeAPI.CallEventsSubscribers, b: ChannelizeAPI.CallEventsSubscribers) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+  public typealias AllCases = [ChannelizeAPI.CallEventsSubscribers]
+  public static var allCases: [ChannelizeAPI.CallEventsSubscribers] {
+    get
+  }
+}
+public enum ActiveCallEventsSubscribers {
+  case callInvited(callId: Swift.String)
+  case callInviteRecieved(callId: Swift.String)
+  case memberAddedToCall(callId: Swift.String)
+  case memberRejectCall(callId: Swift.String)
+  case memberRemoveFromCall(callId: Swift.String)
+  case callEnded(callId: Swift.String)
+  public var topic: Swift.String {
+    get
+  }
+}
 public enum CallSubscribers {
   case callInvite
   case callReceived(id: Swift.String)
@@ -106,7 +157,7 @@ public protocol CallSDKDelegates {
 }
 open class Channelize {
   public static var instance: ChannelizeAPI.Channelize
-  public static func configure()
+  public static func configure(withSuitName: Swift.String? = nil)
   public static func configureAws()
   public static func login(email: Swift.String, password: Swift.String, completion: @escaping (ChannelizeAPI.CHUser?, Swift.String?) -> ())
   public static func login(userId: Swift.String, accessToken: Swift.String, completion: @escaping (ChannelizeAPI.CHUser?, Swift.String?) -> ())
@@ -128,12 +179,21 @@ open class Channelize {
   public static func getAccessToken() -> Swift.String?
   public static func addConversationEventDelegate(delegate: ChannelizeAPI.CHConversationEventDelegate, identifier: Foundation.UUID)
   public static func addUserEventDelegate(delegate: ChannelizeAPI.CHUserEventDelegates, identifier: Foundation.UUID)
+  public static func addCallEventsSubscribersDelegate(delegate: ChannelizeAPI.CHCallEventsSubscribersDelegates, identifier: Foundation.UUID)
+  public static func subscribeActiveCallEventsTopics(callId: Swift.String)
   public static func removeConversationDelegate(identifier: Foundation.UUID)
   public static func removeUserEventDelegate(identifier: Foundation.UUID)
   public static func removeAllConversationsEventDelegates()
   public static func removeAllUserEventsDelegates()
   public static func setUserOffline()
   public static func setUserOnline()
+  @objc deinit
+}
+public class BackgroundTask {
+  public init(application: UIKit.UIApplication)
+  public class func run(application: UIKit.UIApplication, handler: (ChannelizeAPI.BackgroundTask) -> ())
+  public func begin()
+  public func end()
   @objc deinit
 }
 public class CHUserStatusModel : ObjectMapper.Mappable {
@@ -204,6 +264,15 @@ extension CHConversationEventDelegate {
   public func didTypingUserStatusUpdated(model: ChannelizeAPI.CHUserTypingStatusModel?)
   public func didMessageReactionAdded(model: ChannelizeAPI.CHReactionEventModel?)
   public func didMessageReactionRemoved(model: ChannelizeAPI.CHReactionEventModel?)
+}
+public enum CallSDKPaths {
+  case listCalls
+  case getCallsCount
+  case getSingleCall(callId: Swift.String)
+  case deleteCall(callId: Swift.String)
+  case endCall(callId: Swift.String)
+  case rejectCall(callId: Swift.String)
+  case joinCall(callId: Swift.String)
 }
 public class CHMessageDeletedModel : ObjectMapper.Mappable {
   public var conversation: ChannelizeAPI.CHConversation?
@@ -285,6 +354,9 @@ public class CHUserStatusUpdatedModel : ObjectMapper.Mappable {
 }
 public class ChannelizeAPIService {
   public static func getRecentConversation()
+  public static func getEnabledModules(completion: @escaping (Foundation.NSArray?, Swift.String?) -> Swift.Void)
+  public static func getVirgilAuthenticationToken(completion: @escaping (Swift.String?, Swift.Error?) -> Swift.Void?)
+  public static func createVirgilUsersPublicKey(userIds: [Swift.String], completion: @escaping (Swift.Bool, Swift.String?) -> Swift.Void?)
   public static func isAllUsearchEnable(completion: @escaping (Swift.Bool, Swift.String?) -> Swift.Void)
   public static func updateUserInfo(userId: Swift.String, queryBuilder: ChannelizeAPI.CHUserUpdateQueryBuilder, completion: @escaping (Swift.Bool, Swift.String?) -> ())
   public static func getUserInfo(userId: Swift.String, completion: @escaping (ChannelizeAPI.CHUser?, Swift.String?) -> ())
@@ -405,6 +477,7 @@ public class CHMessageQueryBuilder {
   public var recipients: [Swift.String]?
   public var attachments: [ChannelizeAPI.CHBuilderMessageType]?
   public var mentionedUsers: [ChannelizeAPI.CHMentionedUserQueryBuilder]?
+  public var isEncrypted: Swift.Bool?
   public init()
   @objc deinit
 }
@@ -522,12 +595,31 @@ public class CHConversationDeleteModel : ObjectMapper.Mappable {
   public func mapping(map: ObjectMapper.Map)
   @objc deinit
 }
+public class CHCallDeletedModel : ObjectMapper.Mappable {
+  public var timeStamp: Foundation.Date?
+  public var call: ChannelizeAPI.CHApiCall?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
 public class CHConversationMarkReadModel : ObjectMapper.Mappable {
   public var conversation: ChannelizeAPI.CHConversation?
   public var user: ChannelizeAPI.CHUser?
   public var timeStamp: Foundation.Date?
   required public init?(map: ObjectMapper.Map)
   public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class ChannelizeCallService {
+  public static func getCallsListCount(queryBuilder: ChannelizeAPI.CHCallsListCountQueryBuilder, completion: @escaping (Swift.Int, Swift.String?) -> Swift.Void)
+  public static func listUsersCalls(queryBuilder: ChannelizeAPI.CHCallListQueryBuilder, completion: @escaping ([ChannelizeAPI.CHApiCall]?, Swift.String?) -> Swift.Void)
+  public static func getCallWithId(callId: Swift.String, completion: @escaping (ChannelizeAPI.CHApiCall?, Swift.String?) -> Swift.Void)
+  public static func deleteCallWithId(callId: Swift.String, completion: @escaping (Swift.Bool, Swift.String?) -> Swift.Void)
+  public static func createNewCall(queryBuilder: ChannelizeAPI.CHNewCallQueryBuilder, completion: @escaping (ChannelizeAPI.CHApiCall?, Swift.String?) -> Swift.Void)
+  public static func endOngoingCall(callId: Swift.String, duration: Swift.Int = 0, completion: @escaping (Swift.Bool, Swift.String?) -> Swift.Void)
+  public static func rejectIncomingCall(callId: Swift.String, completion: @escaping (Swift.Bool, Swift.String?) -> Swift.Void)
+  public static func sendCallAcceptedNotification(callId: Swift.String, completion: @escaping (Swift.Bool, Swift.String?) -> Swift.Void)
+  public static func publishCallRecievedEvent(call: ChannelizeAPI.CHApiCall, isBusy: Swift.Bool)
   @objc deinit
 }
 public enum CallType : Swift.String {
@@ -608,6 +700,77 @@ public enum CHCallResponder : Swift.String {
   @objc override dynamic public init()
   @objc deinit
 }
+public enum CHCallResult : Swift.String {
+  case onGoing
+  case completed
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum CHCallState : Swift.String {
+  case invited
+  case joined
+  case missed
+  case cancelled
+  case completed
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum CHCallSortOrder : Swift.String {
+  case ASC
+  case DESC
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public class CHCallsListCountQueryBuilder {
+  public var ids: [Swift.String]?
+  public var callerIds: [Swift.String]?
+  public var callType: ChannelizeAPI.CHCallType?
+  public var callResult: ChannelizeAPI.CHCallResult?
+  public var callState: ChannelizeAPI.CHCallState?
+  public var customTypes: [Swift.String]?
+  public var minDuration: Swift.Int?
+  public var maxDuration: Swift.Int?
+  public init()
+  @objc deinit
+}
+public class CHCallListQueryBuilder {
+  public var ids: [Swift.String]?
+  public var callerIds: [Swift.String]?
+  public var callType: ChannelizeAPI.CHCallType?
+  public var callResult: ChannelizeAPI.CHCallResult?
+  public var callState: ChannelizeAPI.CHCallState?
+  public var customTypes: [Swift.String]?
+  public var minDuration: Swift.Int?
+  public var maxDuration: Swift.Int?
+  public var callSortOrder: ChannelizeAPI.CHCallSortOrder?
+  public var limit: Swift.Int?
+  public var skip: Swift.Int?
+  public init()
+  @objc deinit
+}
+public class CHNewCallQueryBuilder {
+  public var id: Swift.String?
+  public var callType: ChannelizeAPI.CHCallType?
+  public var conversationId: Swift.String?
+  public var title: Swift.String?
+  public var isGroupCall: Swift.Bool?
+  public var members: [Swift.String]?
+  public var createdAt: Foundation.Date?
+  public var customType: Swift.String?
+  public var metaData: [Swift.String : Any]?
+  public var config: [Swift.String : Any]?
+  public init()
+  @objc deinit
+}
 public class CHMember : ObjectMapper.Mappable {
   public var id: Swift.String?
   public var userId: Swift.String?
@@ -632,6 +795,26 @@ public class CHUser : ObjectMapper.Mappable {
   public var language: Swift.String?
   public var isDeleted: Swift.Bool?
   public var isActive: Swift.Bool?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class CHCallsMember : ObjectMapper.Mappable {
+  public var id: Swift.String?
+  public var userId: Swift.String?
+  public var callState: ChannelizeAPI.CHCallState?
+  public var user: ChannelizeAPI.CHUser?
+  public init()
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class CHCallStamps : ObjectMapper.Mappable {
+  public var joinedAt: Foundation.Date?
+  public var completedAt: Foundation.Date?
+  public var invitedAt: Foundation.Date?
+  public var rejectedAt: Foundation.Date?
+  public init()
   required public init?(map: ObjectMapper.Map)
   public func mapping(map: ObjectMapper.Map)
   @objc deinit
@@ -708,14 +891,23 @@ public class CHConversationsCountQueryBuilder {
   public init()
   @objc deinit
 }
+public class CHCallInviteRecievedModel : ObjectMapper.Mappable {
+  public var call: ChannelizeAPI.CHApiCall?
+  public var timeStamp: Foundation.Date?
+  public var invitedUser: ChannelizeAPI.CHUser?
+  public var isUserBusy: Swift.Bool?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
 public enum CHCallType : Swift.String {
   case video
   case voice
   public typealias RawValue = Swift.String
-  public init?(rawValue: Swift.String)
   public var rawValue: Swift.String {
     get
   }
+  public init?(rawValue: Swift.String)
 }
 public class CHCall : ObjectMapper.Mappable {
   public var id: Swift.String!
@@ -755,6 +947,7 @@ public class CHMessage : ObjectMapper.Mappable {
   public var reactionsCount: [Swift.String : Swift.Int]?
   public var reactorsInfo: [Swift.String : [Swift.String]]?
   public var myReactions: [Swift.String]?
+  public var isEncrypted: Swift.Bool?
   required public init?(map: ObjectMapper.Map)
   public func mapping(map: ObjectMapper.Map)
   public func setMessageAttributedString(attributedString: Foundation.NSAttributedString?)
@@ -888,6 +1081,24 @@ extension CHUserEventDelegates {
 public class CHConversationClearModel : ObjectMapper.Mappable {
   public var conversation: ChannelizeAPI.CHConversation?
   public var timeStamp: Foundation.Date?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class CHApiCall : ObjectMapper.Mappable {
+  public var id: Swift.String?
+  public var callType: ChannelizeAPI.CHCallType?
+  public var callResult: ChannelizeAPI.CHCallResult?
+  public var configuration: [Swift.String : Any]?
+  public var members: [ChannelizeAPI.CHCallsMember]?
+  public var callerId: Swift.String?
+  public var createdAt: Foundation.Date?
+  public var endedAt: Foundation.Date?
+  public var caller: ChannelizeAPI.CHUser?
+  public var duration: Swift.Int?
+  public var callState: ChannelizeAPI.CHCallState?
+  public var timeStamps: ChannelizeAPI.CHCallStamps?
+  public init()
   required public init?(map: ObjectMapper.Map)
   public func mapping(map: ObjectMapper.Map)
   @objc deinit

@@ -22,11 +22,11 @@
 		</data>
 		<key>Modules/ChannelizeAPI.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		CGv5hKTyFHJYanfHYH6LrKR41qk=
+		Ps2MlKEl8gF2cbiGMJeSvpYCByA=
 		</data>
 		<key>Modules/ChannelizeAPI.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		lQMeDVW1g+GCzl3vSNN9c0ggG5Q=
+		cNjI7+fYORJsdvMd6+n69IVAv30=
 		</data>
 		<key>Modules/ChannelizeAPI.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -34,11 +34,11 @@
 		</data>
 		<key>Modules/ChannelizeAPI.swiftmodule/arm64.swiftinterface</key>
 		<data>
-		CGv5hKTyFHJYanfHYH6LrKR41qk=
+		Ps2MlKEl8gF2cbiGMJeSvpYCByA=
 		</data>
 		<key>Modules/ChannelizeAPI.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		lQMeDVW1g+GCzl3vSNN9c0ggG5Q=
+		cNjI7+fYORJsdvMd6+n69IVAv30=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -72,14 +72,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xw+0b2y4q9mTH6nZkwhNnH9MMzKaMnhyjX9Pxbw+kww=
+			uCQ83FAMKzcnMEcncMWEK/SJP4IdRjY82K3pW9TgiZs=
 			</data>
 		</dict>
 		<key>Modules/ChannelizeAPI.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			BgtvKRNhqUWGEHxmGs1GdBzK9xtsnEWmMNKFL3zLhxI=
+			vGqEUYXLXsvC5ZUL/4ZGVMlsDz3VhBtmG0Lq0EptvEg=
 			</data>
 		</dict>
 		<key>Modules/ChannelizeAPI.swiftmodule/arm64.swiftdoc</key>
@@ -93,14 +93,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xw+0b2y4q9mTH6nZkwhNnH9MMzKaMnhyjX9Pxbw+kww=
+			uCQ83FAMKzcnMEcncMWEK/SJP4IdRjY82K3pW9TgiZs=
 			</data>
 		</dict>
 		<key>Modules/ChannelizeAPI.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			BgtvKRNhqUWGEHxmGs1GdBzK9xtsnEWmMNKFL3zLhxI=
+			vGqEUYXLXsvC5ZUL/4ZGVMlsDz3VhBtmG0Lq0EptvEg=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
