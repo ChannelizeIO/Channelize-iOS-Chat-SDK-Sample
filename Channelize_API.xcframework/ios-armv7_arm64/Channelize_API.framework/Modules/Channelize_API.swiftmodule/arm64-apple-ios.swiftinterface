@@ -1,0 +1,700 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.1.3 effective-4.2 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
+// swift-module-flags: -target arm64-apple-ios10.3 -enable-objc-interop -enable-library-evolution -swift-version 4.2 -enforce-exclusivity=checked -Onone -module-name Channelize_API
+import AVFoundation
+import AWSCore
+import AWSIoT
+import AWSMobileClient
+import Alamofire
+import AlamofireObjectMapper
+@_exported import Channelize_API
+import Foundation
+import ObjectMapper
+import Swift
+open class QueryBuilder {
+  public static var instance: Channelize_API.QueryBuilder
+  public init()
+  open func createUserListFilter() -> Channelize_API.QueryBuilder.GetUserFilters
+  open func createBlockedUsersListFilter() -> Channelize_API.QueryBuilder.GetBlockedUserFilters
+  open func createBlockedUsersCountFilter() -> Channelize_API.QueryBuilder.GetBlockedUserCountFilters
+  open func createUserFriendsListFilter() -> Channelize_API.QueryBuilder.GetFriendsFilters
+  open func createUserFriendsCountFilter() -> Channelize_API.QueryBuilder.GetFriendsCountFilters
+  open func createConversationListFilter() -> Channelize_API.QueryBuilder.ConversationFilters
+  open func createConversationMessageFilter() -> Channelize_API.QueryBuilder.ConversationMessagesFilter
+  open func createConversationMessageCountFilter() -> Channelize_API.QueryBuilder.ConversationMessageCountFilters
+  open func createConversationsCountFilter() -> Channelize_API.QueryBuilder.ConversationCountFilters
+  open func createMessagesFilter() -> Channelize_API.QueryBuilder.GetMessagesFilter
+  public enum OrderType {
+    case DESC
+    case ASC
+    public static func == (a: Channelize_API.QueryBuilder.OrderType, b: Channelize_API.QueryBuilder.OrderType) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  open class ConversationFilters {
+    open var includeDeleted: Swift.Bool?
+    open var sorting: Channelize_API.QueryBuilder.OrderType?
+    open var limit: Swift.Int?
+    open var offset: Swift.Int?
+    open var isGroup: Swift.Bool?
+    open var memberId: Swift.String?
+    open var includeOnlyActive: Swift.Bool?
+    open var search: Swift.String?
+    open var include: Swift.String?
+    open func generateFilters() -> [Swift.String : Any]
+    @objc deinit
+  }
+  open class ConversationCountFilters {
+    open var isGroup: Swift.Bool?
+    open var includedDeleted: Swift.Bool?
+    open var includeOnlyActive: Swift.Bool?
+    open func generateFilters() -> [Swift.String : Any]
+    @objc deinit
+  }
+  open class ConversationMessagesFilter {
+    open var sort: Channelize_API.QueryBuilder.OrderType?
+    open var limit: Swift.Int?
+    open var skip: Swift.Int?
+    open var attachmentType: Swift.String?
+    open var ownerId: Swift.String?
+    open var contentType: Swift.Int?
+    open func generateFilters() -> [Swift.String : Any]
+    @objc deinit
+  }
+  open class ConversationMessageCountFilters {
+    open var attachmentType: Swift.String?
+    open var ownerId: Swift.String?
+    open var contentType: Swift.Int?
+    open func generateFilters() -> [Swift.String : Any]
+    @objc deinit
+  }
+  public enum UserRoleType {
+    case user
+    case bot
+    public static func == (a: Channelize_API.QueryBuilder.UserRoleType, b: Channelize_API.QueryBuilder.UserRoleType) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  open class GetUserFilters {
+    open var isOnline: Swift.Bool?
+    open var limit: Swift.Int?
+    open var skip: Swift.Int?
+    open var searchQuery: Swift.String?
+    open var sort: Channelize_API.QueryBuilder.OrderType?
+    open var includeDeleted: Swift.Bool?
+    open var role: Channelize_API.QueryBuilder.UserRoleType?
+    open var skipUserIds: [Swift.String]?
+    open func generateFilters() -> [Swift.String : Any]
+    @objc deinit
+  }
+  open class GetFriendsFilters {
+    open var isOnline: Swift.Bool?
+    open var limit: Swift.Int?
+    open var skip: Swift.Int?
+    open var includeBlocked: Swift.Bool?
+    open var skipUserIds: Swift.String?
+    open var searchQuery: Swift.String?
+    open var sort: Channelize_API.QueryBuilder.OrderType?
+    open func generateFilters() -> [Swift.String : Any]
+    @objc deinit
+  }
+  open class GetBlockedUserFilters {
+    open var limit: Swift.Int?
+    open var skip: Swift.Int?
+    open var sort: Channelize_API.QueryBuilder.OrderType?
+    open var search: Swift.String?
+    open var isOnline: Swift.Bool?
+    open func generateFilters() -> [Swift.String : Any]
+    @objc deinit
+  }
+  open class GetFriendsCountFilters {
+    open var includeBlocked: Swift.Bool?
+    open var isOnline: Swift.Bool?
+    open var search: Swift.String?
+    open func generateFilters() -> [Swift.String : Any]
+    @objc deinit
+  }
+  open class GetBlockedUserCountFilters {
+    open var isOnline: Swift.Bool?
+    open var search: Swift.String?
+    open func generateFilters() -> [Swift.String : Any]
+    @objc deinit
+  }
+  open class GetMessagesFilter {
+    open var attachmentType: Swift.String?
+    open var ownerId: Swift.String?
+    open var contentType: Swift.Int?
+    open var sortingOrder: Channelize_API.QueryBuilder.OrderType?
+    open var limit: Swift.Int?
+    open var skip: Swift.Int?
+    open func generateFilters() -> [Swift.String : Any]
+    @objc deinit
+  }
+  @objc deinit
+}
+open class ConversationMuteModel : ObjectMapper.Mappable {
+  public var conversationId: Swift.String?
+  public var isMuted: Swift.Bool?
+  public var userId: Swift.String?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public protocol CHTag {
+  var id: Swift.String! { get }
+  var userId: Swift.String? { get }
+  var order: Swift.Int? { get }
+  var wordCount: Swift.Int? { get }
+}
+public protocol CHUserEventDelegate {
+  func didUserAdded(user: Channelize_API.CHUser?)
+  func didUserRemoved(user: Channelize_API.CHUser?)
+  func didUserGetOnline(userId: Swift.String)
+  func didUserGetOffline(userId: Swift.String)
+  func didChangeUserStatus(user: Channelize_API.CHUser?)
+  func didUserBlocked(isMe: Swift.Bool, userId: Swift.String?)
+  func didUserUnblocked(isMe: Swift.Bool, user: Channelize_API.CHUser?)
+}
+extension CHUserEventDelegate {
+  public func didUserAdded(user: Channelize_API.CHUser?)
+  public func didUserRemoved(user: Channelize_API.CHUser?)
+  public func didChangeUserStatus(user: Channelize_API.CHUser?)
+  public func didUserGetOnline(userId: Swift.String)
+  public func didUserGetOffline(userId: Swift.String)
+  public func didUserBlocked(isMe: Swift.Bool, userId: Swift.String?)
+  public func didUserUnblocked(isMe: Swift.Bool, user: Channelize_API.CHUser?)
+}
+public typealias UploadProgress = (Swift.Double) -> ()
+public typealias ModuleData = ([Channelize_API.CHModule], Swift.Error?) -> ()
+public typealias MessageResult = (Channelize_API.CHMessage?, Swift.Error?) -> ()
+public typealias MessagesData = ([Channelize_API.CHMessage], Swift.Error?) -> ()
+open class ISODateTransform : ObjectMapper.TransformType {
+  public typealias Object = Foundation.Date
+  public typealias JSON = Swift.String
+  public init()
+  public func transformFromJSON(_ value: Any?) -> Foundation.Date?
+  public func transformToJSON(_ value: Foundation.Date?) -> Swift.String?
+  @objc deinit
+}
+public protocol CHMember {
+  var id: Swift.String! { get }
+  var userId: Swift.String? { get }
+  var chatId: Swift.String? { get }
+  var newMessageCount: Swift.Int? { get }
+  var mute: Swift.Bool? { get }
+  var isTyping: Swift.Bool? { get }
+  var isActive: Swift.Bool? { get }
+  var isAdmin: Swift.Bool? { get }
+  var isDeleted: Swift.Bool? { get }
+  var resourceType: Swift.String? { get }
+  var lastMessageId: Swift.String? { get }
+  var updatedAt: Foundation.Date? { get }
+  var user: Channelize_API.CHUser? { get }
+  var message: Channelize_API.CHMessage? { get }
+  func setUser(recievedUser: Channelize_API.CHUser)
+  func setUserMuteUnMute(isMute: Swift.Bool?)
+  func setMessage(recievedMessage: Channelize_API.CHMessage)
+}
+public enum FriendshipType {
+  case oneWay
+  case twoWay
+  public static func == (a: Channelize_API.FriendshipType, b: Channelize_API.FriendshipType) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+open class CHService {
+  public static var main: Channelize_API.CHService
+  open func sendMessage(textMessage: Swift.String?, messageParams: Alamofire.Parameters, fileParams: [Swift.String : Any]?, thumbnailData: Foundation.Data?, fileData: Foundation.Data, messageType: Channelize_API.CHMessageType, conversation: Channelize_API.CHConversation?, completion: @escaping (Channelize_API.CHMessage?, Swift.Error?) -> ())
+  open func sendTextMessage(textMessage: Swift.String, messageParams: Alamofire.Parameters, conversation: Channelize_API.CHConversation?, completion: @escaping (Channelize_API.CHMessage?, Swift.Error?) -> ())
+  open func sendFileMessage(messageParams: [Swift.String : Any], thumbnailData: Foundation.Data?, fileData: Foundation.Data?, messageType: Channelize_API.CHMessageType, conversation: Channelize_API.CHConversation?, completion: @escaping (Channelize_API.CHMessage?, Swift.Error?) -> ())
+  open func sendQuotedMessage(messageParams: [Swift.String : Any], messageText: Swift.String, quotedMessageId: Swift.String, quotedMessageParams: [Swift.String : Any], conversation: Channelize_API.CHConversation?, completion: @escaping (Channelize_API.CHMessage?, Swift.Error?) -> ())
+  open func sendLocationMessage(messageParams: [Swift.String : Any], locationParams: [Swift.String : Any], conversation: Channelize_API.CHConversation?, completion: @escaping (Channelize_API.CHMessage?, Swift.Error?) -> ())
+  open func sendGIFStickerMessage(messageParams: [Swift.String : Any], gifStickerParams: [Swift.String : Any], messageType: Channelize_API.CHMessageType, conversation: Channelize_API.CHConversation?, completion: @escaping (Channelize_API.CHMessage?, Swift.Error?) -> ())
+  open func getMessageCount(queryFilter: Channelize_API.QueryBuilder.ConversationMessageCountFilters, chatId: Swift.String, completion: @escaping (Swift.Int, Swift.Error?) -> ())
+  open func getMessages(queryFilter: Channelize_API.QueryBuilder.ConversationMessagesFilter, chatId: Swift.String, completion: @escaping Channelize_API.MessagesData)
+  open func deleteMessages(messageIds: [Swift.String], completion: @escaping Channelize_API.StatusResponse)
+  open func deleteMessagesForEveryOne(messageIds: [Swift.String], completion: @escaping Channelize_API.StatusResponse)
+  open func forwardMessages(userIds: [Swift.String], groupIds: [Swift.String], messagesIds: [Swift.String], completion: @escaping Channelize_API.StatusResponse)
+  open func getUnreadMessageCounts(completion: @escaping Channelize_API.CountResponse)
+  open func markMessageAsRead(messageId: Swift.String, completion: @escaping Channelize_API.StatusResponse)
+  open func getRecentChatCount(queryFilter: Channelize_API.QueryBuilder.ConversationCountFilters, completion: @escaping Channelize_API.CountResponse)
+  open func getChats(queryFilter: Channelize_API.QueryBuilder.ConversationFilters, completion: @escaping Channelize_API.ChatsData)
+  open func getGroups(queryFilter: Channelize_API.QueryBuilder.ConversationFilters, completion: @escaping Channelize_API.ChatsData)
+  open func addGroupAdmin(chatId: Swift.String, userId: Swift.String, completion: @escaping (Swift.Bool, Swift.Error?) -> ())
+  open func removeGroupMember(chatId: Swift.String, membersIds: [Swift.String], completion: @escaping (Swift.Bool, Swift.Error?) -> ())
+  open func leaveConversation(chatId: Swift.String, completion: @escaping Channelize_API.StatusResponse)
+  open func clearConversation(chatId: Swift.String, completion: @escaping Channelize_API.StatusResponse)
+  open func deleteConversation(chatId: Swift.String, completion: @escaping Channelize_API.StatusResponse)
+  open func addMembersToConversation(chatId: Swift.String, userIds: [Swift.String], completion: @escaping Channelize_API.StatusResponse)
+  open func markAllMessageAsRead(chatId: Swift.String, completion: @escaping Channelize_API.StatusResponse)
+  open func getConversationMembers(chatId: Swift.String, completion: @escaping Channelize_API.UsersData)
+  open func updateConversationTitle(title: Swift.String, chatId: Swift.String, completion: @escaping Channelize_API.StatusResponse)
+  open func muteUnmuteConversation(chatId: Swift.String, isMuted: Swift.Bool, completion: @escaping Channelize_API.StatusResponse)
+  open func getConversationWithId(chatId: Swift.String, completion: @escaping Channelize_API.ChatData)
+  open func getConversationWithRecipientId(recipientId: Swift.String, completion: @escaping Channelize_API.ChatData)
+  open func updateGroupProfilePhoto(profileImageData: Foundation.Data, groupId: Swift.String, completion: @escaping (Swift.Bool, Swift.Error?) -> ())
+  open func createGroup(groupTitle: Swift.String, profileImageData: Foundation.Data?, memberIds: [Swift.String], completion: @escaping Channelize_API.ChatData)
+  open func getUser(userId: Swift.String, completion: @escaping Channelize_API.UserData)
+  open func addUserAsFriend(userId: Swift.String, friendshipType: Channelize_API.FriendshipType, completion: @escaping Channelize_API.StatusResponse)
+  open func blockUser(userId: Swift.String, completion: @escaping Channelize_API.StatusResponse)
+  open func getBlockedUsers(queryFilter: Channelize_API.QueryBuilder.GetBlockedUserFilters, completion: @escaping Channelize_API.UsersData)
+  open func getFriendsList(queryFilter: Channelize_API.QueryBuilder.GetFriendsFilters, completion: @escaping Channelize_API.UsersData)
+  open func getFriendsCount(queryFilter: Channelize_API.QueryBuilder.GetFriendsCountFilters, completion: @escaping Channelize_API.CountResponse)
+  open func removeUserAsFriend(userId: Swift.String, friendshipType: Channelize_API.FriendshipType, completion: @escaping Channelize_API.StatusResponse)
+  open func unblockUser(userId: Swift.String, completion: @escaping Channelize_API.StatusResponse)
+  open func getUserCounts(queryFilter: Channelize_API.QueryBuilder.GetFriendsCountFilters, completion: @escaping Channelize_API.CountResponse)
+  open func getUserBlockStatus(userId: Swift.String, completion: @escaping Channelize_API.UserBlockStatusResponse)
+  open func getBlockedUsersCount(queryFilter: Channelize_API.QueryBuilder.GetBlockedUserCountFilters, completion: @escaping Channelize_API.CountResponse)
+  open func getOnlineUsers(queryFilter: Channelize_API.QueryBuilder.GetFriendsFilters, completion: @escaping Channelize_API.UsersData)
+  open func getUsers(queryFilter: Channelize_API.QueryBuilder.GetFriendsFilters, completion: @escaping Channelize_API.UsersData)
+  open func changeUserVisibility(isVisible: Swift.Bool, completion: @escaping Channelize_API.StatusResponse)
+  open func changeNotificationSetting(isNotificationOn: Swift.Bool, completion: @escaping Channelize_API.StatusResponse)
+  open func getMessage(messageId: Swift.String, completion: @escaping Channelize_API.MessageResult)
+  open func getRecentCalls(limit: Swift.Int, skip: Swift.Int, completion: @escaping ([Channelize_API.CHRecentCalls], Swift.Error?) -> ())
+  open func publishMessage(params: [Swift.String : Any], topic: Swift.String)
+  open func joinIncomingCallSubscribers(callId: Swift.String)
+  open func leaveIncomingCallSubscribers(callId: Swift.String)
+  open func joinCallSubscribers(callId: Swift.String)
+  open func leaveCallSubscribers(callId: Swift.String)
+  open func publishCallToServer(callId: Swift.String, params: Alamofire.Parameters)
+  open func generateNewCall(params: Alamofire.Parameters)
+  open func createMessageObject(params: Alamofire.Parameters) -> Channelize_API.CHMessage?
+  open func getCallCounts(completion: @escaping Channelize_API.CountResponse)
+  open func markCallsRead(completion: @escaping Channelize_API.StatusResponse)
+  open func generalChannelizeAPICall(urlPath: Swift.String, params: [Swift.String : Any]?, method: Alamofire.HTTPMethod, completion: @escaping (Any?, Swift.Error?) -> ())
+  open func getUsersList(queryFilter: Channelize_API.QueryBuilder.GetUserFilters, completion: @escaping ([Channelize_API.CHUser]?, Swift.Error?) -> ())
+  @objc deinit
+}
+public protocol UniqueCall {
+  var uid: Swift.String { get }
+}
+public protocol CallLogProtocol : AnyObject, Channelize_API.UniqueCall {
+  var itemType: Swift.String { get }
+  var requiredBorder: Swift.Bool { get set }
+}
+public protocol CHCall {
+  var id: Swift.String! { get }
+  var type: Swift.String? { get }
+  var callerId: Swift.Int? { get }
+  var createdAt: Foundation.Date? { get }
+  var recipients: [Channelize_API.CHCallRecipient]? { get }
+  func owner() -> Channelize_API.CHCallRecipient?
+}
+public protocol CHConversation {
+  var id: Swift.String! { get }
+  var title: Swift.String? { get }
+  var memberCount: Swift.Int! { get }
+  var isGroup: Swift.Bool? { get }
+  var ownerId: Swift.String? { get }
+  var resourceType: Swift.String? { get }
+  var profileImageUrl: Swift.String? { get }
+  var createdAt: Foundation.Date? { get }
+  var members: [Swift.String : Swift.String]? { get }
+  var membersList: [Channelize_API.CHMember]? { get }
+  var lastUpdatedAt: Foundation.Date? { get }
+  var draftMessageString: Foundation.NSAttributedString? { get }
+  func getLastUpdated() -> Foundation.Date?
+  func setLastUpdated(upDatedAt: Foundation.Date?)
+  func markAllMessagesAsRead()
+  func getMessageCount(completion: @escaping Channelize_API.CountResponse)
+  func getMessages(limit: Swift.Int?, offset: Swift.Int?, completion: @escaping Channelize_API.MessagesData)
+  func deleteMessages(messageIds: [Swift.String], completion: @escaping Channelize_API.StatusResponse)
+  func clear(completion: @escaping Channelize_API.StatusResponse)
+  func delete(completion: @escaping Channelize_API.StatusResponse)
+  func leave(completion: @escaping Channelize_API.StatusResponse)
+  func changeTitle(title: Swift.String, completion: @escaping Channelize_API.StatusResponse)
+  func updateProfileImage(data: Foundation.Data, completion: @escaping Channelize_API.ChatData)
+  func removeMembers(userIds: [Swift.String], completion: @escaping Channelize_API.StatusResponse)
+  func makeAdmin(userId: Swift.String, completion: @escaping Channelize_API.StatusResponse)
+  func addMembers(userIds: [Swift.String], completion: @escaping Channelize_API.StatusResponse)
+  func sendMessage(text: Swift.String?, data: Foundation.Data?, fileUrl: Foundation.URL?, type: Channelize_API.CHMessageType, params: Alamofire.Parameters, progress: @escaping Channelize_API.UploadProgress, completion: @escaping Channelize_API.MessageResult)
+  func sendMessage(data: Foundation.Data, type: Channelize_API.CHMessageType, params: Alamofire.Parameters, progess: @escaping Channelize_API.UploadProgress, completion: @escaping Channelize_API.MessageResult)
+  func sendMessage(data: Foundation.Data, type: Channelize_API.CHMessageType, params: Alamofire.Parameters, completion: @escaping Channelize_API.MessageResult)
+  func sendMessage(fileUrl: Foundation.URL, type: Channelize_API.CHMessageType, params: Alamofire.Parameters, completion: @escaping Channelize_API.MessageResult)
+  func sendMessage(data: Foundation.Data, type: Channelize_API.CHMessageType, completion: @escaping Channelize_API.MessageResult)
+  func sendMessage(fileUrl: Foundation.URL, type: Channelize_API.CHMessageType, completion: @escaping Channelize_API.MessageResult)
+  func sendMessage(text: Swift.String, completion: @escaping Channelize_API.MessageResult)
+  func sendQuotedMessage(text: Swift.String, quotedMessage: Channelize_API.CHMessage, completion: @escaping Channelize_API.MessageResult)
+  func forwardMessage(params: Alamofire.Parameters, completion: @escaping (Swift.Bool) -> ())
+  func partner() -> Channelize_API.CHMember?
+  func getNewMessageCount() -> Swift.Int
+  func getDeletedMember(_ id: Swift.String) -> Channelize_API.CHUser
+  func currentMember() -> Channelize_API.CHMember?
+  func updateMessageBody()
+  func updateAdmin(userId: Swift.String, status: Swift.Bool)
+  func removeMessageCount()
+  func getRecipients(status: Swift.Int) -> [Channelize_API.CHRecipient]?
+  func updateNewMessage(message: Channelize_API.CHMessage)
+  func updateMessageCount()
+  func updateTypingStatus(userId: Swift.String, status: Swift.Bool)
+  func getUserName(userId: Swift.String?) -> Swift.String?
+  func publishMessageReadStatus(message: Channelize_API.CHMessage)
+  func updateActiveStatus(isMe: Swift.Bool, status: Swift.Bool, userId: Swift.String?)
+  func isTyping() -> Swift.String?
+  func publishUserTypingStatus(isTyping: Swift.Bool)
+  func publishMessage(_ params: Alamofire.Parameters)
+  func setMembersList(members: [Channelize_API.CHMember])
+  func getDraftMessage() -> Foundation.NSAttributedString?
+  func setDraftMessage(messageString: Foundation.NSAttributedString?)
+  func getAdminCount() -> Swift.Int
+}
+public protocol CHCallDelegate : ObjectiveC.NSObjectProtocol {
+  func didCallReceived()
+  func didRejectCall(_ userId: Swift.String, _ isBusy: Swift.Bool)
+  func didEndCall()
+  func didAcceptCall()
+  func didLocalAudioMuted(_ muted: Swift.Bool)
+}
+public protocol CHCallSessionDelegate {
+}
+public protocol CHCallEventDelegates {
+  func didCallAccepted(data: Foundation.Data, topic: Swift.String)
+  func didCallEnded(data: Foundation.Data, topic: Swift.String)
+  func didCallRejected(data: Foundation.Data, topic: Swift.String)
+  func didCallRecieved(data: Foundation.Data, topic: Swift.String)
+}
+extension CHCallEventDelegates {
+  public func didCallAccepted(data: Foundation.Data, topic: Swift.String)
+  public func didCallRejected(data: Foundation.Data, topic: Swift.String)
+  public func didCallRecieved(data: Foundation.Data, topic: Swift.String)
+}
+public protocol CallSDKDelegates {
+  static func configureVoiceVideo()
+  static func launchCallViewController(navigationController: UIKit.UINavigationController?, user: Channelize_API.CHUser, type: Swift.String)
+  static func showIncomingCall(call: Channelize_API.CHActiveCall, completion: (Foundation.NSError?) -> Swift.Void)
+}
+public protocol UISDKDelegates {
+  static func launchApp(navigationController: UIKit.UINavigationController, data: [Swift.AnyHashable : Any]?)
+}
+public protocol APISDKDelegates {
+  static func configure()
+  static func configureAws()
+  static func updateToken(token: Swift.String)
+  static func updateVoipToken(token: Swift.String)
+  static func setUserOffline(completion: @escaping (Swift.Bool?, Swift.Error?) -> ())
+  static func setUserOnline(completion: @escaping (Swift.Bool?, Swift.Error?) -> ())
+  static func login(username: Swift.String, password: Swift.String, completion: @escaping Channelize_API.UserData)
+  static func login(userId: Swift.String, accessToken: Swift.String, completion: @escaping Channelize_API.UserData)
+  static func logout(completion: @escaping Channelize_API.StatusResponse)
+  static func currentUserId() -> Swift.String?
+  static var main: Channelize_API.Channelize { get set }
+}
+public protocol AnInterfaceAvailableToApp {
+  static func doSomething()
+  static func doSomethingElse() -> Swift.String
+}
+open class Channelize : Channelize_API.APISDKDelegates {
+  public static var main: Channelize_API.Channelize
+  public static func configure()
+  public static func configureAws()
+  public static func login(username: Swift.String, password: Swift.String, completion: @escaping Channelize_API.UserData)
+  public static func login(userId: Swift.String, accessToken: Swift.String, completion: @escaping Channelize_API.UserData)
+  public static func connect()
+  public static func updateToken(token: Swift.String)
+  public static func updateVoipToken(token: Swift.String)
+  public static func deleteToken()
+  public static func updateUserStatus(isOnline: Swift.Bool, completion: @escaping Channelize_API.StatusResponse)
+  public static func updateUserSettings(params: [Swift.String : Any], completion: @escaping Channelize_API.StatusResponse)
+  public static func setUserOffline(completion: @escaping (Swift.Bool?, Swift.Error?) -> ())
+  public static func setUserOnline(completion: @escaping (Swift.Bool?, Swift.Error?) -> ())
+  public static func disconnect()
+  public static func logout(completion: @escaping Channelize_API.StatusResponse)
+  public static func updateUserToken(token: Swift.String)
+  public static func updateUser(user: Channelize_API.CHUser, token: Swift.String)
+  @objc deinit
+}
+extension Channelize {
+  public func getMapKey() -> Swift.String
+  public func currentUserName() -> Swift.String?
+  public static func currentUserProfileImageUrl() -> Swift.String?
+  public static func currentUserId() -> Swift.String?
+}
+extension Channelize {
+  public static func addConversationDelegate(_ delegate: Channelize_API.CHConversationDataDelegate, identifier: Foundation.UUID)
+  public static func addUserDelegate(_ delegate: Channelize_API.CHUserEventDelegate, identifier: Foundation.UUID)
+  public static func addConnectionDelegate(_ delegate: Channelize_API.CHConnectionDelegate, identifier: Foundation.UUID)
+  public static func removeDelegate(with identifier: Foundation.UUID)
+  public static func addCallDataDelegates(delegate: Channelize_API.CHCallEventDelegates, identifier: Foundation.UUID)
+  public static func removeAllDelegates()
+}
+extension Channelize {
+  public static func getUserObject(params: [Swift.String : Any]) -> Channelize_API.CHUser?
+  public static func getConversationObject(params: [Swift.String : Any]) -> Channelize_API.CHConversation?
+  public static func getCHMemberObject(params: [Swift.String : Any]) -> Channelize_API.CHMember?
+  public static func getCHFileObject(params: [Swift.String : Any]) -> Channelize_API.CHFile?
+  public static func getCHMessageObject(params: [Swift.String : Any]) -> Channelize_API.CHMessage?
+  public static func getCHMessageDataObject(params: [Swift.String : Any]) -> Channelize_API.CHMessageData?
+  public static func getCHRecipientObject(params: [Swift.String : Any]) -> Channelize_API.CHRecipient?
+  public static func getCHTagObject(params: [Swift.String : Any]) -> Channelize_API.CHTag?
+  public static func getCHMetaDataObject(params: [Swift.String : Any]) -> Channelize_API.CHMetaData?
+}
+public protocol CHFile {
+  var id: Swift.String! { get }
+  var fileUrl: Swift.String? { get }
+  var name: Swift.String? { get }
+  var thumbnailUrl: Swift.String? { get }
+  var attachmentType: Swift.String? { get }
+  var duration: Swift.Double? { get }
+}
+public protocol CHMessageData {
+  var title: Swift.String? { get }
+  var address: Swift.String? { get }
+  var latitude: Swift.Double? { get }
+  var longitude: Swift.Double? { get }
+}
+public protocol CHUser {
+  var id: Swift.String! { get }
+  var displayName: Swift.String? { get }
+  var language: Swift.String? { get }
+  var profileImageUrl: Swift.String? { get }
+  var profileUrl: Swift.String? { get }
+  var isOnline: Swift.Bool? { get }
+  var uVisibility: Swift.Bool? { get }
+  var notification: Swift.Bool? { get }
+  var isBlocked: Swift.Bool { get }
+  var hasBlocked: Swift.Bool { get }
+  var lastSeen: Foundation.Date? { get }
+  func setIsBlocked(status: Swift.Bool?)
+  func setHasBlocked(status: Swift.Bool?)
+  func setOnlineStatus(status: Swift.Bool?)
+}
+public enum CHCallScreen : Swift.String {
+  case voice
+  case video
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum CHCallStatus : Swift.String {
+  case ongoing
+  case rejected
+  case ended
+  case received
+  case started
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum CHCallResponder : Swift.String {
+  case phone
+  case app
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc open class CHActiveCall : ObjectiveC.NSObject {
+  final public let callId: Swift.String
+  final public let uuid: Foundation.UUID
+  final public let userId: Swift.String
+  final public let isOutgoing: Swift.Bool
+  open var displayName: Swift.String?
+  open var profileImageUrl: Swift.String?
+  open var type: Channelize_API.CHCallScreen
+  open var endedBy: Swift.String?
+  open var hasMuted: Swift.Bool? {
+    get
+    set(newValue)
+  }
+  open var hasDeclined: Swift.Bool? {
+    get
+    set(newValue)
+  }
+  open var hasStartedConnecting: Swift.Bool {
+    get
+    set(newValue)
+  }
+  open var hasConnected: Swift.Bool {
+    get
+    set(newValue)
+  }
+  open var hasEnded: Swift.Bool {
+    get
+    set(newValue)
+  }
+  open var duration: Foundation.TimeInterval {
+    get
+  }
+  public init(uuid: Foundation.UUID, callId: Swift.String, uid: Swift.String, isOutgoing: Swift.Bool = false)
+  public func getCurrentUser() -> Channelize_API.CHUser?
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol CHCallMember {
+  var id: Swift.String! { get }
+  var userId: Swift.String? { get }
+  var resourceType: Swift.String? { get }
+  var newCallCount: Swift.Int? { get }
+  var isActive: Swift.Bool? { get }
+  var updatedAt: Foundation.Date? { get }
+  var lastCall: Channelize_API.CHCall? { get }
+  var user: Channelize_API.CHUser? { get }
+}
+public protocol CHMetaData {
+  var id: Swift.String! { get }
+  var subType: Swift.String? { get }
+  var subId: Swift.String? { get }
+  var objType: Swift.String? { get }
+  var objValues: Any? { get }
+  func msgLabel(_ chat: Channelize_API.CHConversation?, type: Swift.String) -> Swift.String?
+}
+public typealias ChatData = (Channelize_API.CHConversation?, Swift.Error?) -> ()
+public typealias ChatsData = ([Channelize_API.CHConversation], Swift.Error?) -> ()
+public protocol CHConnectionDelegate {
+  func didStartReconnection()
+  func didServerConnected()
+  func didServerDisconnected()
+  func didConnectionFailed()
+}
+public protocol CHRecipient {
+  var id: Swift.String! { get }
+  var recipientId: Swift.String? { get }
+  var status: Swift.Int? { get }
+  var createdAt: Foundation.Date? { get }
+  func setStatus(status: Swift.Int)
+}
+public enum CallType : Swift.String {
+  case Out
+  case In
+  case Rejected
+  case Missed
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol CHRecentCalls {
+  var id: Swift.String! { get }
+  var isGroup: Swift.Bool? { get }
+  var resourceType: Swift.String? { get }
+  var members: [Channelize_API.CHCallMember]? { get }
+  var calls: [Channelize_API.CHCall]? { get }
+  func current() -> Channelize_API.CHCallMember?
+  func partner() -> Channelize_API.CHCallMember?
+  func getMembers() -> [Channelize_API.CHCallMember]
+  func getCalls() -> [Channelize_API.CHCall]
+}
+public enum CHMessageType : Swift.String {
+  case TEXT
+  case IMAGE
+  case VIDEO
+  case AUDIO
+  case FILE
+  case LINK
+  case STICKER
+  case GIF
+  case LOCATION
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public typealias UserData = (Channelize_API.CHUser?, Swift.Error?) -> ()
+public typealias UsersData = ([Channelize_API.CHUser], Swift.Error?) -> ()
+public typealias CountResponse = (Swift.Int, Swift.Error?) -> ()
+public typealias StatusResponse = (Swift.Bool, Swift.Error?) -> ()
+public typealias UserBlockStatusResponse = (Foundation.NSDictionary?, Swift.Error?) -> ()
+public protocol CHConversationDataDelegate {
+  func didGetChatInfo(conversation: Channelize_API.CHConversation?)
+  func didReceiveNewMessage(message: Channelize_API.CHMessage?)
+  func didDeleteChat(conversation: Channelize_API.CHConversation?)
+  func didClearChat(conversation: Channelize_API.CHConversation?)
+  func didDeleteMessage(conversation: Channelize_API.CHConversation?)
+  func didMemberAdded(conversation: Channelize_API.CHConversation?)
+  func didMemberRemoved(conversation: Channelize_API.CHConversation?)
+  func didAdminAdded(conversationId: Swift.String?, isAdmin: Swift.Bool, userId: Swift.String?)
+  func didMarkAsRead(messageId: Swift.String?, conversationId: Swift.String?, userId: Swift.String?, status: Swift.Int?, isMe: Swift.Bool)
+  func didChangeTypingStatus(conversationId: Swift.String?, userId: Swift.String?, isTyping: Swift.Bool)
+  func didMessagesDeleted(conversation: Channelize_API.CHConversation?, messageIds: [Swift.String], topic: Swift.String)
+  func didMuteUnMuteConversation(data: Channelize_API.ConversationMuteModel?)
+  func didMessagesDeletedForEveryOne(conversationId: Swift.String?, messageIds: [Swift.String]?)
+}
+extension CHConversationDataDelegate {
+  public func didDeleteChat(conversation: Channelize_API.CHConversation?)
+  public func didClearChat(conversation: Channelize_API.CHConversation?)
+  public func didMarkAsRead(messageId: Swift.String?, conversationId: Swift.String?, userId: Swift.String?, status: Swift.Int?, isMe: Swift.Bool)
+  public func didChangeTypingStatus(conversationId: Swift.String?, userId: Swift.String?, isTyping: Swift.Bool)
+  public func didMuteUnMuteConversation(data: Channelize_API.ConversationMuteModel?)
+  public func didMessagesDeletedForEveryOne(conversationId: Swift.String?, messageIds: [Swift.String]?)
+  public func didMessagesDeleted(conversation: Channelize_API.CHConversation?, messageIds: [Swift.String], topic: Swift.String)
+}
+public protocol CHModule {
+  var id: Swift.String! { get }
+  var disabledBy: Swift.String? { get }
+  var enabled: Swift.Int? { get }
+  var identifier: Swift.String? { get }
+  var name: Swift.String? { get }
+  var priority: Swift.Int? { get }
+}
+public protocol CHMessage {
+  var id: Swift.String! { get }
+  var chatId: Swift.String? { get }
+  var attachmentType: Swift.String? { get }
+  var msgStatus: Swift.String? { get }
+  var body: Swift.String? { get }
+  var ownerId: Swift.String? { get }
+  var recipients: [Channelize_API.CHRecipient]? { get }
+  var owner: Channelize_API.CHUser? { get }
+  var file: Channelize_API.CHFile? { get }
+  var fileData: Channelize_API.CHFile? { get }
+  var contentType: Swift.Int? { get }
+  var metaMessageType: Swift.String? { get }
+  var metaMessage: Channelize_API.CHMetaData? { get }
+  var previewUrl: Swift.String? { get }
+  var messageData: Channelize_API.CHMessageData? { get }
+  var quoted: Swift.Bool? { get }
+  var parentMsgId: Swift.String? { get }
+  var quotedMessage: Channelize_API.CHMessage? { get }
+  var tags: [Channelize_API.CHTag]? { get }
+  var isDeleted: Swift.Bool? { get }
+  func markAsRead()
+  func updateMsgStatus(status: Swift.Int?, userId: Swift.String?, completion: @escaping (Swift.Bool) -> ())
+  func setRecipients(recipients: [Channelize_API.CHRecipient])
+  func msgBody(_ conversation: Channelize_API.CHConversation) -> Swift.String?
+  func updateMessageAttributedBody(body: Foundation.NSAttributedString?)
+  func updateMessageBody(body: Swift.String?)
+  func isUnread() -> Swift.Bool
+  func updateStatusForAll()
+  func setMessageFile(messageFile: Channelize_API.CHFile?)
+  func setMessageOwner(owner: Channelize_API.CHUser?)
+  func setMetaData(metaData: Channelize_API.CHMetaData?)
+  func setMessageData(data: Channelize_API.CHMessageData?)
+  func setMessageTags(tags: [Channelize_API.CHTag]?)
+  func messageDate() -> Foundation.Date?
+  func updateMessageStatus(text: Swift.String)
+  func setQuotedMessage(quotedMessage: Channelize_API.CHMessage?)
+  func updateDeletedStatus(isDeleted: Swift.Bool)
+}
+open class Recipient : Channelize_API.CHRecipient, ObjectMapper.Mappable {
+  public var id: Swift.String!
+  public var recipientId: Swift.String?
+  public var status: Swift.Int? {
+    get
+  }
+  public var createdAt: Foundation.Date?
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+extension Recipient {
+  public func setStatus(status: Swift.Int)
+}
+public protocol CHCallRecipient {
+  var id: Swift.String! { get }
+  var userId: Swift.String? { get }
+  var state: Swift.String? { get }
+  var duration: Swift.Double? { get }
+}

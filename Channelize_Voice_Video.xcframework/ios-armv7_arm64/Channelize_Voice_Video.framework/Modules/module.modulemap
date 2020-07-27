@@ -1,0 +1,11 @@
+framework module Channelize_Voice_Video {
+  umbrella header "Channelize_Voice_Video.h"
+
+  export *
+  module * { export * }
+}
+
+module Channelize_Voice_Video.Swift {
+    header "Channelize_Voice_Video-Swift.h"
+    requires objc
+}
